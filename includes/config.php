@@ -142,6 +142,21 @@ function key_people(array $committees): array {
   return ['core' => $core, 'leads' => $leads];
 }
 
+/** The four public contact channels (used by the contact page and the footer poster). */
+function contact_channels(): array {
+  global $SITE;
+  return [
+    ['id' => 'email', 'href' => 'mailto:' . $SITE['email'], 'title' => 'Email us', 'sub' => $SITE['email'], 'ext' => false,
+     'icon' => '<rect x="4" y="7" width="24" height="18" rx="3"/><path d="M5 10l11 8 11-8"/>'],
+    ['id' => 'instagram', 'href' => $SITE['instagram']['url'], 'title' => 'Instagram', 'sub' => $SITE['instagram']['handle'], 'ext' => true,
+     'icon' => '<rect x="5" y="5" width="22" height="22" rx="6.5"/><circle cx="16" cy="16" r="5.2"/><circle cx="22.6" cy="9.4" r="1.1" fill="currentColor"/>'],
+    ['id' => 'youtube', 'href' => $SITE['youtube']['url'], 'title' => 'YouTube', 'sub' => $SITE['youtube']['handle'], 'ext' => true,
+     'icon' => '<rect x="3.5" y="7.5" width="25" height="17" rx="5"/><path d="M13.5 12v8l7-4z" fill="currentColor"/>'],
+    ['id' => 'maps', 'href' => $SITE['maps'], 'title' => 'Visit us', 'sub' => $SITE['address_short'], 'ext' => true,
+     'icon' => '<path d="M16 28S6 19.5 6 12.5a10 10 0 0120 0C26 19.5 16 28 16 28z"/><circle cx="16" cy="12.5" r="3.6"/>'],
+  ];
+}
+
 /** Small five-petal flower used in section labels. */
 function flower_svg(string $centre = '#fbeee9', string $cls = 'pg-fl'): string {
   $p = '<path transform="rotate(%d)" d="M0-3C-6-8-7-16 0-18 7-16 6-8 0-3z"/>';

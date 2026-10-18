@@ -22,11 +22,11 @@ Udgam/
 ├── gallery.php        Memories + photo gallery with lightbox
 ├── sponsors.php       Sponsor tiers, why-sponsor, sponsorship contact
 ├── team.php           Office bearers + full committee directory (search / filter)
-├── contact.php        Contact channels, address, map, illustrated poster
+├── contact.php        Contact channels, address, map
 ├── includes/
 │   ├── config.php     Site constants, contact details, navigation, helper functions
 │   ├── header.php     <head>, fixed header with corner logo + main navigation
-│   └── footer.php     Footer, falling petals, Ferris-wheel menu, script tags
+│   └── footer.php     "Get in Touch" poster footer (HTML version on phones), falling petals, Ferris-wheel menu, script tags
 ├── data/              Editable content (JSON)
 │   ├── committees.json  every committee and member (drives team.php and the homepage leads)
 │   ├── events.json      highlights, categories, upcoming schedule, past editions

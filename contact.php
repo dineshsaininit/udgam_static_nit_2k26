@@ -7,16 +7,7 @@ $page = [
   'desc'  => 'Get in touch with the UDGAM 2K26 team at NIT Sikkim: email, Instagram, YouTube and how to find the campus in Ravangla.',
 ];
 
-$channels = [
-  ['href' => 'mailto:' . $SITE['email'], 'title' => 'Email us', 'sub' => $SITE['email'], 'ext' => false,
-   'icon' => '<rect x="4" y="7" width="24" height="18" rx="3"/><path d="M5 10l11 8 11-8"/>'],
-  ['href' => $SITE['instagram']['url'], 'title' => 'Instagram', 'sub' => $SITE['instagram']['handle'], 'ext' => true,
-   'icon' => '<rect x="5" y="5" width="22" height="22" rx="6.5"/><circle cx="16" cy="16" r="5.2"/><circle cx="22.6" cy="9.4" r="1.1" fill="currentColor"/>'],
-  ['href' => $SITE['youtube']['url'], 'title' => 'YouTube', 'sub' => $SITE['youtube']['handle'], 'ext' => true,
-   'icon' => '<rect x="3.5" y="7.5" width="25" height="17" rx="5"/><path d="M13.5 12v8l7-4z" fill="currentColor"/>'],
-  ['href' => $SITE['maps'], 'title' => 'Visit us', 'sub' => $SITE['address_short'], 'ext' => true,
-   'icon' => '<path d="M16 28S6 19.5 6 12.5a10 10 0 0120 0C26 19.5 16 28 16 28z"/><circle cx="16" cy="12.5" r="3.6"/>'],
-];
+$channels = contact_channels();
 
 require __DIR__ . '/includes/header.php';
 ?>
@@ -56,17 +47,6 @@ require __DIR__ . '/includes/header.php';
 
     <ul class="ctm-vals nr"><li>People build<br>communities</li><li>Ideas spark<br>possibilities</li><li>Friendships go<br>beyond borders</li></ul>
   </section>
-
-  <!-- Illustrated contact poster (desktop); the hotspots open the same channels as the cards above -->
-  <div class="ct-page" aria-hidden="false">
-    <div class="ct-desktop">
-      <img class="ct-art" src="assets/img/contact-poster.webp" alt="UDGAM NIT Sikkim contact poster" width="1672" height="941" decoding="async" loading="lazy">
-      <a class="ct-hotspot ct-email" href="mailto:<?= e($SITE['email']) ?>" aria-label="Email UDGAM"></a>
-      <a class="ct-hotspot ct-instagram" href="<?= e($SITE['instagram']['url']) ?>" target="_blank" rel="noopener" aria-label="Instagram"></a>
-      <a class="ct-hotspot ct-youtube" href="<?= e($SITE['youtube']['url']) ?>" target="_blank" rel="noopener" aria-label="YouTube"></a>
-      <a class="ct-hotspot ct-maps" href="<?= e($SITE['maps']) ?>" target="_blank" rel="noopener" aria-label="NIT Sikkim on Google Maps"></a>
-    </div>
-  </div>
 </main>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>

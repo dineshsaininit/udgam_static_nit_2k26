@@ -3,31 +3,55 @@
  * Shared footer, falling petals, Ferris-wheel menu and scripts.
  * Optional: $page['scripts'] = ['assets/js/events.js', ...]
  */
-$cur = current_page();
+$cur      = current_page();
+$channels = contact_channels();
+$ftIntro  = 'Have a question, collaboration idea, sponsorship enquiry or just want to be a part of UDGAM 2K26? We&rsquo;d love to hear from you. Let&rsquo;s keep the conversation going and create more stories together.';
 ?>
 <footer class="site-foot" id="siteFoot">
-  <div class="sf-in">
-    <div class="sf-brand">
-      <img src="assets/img/logo.webp" alt="<?= e(SITE_NAME) ?>" width="700" height="394" loading="lazy" decoding="async">
-      <p><?= e(SITE_DESC) ?> Organised by the students of the National Institute of Technology Sikkim.</p>
+  <!-- Wide screens: the illustrated "Get in Touch" poster; the four cards in the artwork are clickable -->
+  <div class="sf-poster">
+    <div class="sf-poster-in">
+      <img class="sf-art" src="assets/img/contact-poster.webp" alt="Get in touch with UDGAM 2K26 — email, Instagram, YouTube or visit NIT Sikkim, Ravangla" width="1672" height="941" loading="lazy" decoding="async">
+      <?php foreach ($channels as $c): ?>
+      <a class="sf-hot sf-hot-<?= e($c['id']) ?>" href="<?= e($c['href']) ?>"<?= $c['ext'] ? ' target="_blank" rel="noopener"' : '' ?> aria-label="<?= e($c['title']) ?>: <?= e($c['sub']) ?>"></a>
+      <?php endforeach; ?>
     </div>
-    <div>
-      <h3 class="sf-h">Explore</h3>
+  </div>
+
+  <!-- Narrow / tall screens: the same content laid out in HTML -->
+  <div class="sf-html">
+    <div class="sf-html-in">
+      <p class="sf-script">Let&rsquo;s Stay Connected</p>
+      <div class="pg-label sf-label"><i></i><?= flower_svg('#fbeee9', 'pg-fl') ?><b>CONTACT</b><i></i></div>
+      <h2 class="sf-title"><span>Get in</span> <em>Touch</em></h2>
+      <p class="sf-lead"><?= $ftIntro ?></p>
+      <ul class="sf-cards">
+        <?php foreach ($channels as $c): ?>
+        <li><a class="sf-card" href="<?= e($c['href']) ?>"<?= $c['ext'] ? ' target="_blank" rel="noopener"' : '' ?>>
+          <?= flower_svg('#fbeee9', 'sf-card-fl') ?>
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><?= $c['icon'] ?></svg>
+          <b><?= e($c['title']) ?></b><small><?= e($c['sub']) ?></small>
+        </a></li>
+        <?php endforeach; ?>
+      </ul>
+      <ul class="sf-vals">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M7 20c0-3 2.2-5 5-5s5 2 5 5M1.5 17.5c0-2.2 1.5-3.6 3.5-3.6M22.5 17.5c0-2.2-1.5-3.6-3.5-3.6"/></svg>People build<br>communities</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/></svg>Ideas spark<br>possibilities</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 19l6-10 3.5 5.5L15 9l7 10z"/><path d="M8 9l1.5-2.5L11 9"/></svg>Friendships go<br>beyond borders</li>
+      </ul>
+      <p class="sf-script sf-script-end">Different People, Same Spirit</p>
+    </div>
+  </div>
+
+  <div class="sf-bar">
+    <div class="sf-bar-in">
+      <a class="sf-logo" href="index.php" aria-label="<?= e(SITE_NAME) ?> home"><img src="assets/img/logo.webp" alt="" width="700" height="394" loading="lazy" decoding="async"></a>
       <nav class="sf-nav" aria-label="Footer">
         <?php foreach ($NAV as $n): ?><a href="<?= e($n['href']) ?>"><?= e($n['label']) ?></a><?php endforeach; ?>
       </nav>
-    </div>
-    <div class="sf-contact">
-      <h3 class="sf-h">Contact</h3>
-      <ul>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 8l8 5.5L20 8"/></svg><a href="mailto:<?= e($SITE['email']) ?>"><?= e($SITE['email']) ?></a></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="#ffd9e6"/></svg><a href="<?= e($SITE['instagram']['url']) ?>" target="_blank" rel="noopener"><?= e($SITE['instagram']['handle']) ?></a></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9v6l5-3z" fill="#ffd9e6" stroke="none"/></svg><a href="<?= e($SITE['youtube']['url']) ?>" target="_blank" rel="noopener"><?= e($SITE['youtube']['handle']) ?></a></li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21S5 15 5 9.5a7 7 0 0114 0C19 15 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><a href="<?= e($SITE['maps']) ?>" target="_blank" rel="noopener"><?= e($SITE['address']) ?></a></li>
-      </ul>
+      <p class="sf-copy">&copy; <?= date('Y') ?> <?= e(SITE_NAME) ?> &middot; <a href="<?= e($SITE['institute']) ?>" target="_blank" rel="noopener">National Institute of Technology Sikkim</a>. All rights reserved.</p>
     </div>
   </div>
-  <p class="sf-copy">&copy; <?= date('Y') ?> <?= e(SITE_NAME) ?> &middot; <a href="<?= e($SITE['institute']) ?>" target="_blank" rel="noopener">National Institute of Technology Sikkim</a>. All rights reserved.</p>
 </footer>
 
 <canvas id="petalFall" aria-hidden="true"></canvas>
