@@ -47,8 +47,10 @@ body.entered .hero-bg{animation:page-enter 1.35s var(--ease-out) both}
 /* ---------- JOURNEY THROUGH TIME (replaces the old legacy page) ---------- */
 .jy{--blend:clamp(5.5rem,15vw,15rem);position:relative;width:100%;margin-top:calc(var(--blend) * -1);padding-top:calc(var(--blend) * .8);background:linear-gradient(180deg,#6c5b72 0,#66566f 55%,#4a3d5f 100%);color:#f6e9cf;
   --jm:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.05) calc(var(--blend)*.10),rgba(0,0,0,.22) calc(var(--blend)*.26),rgba(0,0,0,.55) calc(var(--blend)*.48),rgba(0,0,0,.85) calc(var(--blend)*.72),rgba(0,0,0,.97) calc(var(--blend)*.90),#000 var(--blend),#000 100%);
-  -webkit-mask-image:var(--jm);mask-image:var(--jm);font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
-.jy-scroller{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(255,170,210,.6) transparent;}
+    -webkit-mask-image:var(--jm);mask-image:var(--jm);font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  /* the faded top strip overlaps the section above; let clicks fall through to it */
+  pointer-events:none}
+.jy-scroller{pointer-events:auto;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(255,170,210,.6) transparent;}
 .jy-scene{position:relative;width:100%;min-width:1200px;aspect-ratio:2121/741;container-type:inline-size;overflow:clip;isolation:isolate}
 .jy-scene img{max-width:none;height:auto;user-select:none;-webkit-user-drag:none}
 .jy-scene::before{content:'';position:absolute;left:0;right:0;top:0;height:14%;z-index:1;pointer-events:none;background:linear-gradient(180deg,#675770 0,rgba(103,87,112,.7) 35%,rgba(103,87,112,0) 100%)}
@@ -557,7 +559,7 @@ body.entered .fw{opacity:1}
 .cd-n{font-size:15px;color:#2b5f8e;white-space:nowrap}
 .cd-sh i{flex:1;position:relative;border-top:1px solid rgba(140,50,55,.4)}
 .cd-sh i::after{content:'';position:absolute;right:0;top:-7px;width:13px;height:13px;border-radius:0 100% 0 100%;background:#e58a8a;transform:rotate(-8deg)}
-.cd-top{font-size:15px;color:#7d1238;white-space:nowrap}
+.cd-top{font-size:15px;color:#7d1238;white-space:nowrap;margin-right:clamp(64px,12vw,180px)} /* keep clear of the fixed ferris-wheel menu */
 .cd-sub{margin:clamp(18px,2.4vw,28px) 0 12px;font:italic 500 clamp(16px,1.5vw,19px) 'EB Garamond',Georgia,serif;color:#7a5450}
 .cd-grid{list-style:none;margin:0;padding:0;display:grid;gap:clamp(12px,1.8vw,22px);grid-template-columns:repeat(auto-fill,minmax(var(--cw,clamp(130px,40vw,152px)),1fr))}
 .cd-g1{--cw:clamp(140px,44vw,196px)}
