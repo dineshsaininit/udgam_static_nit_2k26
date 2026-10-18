@@ -218,7 +218,16 @@ body.entered .fw{opacity:1}
   color:#fff;background:rgba(48,22,52,.86);box-shadow:0 4px 12px rgba(30,10,40,.4);opacity:0;transform:translateX(8px);transition:opacity .3s ease,transform .3s ease;pointer-events:none}
 @media (hover:hover){.fw-cab:hover .fw-lab{opacity:1;transform:none}}
 .fw-cab:focus-visible .fw-lab,.fw-cab.flash .fw-lab{opacity:1;transform:none}
-@media (max-width:880px),(max-aspect-ratio:5/4){.fw{right:calc(var(--R) * -.38)}.fw-lab{font-size:11px;padding:5px 10px}}
+/* turn-the-wheel arrows at the ends of the visible arc */
+.fw-arrow{position:absolute;left:0;top:0;width:0;height:0;border:0;padding:0;background:none;pointer-events:auto;cursor:pointer;-webkit-tap-highlight-color:transparent;will-change:transform}
+.fw-arrow svg{position:absolute;left:-14px;top:-14px;width:28px;height:28px;padding:5px;box-sizing:border-box;border-radius:50%;color:#8a2a2f;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;
+  background:linear-gradient(180deg,#fffaf3 0,#ffd9e4 100%);border:2px solid #e6c46f;box-shadow:0 3px 8px rgba(70,20,50,.35);transition:transform .25s var(--ease-out),opacity .3s ease}
+.fw-arrow:hover svg,.fw-arrow:focus-visible svg{transform:scale(1.18)}
+.fw-arrow:focus-visible{outline:0}
+.fw-arrow:focus-visible svg{box-shadow:0 0 0 3px #fff,0 0 0 5px #a8343f}
+.fw-arrow:disabled{pointer-events:none}
+.fw-arrow:disabled svg{opacity:.25;transform:none}
+@media (max-width:880px),(max-aspect-ratio:5/4){.fw{right:calc(var(--R) * -.38)}.fw-lab{font-size:11px;padding:5px 10px}.fw-arrow svg{width:26px;height:26px;left:-13px;top:-13px}}
 @media (prefers-reduced-motion:reduce){.fw-bulb{animation:none;opacity:.8}}
 
 .ev{--bg:url(../img/events-bg.jpg);--p1:url(../img/event-1.jpg);--p2:url(../img/event-2.jpg);--p3:url(../img/event-3.jpg);--p4:url(../img/event-4.jpg);--p5:url(../img/event-5.jpg);--p6:url(../img/event-6.jpg);

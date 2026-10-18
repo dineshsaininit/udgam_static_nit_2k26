@@ -256,21 +256,101 @@
   })();
 
   /* ------------------------------------------------------------------
+     In-page section navigation. Blended sections (.pg/.jy/.ev) pull
+     themselves up over the previous one with a negative top margin, so
+     "the start of the section" is a little below its box top. data-nav
+     on the section says how far into that overlap to land (0..1).
+     Used by the Ferris wheel, same-page anchor links and #hash URLs.
+     ------------------------------------------------------------------ */
+  function sectionTop(sec) {
+    var f = parseFloat(sec.getAttribute('data-nav'));
+    if (isNaN(f)) f = .5;
+    var mt = parseFloat(getComputedStyle(sec).marginTop) || 0;
+    var fade = -Math.min(0, mt) * f;                       // only negative margins count
+    var cs = getComputedStyle(sec), hh = ((d.querySelector('.site-head') || {}).offsetHeight || 0);
+    var padTop = parseFloat(cs.paddingTop) || 0;
+    // blended sections: land inside the fade, but never let the fixed header cover the section's content
+    var head = sec.id === 'home' ? 0 : (mt < 0 ? Math.max(0, hh + 12 - (padTop - fade)) : hh + 16);
+    return Math.max(0, sec.getBoundingClientRect().top + window.pageYOffset + fade - head);
+  }
+  function goTo(sec, smooth) {
+    window.scrollTo({ top: sectionTop(sec), behavior: (smooth && !reduce) ? 'smooth' : 'auto' });
+  }
+  window.UDGAM.goTo = goTo;
+
+  function hashTarget(h) {
+    h = (h || '').replace(/^#/, '');
+    if (!h) return null;
+    try { h = decodeURIComponent(h); } catch (err) {}
+    return d.getElementById(h);
+  }
+  function samePath(a, b) {
+    var f = function (p) { return p.replace(/\/index\.php$/, '/'); };
+    return f(a) === f(b);
+  }
+  // Same-page anchor clicks (header "About", wheel cabins, year plaques, directory chips, ...)
+  d.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || a.target === '_blank') return;
+    var u; try { u = new URL(a.getAttribute('href'), location.href); } catch (err) { return; }
+    if (u.origin !== location.origin || !samePath(u.pathname, location.pathname) || !u.hash) return;
+    var sec = hashTarget(u.hash);
+    if (!sec) return;
+    e.preventDefault();
+    goTo(sec, true);
+    if (location.hash !== u.hash) { try { history.pushState(null, '', u.hash); } catch (err) {} }
+  });
+  // Arriving with a #hash: the browser jumps before images/layout settle, so re-aim once now and once after load.
+  if (location.hash && hashTarget(location.hash)) {
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (err) {}
+    var hashSec = hashTarget(location.hash), aiming = true;
+    goTo(hashSec, false);
+    // keep re-aiming while fonts/images settle the layout, until the user takes over or 2.5s pass
+    var stopAim = function () { aiming = false; };
+    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (t) { window.addEventListener(t, stopAim, { passive: true, once: true }); });
+    var reAim = function () { if (aiming) goTo(hashSec, false); };
+    if ('ResizeObserver' in window) { var ro = new ResizeObserver(reAim); ro.observe(d.documentElement); setTimeout(function () { ro.disconnect(); }, 2500); }
+    window.addEventListener('load', function () { setTimeout(reAim, 60); setTimeout(reAim, 400); setTimeout(stopAim, 2500); });
+    if (d.fonts && d.fonts.ready) d.fonts.ready.then(reAim);
+  }
+  window.addEventListener('hashchange', function () { var s = hashTarget(location.hash); if (s) goTo(s, true); });
+
+  /* ------------------------------------------------------------------
      Ferris-wheel menu. Cabins with data-sec belong to sections on this
-     page and drive the rotation; the others simply link to other pages.
+     page and drive the rotation as you scroll; the others link to other
+     pages. The wheel can also be turned by hand (arrows, mouse wheel,
+     drag, arrow keys) so every cabin is reachable from every page.
      ------------------------------------------------------------------ */
   (function () {
     var fw = d.getElementById('fw'), svg = d.getElementById('fwSvg'), probe = d.getElementById('fwProbe');
     if (!fw || !svg) return;
     var cabs = [].slice.call(fw.querySelectorAll('.fw-cab'));
-    var local = []; // [{k, el}] cabins whose section exists on this page
+    if (!cabs.length) return;
+    var N = cabs.length;
+    var local = []; // [{k, el, cab}] cabins whose section exists on this page
     cabs.forEach(function (c, k) {
       var id = c.getAttribute('data-sec'), el = id && d.getElementById(id);
       if (el) local.push({ k: k, el: el, cab: c });
     });
-    var STEP = 30, R = 120, cur = 0, target = 0, rafId = 0, rotG = null, shown = -1, lastT = 0;
+    var STEP = 30, R = 120, cur = 0, target = 0, auto = 0, manual = 0, rafId = 0, rotG = null, shown = -1, lastT = 0;
+    var ARC = 92;                                   // cabins fade out beyond this many degrees from the centre
     var NS = 'http://www.w3.org/2000/svg';
     function el(n, a) { var e = d.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
+
+    // rotate-by-hand controls
+    var up = d.createElement('button'), down = d.createElement('button');
+    up.type = down.type = 'button';
+    up.className = 'fw-arrow fw-arrow-up'; down.className = 'fw-arrow fw-arrow-down';
+    up.setAttribute('aria-label', 'Show previous sections'); down.setAttribute('aria-label', 'Show more sections');
+    up.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>';
+    down.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+    fw.appendChild(up); fw.appendChild(down);
+
+    function clamp(v) { return Math.max(0, Math.min(N - 1, v)); }
+    function setTarget() { target = clamp(auto + manual); manual = target - auto; }
+    function turn(n) { manual += n; setTarget(); kick(); }
+
     function build() {
       R = probe.offsetWidth || 120;
       var pod = (cabs[0].querySelector('.fw-pod') || {}).offsetWidth || 32;
@@ -294,27 +374,35 @@
         c.style.animationDelay = (-(j % 6) * .4) + 's'; rotG.appendChild(c);
       }
       rotG.appendChild(el('circle', { r: R * .09, fill: 'url(#fwGold)', stroke: '#8a2a2f', 'stroke-width': sw * .6 }));
+      // arrows sit just outside the rim, above and below the visible arc, ~26px in from the screen edge
+      var cx = fw.getBoundingClientRect().left || window.innerWidth;
+      var ax = Math.min(-16, (window.innerWidth - 26) - cx), rr = R + 20, ay = Math.sqrt(Math.max(0, rr * rr - ax * ax));
+      var pod = fw.querySelector('.fw-pod'), hang = pod ? Math.max(0, pod.getBoundingClientRect().bottom - (pod.closest('.fw-cab').getBoundingClientRect().top)) : 0;
+      up.style.transform = 'translate(' + ax.toFixed(1) + 'px,' + (-ay).toFixed(1) + 'px)';
+      // cabins hang below their pivot, so the lower arrow needs extra room
+      down.style.transform = 'translate(' + ax.toFixed(1) + 'px,' + (ay + hang).toFixed(1) + 'px)';
       render();
     }
     function render() {
       rotG.setAttribute('transform', 'rotate(' + (-cur * STEP).toFixed(2) + ')');
-      var on = Math.max(0, Math.min(cabs.length - 1, Math.round(cur)));
+      var on = clamp(Math.round(auto));                 // the section actually on screen, not merely the centred cabin
       cabs.forEach(function (c, k) {
         var dd = (k - cur) * STEP, a = (180 + dd) * Math.PI / 180, ad = Math.abs(dd);
         c.style.transform = 'translate(' + (Math.cos(a) * R).toFixed(1) + 'px,' + (Math.sin(a) * R).toFixed(1) + 'px)';
-        var o = Math.max(0, Math.min(1, (92 - ad) / 22));
+        var o = Math.max(0, Math.min(1, (ARC - ad) / 22));
         c.style.opacity = o.toFixed(2); c.style.visibility = o <= 0 ? 'hidden' : 'visible'; c.style.pointerEvents = o < .4 ? 'none' : 'auto';
         var isOn = k === on && c.hasAttribute('data-sec');
         c.classList.toggle('on', isOn);
         if (isOn) c.setAttribute('aria-current', 'true'); else c.removeAttribute('aria-current');
       });
+      up.disabled = target <= .01; down.disabled = target >= N - 1.01;
       if (on !== shown) {
         var first = shown < 0; shown = on;
-        if (!first) { var c2 = cabs[on]; c2.classList.add('flash'); clearTimeout(c2._t); c2._t = setTimeout(function () { c2.classList.remove('flash'); }, 1500); }
+        if (!first && cabs[on].hasAttribute('data-sec')) { var c2 = cabs[on]; c2.classList.add('flash'); clearTimeout(c2._t); c2._t = setTimeout(function () { c2.classList.remove('flash'); }, 1500); }
       }
     }
     function calc() {
-      if (!local.length) { target = 0; return; }
+      if (!local.length) { auto = 0; return; }
       var vh = window.innerHeight, mid = vh * .5, i = 0;
       var tops = local.map(function (s) { return s.el.getBoundingClientRect().top; });
       for (var k = 0; k < tops.length; k++) if (tops[k] <= mid) i = k;
@@ -323,27 +411,62 @@
         var Z = vh * .5, frac = Math.max(0, Math.min(1, (mid + Z - tops[i + 1]) / Z));
         f = local[i].k + (local[i + 1].k - local[i].k) * frac;
       }
-      target = f;
+      auto = f;
     }
     function tick(now) {
       rafId = 0; var dd = target - cur, dt = lastT ? Math.min((now - lastT) / 1000, .1) : .016; lastT = now;
       if (reduce || Math.abs(dd) < .002) { cur = target; lastT = 0; render(); return; }
       cur += dd * (1 - Math.exp(-dt * 9)); render(); rafId = requestAnimationFrame(tick);
     }
-    function onScrollFw() { calc(); if (!rafId) rafId = requestAnimationFrame(tick); }
-    local.forEach(function (s) {
-      s.cab.addEventListener('click', function (e) {
-        e.preventDefault();
-        var sec = s.el, f = parseFloat(sec.getAttribute('data-nav'));
-        if (isNaN(f)) f = .5;
-        var fade = -(parseFloat(getComputedStyle(sec).marginTop) || 0) * f;
-        var top = sec.getBoundingClientRect().top + window.pageYOffset + fade;
-        window.scrollTo({ top: top, behavior: reduce ? 'auto' : 'smooth' });
-      });
+    function kick() { if (!rafId) rafId = requestAnimationFrame(tick); }
+    var lastY = window.pageYOffset;
+    function onScrollFw() {
+      var y = window.pageYOffset;
+      if (Math.abs(y - lastY) > 2) { manual = 0; lastY = y; }  // real page scrolling hands control back to the page
+      calc(); setTarget(); kick();
+    }
+
+    // (clicking a cabin for a section on this page is handled by the same-page anchor handler above)
+    var dragging = false;
+    // arrows
+    up.addEventListener('click', function () { turn(-1); });
+    down.addEventListener('click', function () { turn(1); });
+    // mouse wheel over the cabins / arrows turns the wheel instead of the page
+    var wheelAcc = 0, wheelT = 0;
+    fw.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      var now = Date.now(); if (now - wheelT > 400) wheelAcc = 0; wheelT = now;
+      wheelAcc += e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+      if (Math.abs(wheelAcc) >= 40) { turn(wheelAcc > 0 ? 1 : -1); wheelAcc = 0; }
+    }, { passive: false });
+    // drag (touch or mouse) along the cabins
+    var pStart = null, pLast = 0, pAcc = 0;
+    fw.addEventListener('pointerdown', function (e) {
+      if (!e.target.closest('.fw-cab')) return;
+      pStart = e.clientY; pLast = e.clientY; pAcc = 0; dragging = false;
     });
+    fw.addEventListener('pointermove', function (e) {
+      if (pStart === null) return;
+      var dy = e.clientY - pLast; pLast = e.clientY; pAcc += dy;
+      if (!dragging && Math.abs(e.clientY - pStart) > 8) dragging = true;
+      if (!dragging) return;
+      var per = R * STEP * Math.PI / 180;               // px of arc between two cabins
+      while (pAcc <= -per) { turn(1); pAcc += per; }
+      while (pAcc >= per)  { turn(-1); pAcc -= per; }
+      e.preventDefault();
+    });
+    function pEnd() { pStart = null; setTimeout(function () { dragging = false; }, 0); }
+    fw.addEventListener('pointerup', pEnd); fw.addEventListener('pointercancel', pEnd);
+    fw.addEventListener('click', function (e) { if (dragging) { e.preventDefault(); e.stopPropagation(); } }, true);
+    // arrow keys while a cabin or arrow is focused
+    fw.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); turn(1); }
+      else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); turn(-1); }
+    });
+
     window.addEventListener('scroll', onScrollFw, { passive: true });
     window.addEventListener('resize', function () { build(); onScrollFw(); });
-    build(); calc(); cur = target; render();
-    window.addEventListener('load', function () { build(); calc(); cur = target; render(); });
+    build(); calc(); setTarget(); cur = target; render();
+    window.addEventListener('load', function () { build(); calc(); setTarget(); cur = target; render(); });
   })();
 })();
