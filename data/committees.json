@@ -1,0 +1,578 @@
+[
+  {
+    "id": "sponsorship",
+    "name": "Sponsorship",
+    "m": [
+      {
+        "n": "Parthib Biswas",
+        "r": "Lead",
+        "t": 1,
+        "p": "1d0C93CeDepxU2aGr9n0wJ8u5c9Am2vxz"
+      },
+      {
+        "n": "Trisha Srivastava",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1QI4Z-Cah-bWGLG0Rj815PqAo45vtXj5_"
+      },
+      {
+        "n": "Bhavya Kuryawat",
+        "r": "Member",
+        "t": 3
+      },
+      {
+        "n": "Ayush Chauhan",
+        "r": "Member",
+        "t": 3
+      },
+      {
+        "n": "Lavanya",
+        "r": "Member",
+        "t": 3
+      }
+    ]
+  },
+  {
+    "id": "event-management",
+    "name": "Event Management",
+    "m": [
+      {
+        "n": "Anuska Mandal",
+        "r": "Joint Secretary",
+        "t": 0
+      },
+      {
+        "n": "Sujal Prasad",
+        "r": "Joint Secretary",
+        "t": 0,
+        "p": "1IsghU0KLWoA7LK2wTcPuc1p2HseK_ae4"
+      },
+      {
+        "n": "Saurabh Bhagat",
+        "r": "Event Management Lead",
+        "t": 1,
+        "p": "1GBsm2w6pwW5st0xbaI8CydPlv-p2Kq8O",
+        "a": [
+          "Saurab Bhagat"
+        ]
+      },
+      {
+        "n": "Subham Kumar Singh",
+        "r": "Committee Lead",
+        "t": 1,
+        "p": "14P7Z_2JD_Gf_RQTsh0fMKk14pvBKuNcD"
+      },
+      {
+        "n": "Kaushal Sharma",
+        "r": "Event Management Lead",
+        "t": 1,
+        "p": "1rdLfp7qotsplf1j68erO1m4suJI_frCT"
+      },
+      {
+        "n": "Sandeep Kumar",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "11Z_zjkWmwIf1ZbKng362b4od6_Va0iOn"
+      },
+      {
+        "n": "Pritish Kumar",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1oF_7WnO09cORJqb0Rpeu_p2um3hJ0Myw"
+      },
+      {
+        "n": "Vatan Nagar",
+        "r": "Member",
+        "t": 3
+      },
+      {
+        "n": "Kruthangna",
+        "r": "Member",
+        "t": 3
+      }
+    ]
+  },
+  {
+    "id": "merchandise",
+    "name": "Merchandise",
+    "m": [
+      {
+        "n": "Aryan Gupta",
+        "r": "Lead",
+        "t": 1
+      },
+      {
+        "n": "Bishal Sutradhar",
+        "r": "Merchandise Lead",
+        "t": 1,
+        "p": "12lZ_vx2TmWw-ASTSv3rg66kvQ4rbjHya",
+        "a": [
+          "Bishal"
+        ]
+      },
+      {
+        "n": "Abhinash",
+        "r": "Member",
+        "t": 3
+      },
+      {
+        "n": "Kishore Shanker",
+        "r": "Member",
+        "t": 3
+      }
+    ]
+  },
+  {
+    "id": "publicity",
+    "name": "Publicity",
+    "m": [
+      {
+        "n": "Sonu Kumar",
+        "r": "Lead",
+        "t": 1,
+        "p": "1bjmOgZWlhNbXDq6SBGZyOKAGHSAfZbrT"
+      },
+      {
+        "n": "Aman Raj",
+        "r": "Lead",
+        "t": 1,
+        "p": "1bG4R6fEo48LcRrU4WJbK7GQRDW2Go5wS"
+      },
+      {
+        "n": "Sonu Yadav",
+        "r": "Member",
+        "t": 3
+      },
+      {
+        "n": "Ankit Rawat",
+        "r": "Member",
+        "t": 3
+      }
+    ]
+  },
+  {
+    "id": "hospitality",
+    "name": "Hospitality",
+    "m": [
+      {
+        "n": "Zannatul Firdous",
+        "r": "Hospitality Lead",
+        "t": 1,
+        "a": [
+          "Zannat"
+        ]
+      },
+      {
+        "n": "Aditya Prasad",
+        "r": "Member",
+        "t": 3
+      },
+      {
+        "n": "Aarti Kumari",
+        "r": "Member",
+        "t": 3
+      }
+    ]
+  },
+  {
+    "id": "medical",
+    "name": "Medical",
+    "m": [
+      {
+        "n": "Shreya",
+        "r": "Lead",
+        "t": 1,
+        "p": "13fcLFO4m2CDrzddlqHerUtZbQO3_ebRy"
+      },
+      {
+        "n": "Dipesh Rai",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1ltphPRFiAaVX4pd6YRabDJQSpjHoYYUe",
+        "a": [
+          "Dipesh"
+        ]
+      },
+      {
+        "n": "Kumar Satyam Sarvesh",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1atr1K4nHalh0fojCkEQgzyOxJoUi9JUU"
+      },
+      {
+        "n": "Satyam",
+        "r": "Member",
+        "t": 3
+      }
+    ]
+  },
+  {
+    "id": "technical",
+    "name": "Technical",
+    "m": [
+      {
+        "n": "Abhinav Bharti",
+        "r": "Lead",
+        "t": 1,
+        "p": "1poa3lX3duQwmo5EQf6AVqTLq3Zu72yVC"
+      },
+      {
+        "n": "Nikhil Rai",
+        "r": "Technical Lead",
+        "t": 1,
+        "p": "1E7RVbBB9c5pcBhYtxPVPAvztxSIcG0Bg"
+      },
+      {
+        "n": "Prince Raj",
+        "r": "Associate Technical Lead",
+        "t": 2,
+        "p": "1tQz721ksLft25dnWFwIpRRtqAPNcSOZs"
+      },
+      {
+        "n": "Rupesh Raja Baghel",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "16inNNCt6lJrp9Bt8Q6bisNroeZhnF8n0"
+      },
+      {
+        "n": "Shiv Chand Kumar",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1A032te8BkwVkRM5xD1yUx-vbfm60CLmW"
+      },
+      {
+        "n": "OM",
+        "r": "Member",
+        "t": 3
+      },
+      {
+        "n": "Prince Arya",
+        "r": "Member",
+        "t": 3
+      },
+      {
+        "n": "Satyam",
+        "r": "Member",
+        "t": 3
+      }
+    ]
+  },
+  {
+    "id": "photography",
+    "name": "Photography",
+    "m": [
+      {
+        "n": "Deepanjal Shukla",
+        "r": "Lead",
+        "t": 1,
+        "p": "1gkZc05UhXNnw_QzHAHjkzoHLvn076hyD",
+        "a": [
+          "Deepanjal"
+        ]
+      },
+      {
+        "n": "Saysay Hang Limboo",
+        "r": "Lead",
+        "t": 1,
+        "a": [
+          "Saysay"
+        ]
+      },
+      {
+        "n": "Prem Akoskar",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1lQ6yuZVVT8ePFIhysCUgGz3hbv6HapHg",
+        "a": [
+          "Prem"
+        ]
+      },
+      {
+        "n": "Prince Arya",
+        "r": "Member",
+        "t": 3
+      }
+    ]
+  },
+  {
+    "id": "cultural",
+    "name": "Cultural",
+    "m": [
+      {
+        "n": "Malla Kuladeep Laxmi Sankar",
+        "r": "Lead",
+        "t": 1,
+        "p": "1xnWJ-3bMg5PMn2x9xgcIeSXDwjC5BbIO",
+        "a": [
+          "Kuladeep"
+        ]
+      },
+      {
+        "n": "Kinley Namgyal Barfungpa",
+        "r": "Lead",
+        "t": 1,
+        "p": "17x5CCUJVAvhLM50P_f4BZoyDuySP0aJK",
+        "a": [
+          "Kinley"
+        ]
+      },
+      {
+        "n": "Sanjeev Kumar Gupta",
+        "r": "Cultural Lead",
+        "t": 1,
+        "p": "1cGkG-bWWU4XBgL3H2h9TWGyjZrCbjWxe",
+        "a": [
+          "Sanjeev"
+        ]
+      },
+      {
+        "n": "Avash Lama",
+        "r": "Member",
+        "t": 3
+      }
+    ]
+  },
+  {
+    "id": "graphics",
+    "name": "Graphics",
+    "m": [
+      {
+        "n": "Abhignyan Sonowal",
+        "r": "Lead",
+        "t": 1,
+        "p": "18-UKf0ZO3kF730_F7RxNNQNXafwbPHvA",
+        "a": [
+          "Abhignyan"
+        ]
+      },
+      {
+        "n": "Kelbhin Brahma",
+        "r": "Lead",
+        "t": 1,
+        "p": "1B93Ne_bTrb9zTcMPykBYnNdFrkQbH7sh",
+        "a": [
+          "Kelbhin"
+        ]
+      },
+      {
+        "n": "Satyajeet Singh",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1uozij--IPxxvBQ9eIVArbSJ2eCJvMQcX",
+        "a": [
+          "Satyajeet"
+        ]
+      },
+      {
+        "n": "Leah Sonowal",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "19s_-RusYhDXU9FT5XT8Rv19moHoo7_px",
+        "a": [
+          "Leah"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "discipline",
+    "name": "Discipline",
+    "m": [
+      {
+        "n": "Himanshu Kumar",
+        "r": "Lead",
+        "t": 1,
+        "p": "1ub1loOtVslsC-L3983uYoGnnxQI5P9fl",
+        "a": [
+          "Himanshu"
+        ]
+      },
+      {
+        "n": "Kartikeya Shahi",
+        "r": "Lead",
+        "t": 1,
+        "p": "1HxfOHuldDvx3sR_e7KjJZN6ln5oLkREO"
+      },
+      {
+        "n": "Tarun Kanishk",
+        "r": "Discipline Lead",
+        "t": 1,
+        "p": "1w9Atda78Rr9HU1TNYFmCB13oDxW0Pj9N",
+        "a": [
+          "Tarun"
+        ]
+      },
+      {
+        "n": "Aman Kumar",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1XN4ZvVwe6Xn1sSQYlmPkTtOPT1efySEI"
+      },
+      {
+        "n": "Aditya",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1NZSHibG1GILlNcT5TwBoqgIZ5khgaAtw"
+      },
+      {
+        "n": "Banovath Balu",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1NgWRfPMbLoUpIAPXXegvxhUxnHf2XEze"
+      }
+    ]
+  },
+  {
+    "id": "guest-receiving",
+    "name": "Guest Receiving",
+    "m": [
+      {
+        "n": "Kartikeya Shahi",
+        "r": "Lead",
+        "t": 1,
+        "p": "1HxfOHuldDvx3sR_e7KjJZN6ln5oLkREO"
+      },
+      {
+        "n": "Aman Kumar",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1XN4ZvVwe6Xn1sSQYlmPkTtOPT1efySEI"
+      }
+    ]
+  },
+  {
+    "id": "web-development",
+    "name": "Web Development",
+    "m": [
+      {
+        "n": "Rythm Longia",
+        "r": "Lead",
+        "t": 1,
+        "p": "1Q7z7O5Zs-U4meklOZeP67xMQGPmNaxK9"
+      },
+      {
+        "n": "Janhvi Gupta",
+        "r": "Lead",
+        "t": 1,
+        "p": "1YG0t1UXfTxKZorkhsQY8Q0UvXrjs0Hgo",
+        "a": [
+          "Janhvi"
+        ]
+      },
+      {
+        "n": "Adarsh Yadav",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1MelNJ72QbW-PvkwfkQXzRFZvh6Qmh6Jw",
+        "a": [
+          "Adarsh"
+        ]
+      },
+      {
+        "n": "Kothapalli Tarun Sandeep",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "15dx9PGPtXV5qAd3O5wY1jMdF-YIRvVAT"
+      },
+      {
+        "n": "Pravesh",
+        "r": "Member",
+        "t": 3
+      }
+    ]
+  },
+  {
+    "id": "content",
+    "name": "Content",
+    "m": [
+      {
+        "n": "Jer Ayong Lepcha",
+        "r": "General Secretary",
+        "t": 0,
+        "p": "17uEq0In_ZShjkUyXJMaBBOfG_bI24UiI"
+      },
+      {
+        "n": "Harsh Mittal",
+        "r": "Lead",
+        "t": 1,
+        "p": "1AMtosbaSLQsvouC2lqCNybfbQZQyR9BI"
+      },
+      {
+        "n": "Bindiya Kumari",
+        "r": "Lead",
+        "t": 1,
+        "p": "1LAZj6sWcF-uusmmSJRH72S7_zOtykbSH",
+        "a": [
+          "Bindiya"
+        ]
+      },
+      {
+        "n": "Ayush Kumar Kashyap",
+        "r": "Content Lead",
+        "t": 1,
+        "p": "1bKTKjT1eSBJu5ELoa2SQAkRBJPRnzD3n",
+        "a": [
+          "Ayush Kashyap"
+        ]
+      },
+      {
+        "n": "Priyanshu Prasad",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1luEkvmAMB0ztS-Tso-HtNzQOVrRYl15V"
+      },
+      {
+        "n": "Ankit Kumar Nayak",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "17zKSulwuyo5VWF6ptGPNH76cApFG96eQ",
+        "a": [
+          "Ankit Nayak"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "social-media",
+    "name": "Social Media",
+    "m": [
+      {
+        "n": "Jer Ayong Lepcha",
+        "r": "General Secretary",
+        "t": 0,
+        "p": "17uEq0In_ZShjkUyXJMaBBOfG_bI24UiI"
+      },
+      {
+        "n": "Atul Gautam",
+        "r": "Lead",
+        "t": 1,
+        "p": "1d4Tq6dvCHB4SoSRKUbQNzvIr8DVY9bL9"
+      },
+      {
+        "n": "Rohit Gurung",
+        "r": "Lead",
+        "t": 1,
+        "p": "1F6l82EYOHmJ2-V_FIY7TN1XRt-5yYCWM"
+      },
+      {
+        "n": "Punem Seetha Ram",
+        "r": "Associate Lead",
+        "t": 2,
+        "p": "1hfxlhDd_5YWySII0TKB97yIKCWyjFhQF",
+        "a": [
+          "Seetha Ram"
+        ]
+      },
+      {
+        "n": "Raj",
+        "r": "Member",
+        "t": 3
+      },
+      {
+        "n": "Divyangana",
+        "r": "Member",
+        "t": 3
+      }
+    ]
+  }
+]

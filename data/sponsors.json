@@ -1,0 +1,38 @@
+{
+  "_note": "Add a sponsor by filling `name`, `logo` (e.g. uploads/sponsors/acme.png) and optionally `url`. Slots with an empty name render as 'Your Logo Here' placeholders.",
+  "tiers": [
+    {
+      "id": "title", "label": "TITLE SPONSOR", "layout": "title",
+      "slots": [
+        { "name": "", "logo": "", "url": "" }
+      ]
+    },
+    {
+      "id": "associate", "label": "ASSOCIATE SPONSORS", "layout": "row3",
+      "slots": [
+        { "name": "", "logo": "", "url": "" },
+        { "name": "", "logo": "", "url": "" },
+        { "name": "", "logo": "", "url": "" }
+      ]
+    },
+    {
+      "id": "partners", "label": "PARTNERS", "layout": "row4",
+      "slots": [
+        { "name": "", "logo": "", "url": "" },
+        { "name": "", "logo": "", "url": "" },
+        { "name": "", "logo": "", "url": "" },
+        { "name": "", "logo": "", "url": "" },
+        { "name": "", "logo": "", "url": "" },
+        { "name": "", "logo": "", "url": "" },
+        { "name": "", "logo": "", "url": "" },
+        { "name": "", "logo": "", "url": "" }
+      ]
+    }
+  ],
+  "why": [
+    { "title": "Reach",      "text": "Meet students, creators and audiences from across the North East." },
+    { "title": "Visibility", "text": "Be seen on stage, on campus and across our digital channels." },
+    { "title": "Impact",     "text": "Support art, culture and community in the hills of Sikkim." }
+  ],
+  "contact_committee": "sponsorship"
+}

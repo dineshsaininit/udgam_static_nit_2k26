@@ -1,0 +1,31 @@
+{
+  "_note": "img can be a path inside this project (assets/img/..., uploads/gallery/...) or a full https:// URL. shape: w = landscape, t = portrait, s = square. fit/pos are optional background-size / background-position.",
+  "memories": [
+    { "label": "STAGE",   "caption": "Lights, music, together",   "img": "assets/img/event-1.jpg", "rotate": "-3deg" },
+    { "label": "CULTURE", "caption": "Colours of every culture",  "img": "assets/img/event-3.jpg", "rotate": "2.5deg" },
+    { "label": "ART",     "caption": "Art that made us pause",    "img": "assets/img/event-2.jpg", "rotate": "-2deg" },
+    { "label": "WORDS",   "caption": "Stories shared aloud",      "img": "assets/img/event-4.jpg", "rotate": "3deg" },
+    { "label": "SPIRIT",  "caption": "Cheers across the field",   "img": "assets/img/event-6.jpg", "rotate": "-2.5deg" }
+  ],
+  "filters": [
+    { "id": "all",     "label": "All" },
+    { "id": "stage",   "label": "Stage" },
+    { "id": "art",     "label": "Art" },
+    { "id": "culture", "label": "Culture" },
+    { "id": "campus",  "label": "Campus" }
+  ],
+  "photos": [
+    { "title": "Live Performances",        "sub": "Music that unites",          "cat": "stage",   "img": "assets/img/event-1.jpg",        "shape": "w" },
+    { "title": "Festival Nights",          "sub": "Lights by the lake",         "cat": "campus",  "img": "assets/img/events-bg.jpg",      "shape": "w", "fit": "330%",    "pos": "56% 100%" },
+    { "title": "Creative Exhibitions",     "sub": "Ideas that inspire",         "cat": "art",     "img": "assets/img/event-2.jpg",        "shape": "w" },
+    { "title": "Sunset over the Hills",    "sub": "Where UDGAM begins",         "cat": "campus",  "img": "assets/img/hero-bg.jpg",        "shape": "s", "fit": "230%",    "pos": "86% 58%" },
+    { "title": "Cultural Evenings",        "sub": "Traditions in new lights",   "cat": "culture", "img": "assets/img/event-3.jpg",        "shape": "w" },
+    { "title": "Lantern Lanes",            "sub": "Every year, a new story",    "cat": "culture", "img": "assets/img/journey-bg.webp",    "shape": "t", "fit": "290%",    "pos": "60% 38%" },
+    { "title": "Literary & Creative Arts", "sub": "Stories that resonate",      "cat": "art",     "img": "assets/img/event-4.jpg",        "shape": "w" },
+    { "title": "Morning Peaks",            "sub": "Same mountains, new stories","cat": "campus",  "img": "assets/img/contact-hero.webp",  "shape": "w" },
+    { "title": "Gaming & Esports",         "sub": "Passion meets challenge",    "cat": "stage",   "img": "assets/img/event-5.jpg",        "shape": "s" },
+    { "title": "The Fair by the Lake",     "sub": "Rides, lights and laughter", "cat": "culture", "img": "assets/img/contact-foot.webp",  "shape": "w" },
+    { "title": "Sports & Recreation",      "sub": "Energy beyond boundaries",   "cat": "campus",  "img": "assets/img/event-6.jpg",        "shape": "w" },
+    { "title": "Our Floating Campus",      "sub": "NIT Sikkim, reimagined",     "cat": "campus",  "img": "assets/img/island-poster.webp", "shape": "s", "fit": "contain", "pos": "center", "pad": true }
+  ]
+}

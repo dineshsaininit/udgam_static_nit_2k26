@@ -1,0 +1,40 @@
+{
+  "highlights": [
+    { "title": "Live Performances",       "tag": "MUSIC THAT UNITES",         "img": "assets/img/event-1.jpg", "x": 852,  "y": 245, "r": -6 },
+    { "title": "Creative Exhibitions",    "tag": "IDEAS THAT INSPIRE",        "img": "assets/img/event-2.jpg", "x": 1085, "y": 246, "r": -2 },
+    { "title": "Cultural Evenings",       "tag": "TRADITIONS IN NEW LIGHTS",  "img": "assets/img/event-3.jpg", "x": 1310, "y": 255, "r": 8 },
+    { "title": "Literary & Creative Arts","tag": "STORIES THAT RESONATE",     "img": "assets/img/event-4.jpg", "x": 860,  "y": 462, "r": -5 },
+    { "title": "Gaming & Esports",        "tag": "PASSION MEETS CHALLENGE",   "img": "assets/img/event-5.jpg", "x": 1095, "y": 462, "r": -2 },
+    { "title": "Sports & Recreation",     "tag": "ENERGY BEYOND BOUNDARIES",  "img": "assets/img/event-6.jpg", "x": 1340, "y": 470, "r": -5 }
+  ],
+
+  "categories": [
+    { "icon": "m", "line1": "MUSIC",       "line2": "& PERFORMANCES",   "x": 222, "w": 133, "y": 476 },
+    { "icon": "p", "line1": "FINE ARTS",   "line2": "& EXHIBITIONS",    "x": 367, "w": 128, "y": 476 },
+    { "icon": "l", "line1": "LITERATURE",  "line2": "& CREATIVE ARTS",  "x": 506, "w": 132, "y": 476 },
+    { "icon": "g", "line1": "GAMING",      "line2": "& ESPORTS",        "x": 157, "w": 130, "y": 577 },
+    { "icon": "c", "line1": "PHOTOGRAPHY", "line2": "& FILM",           "x": 298, "w": 130, "y": 577 },
+    { "icon": "w", "line1": "WORKSHOPS",   "line2": "& INTERACTIONS",   "x": 438, "w": 127, "y": 577 },
+    { "icon": "t", "line1": "TECH &",      "line2": "INNOVATION",       "x": 576, "w": 126, "y": 577 },
+    { "icon": "s", "line1": "SPORTS",      "line2": "& RECREATION",     "x": 712, "w": 128, "y": 577 }
+  ],
+
+  "_note": "upcoming: fill in `date`, `time` and `venue` as the schedule is confirmed. status can be 'upcoming', 'live' or 'done'.",
+  "upcoming": [
+    { "name": "Live Performances",        "category": "Music & Performances",   "date": "Date to be announced", "time": "", "venue": "Main Stage, NIT Sikkim", "status": "upcoming", "desc": "Bands, solo artists and the pro-night line-up that brings the whole campus together." },
+    { "name": "Cultural Evenings",        "category": "Culture",                "date": "Date to be announced", "time": "", "venue": "Open Air Theatre",        "status": "upcoming", "desc": "Folk and classical dance, drama and traditions from across the North East." },
+    { "name": "Creative Exhibitions",     "category": "Fine Arts & Exhibitions","date": "Date to be announced", "time": "", "venue": "Academic Block",          "status": "upcoming", "desc": "Painting, sketching, installations and photography on display through the fest." },
+    { "name": "Literary & Creative Arts", "category": "Literature",             "date": "Date to be announced", "time": "", "venue": "Seminar Hall",            "status": "upcoming", "desc": "Poetry, debate, quizzes and storytelling for every voice on campus." },
+    { "name": "Gaming & Esports",         "category": "Gaming & Esports",       "date": "Date to be announced", "time": "", "venue": "Computer Centre",         "status": "upcoming", "desc": "Tournaments across popular titles with live screens and brackets." },
+    { "name": "Sports & Recreation",      "category": "Sports",                 "date": "Date to be announced", "time": "", "venue": "Sports Ground",           "status": "upcoming", "desc": "Friendly matches, fun games and everything that gets the crowd cheering." }
+  ],
+
+  "past": [
+    { "year": 2018, "url": "https://udgam.nitsikkim.ac.in/udgam18/HIGH%20VOLTAGE/H_V.php#contact", "x": "4.74%" },
+    { "year": 2019, "url": "https://udgam.nitsikkim.ac.in/udgam19/",                              "x": "17.61%" },
+    { "year": 2020, "url": "https://nitsikkim.ac.in/udgam/udgam20/",                               "x": "31.00%" },
+    { "year": 2023, "url": "https://nitsikkim.ac.in/udgam/udgam23/home.php",                       "x": "44.91%" },
+    { "year": 2024, "url": "https://udgam.nitsikkim.ac.in/udgam24/",                               "x": "57.87%" },
+    { "year": 2025, "url": "https://udgam.nitsikkim.ac.in/udgam25/",                               "x": "71.03%" }
+  ]
+}
