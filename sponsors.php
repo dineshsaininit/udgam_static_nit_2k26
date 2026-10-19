@@ -11,7 +11,7 @@ require __DIR__ . '/includes/config.php';
 $page = [
   'id'    => 'sponsors',
   'title' => 'Sponsors — ' . SITE_NAME,
-  'desc'  => 'The partners who help UDGAM 2K26 bloom. Chase the Bloom — NIT Sikkim\'s annual fest.',
+  'desc'  => 'The partners who help UDGAM 2K26 bloom — NIT Sikkim\'s annual fest.',
   'css'   => ['assets/css/sponsors.css'],
   /* page fonts + the saved day/night mode, applied before first paint */
   'head'  => '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,14 +20,17 @@ $page = [
 ];
 
 $tiers = [
-  ['id'=>'title',   'title'=>'Title Sponsor',        'size'=>'xl','slots'=>1,'cta'=>'Become a Title Sponsor',        'tag'=>'The name that carries UDGAM 2K26 into full bloom.',      'sponsors'=>[]],
-  ['id'=>'grand',   'title'=>'Grand Sponsors',       'size'=>'lg','slots'=>4,'cta'=>'Become a Grand Sponsor',        'tag'=>'Partners who make UDGAM 2K26 shine brighter.',           'sponsors'=>[]],
-  ['id'=>'racing',  'title'=>'Racing Partner',       'size'=>'md','slots'=>1,'cta'=>'Become a Racing Partner',       'tag'=>'Powering the adrenaline.',                               'sponsors'=>[]],
-  ['id'=>'food',    'title'=>'Food Partner',         'size'=>'md','slots'=>1,'cta'=>'Become a Food Partner',         'tag'=>'Keeping the fest fed and fuelled.',                      'sponsors'=>[]],
-  ['id'=>'fashion', 'title'=>'Fashion Partner',      'size'=>'md','slots'=>1,'cta'=>'Become a Fashion Partner',      'tag'=>'Dressing the stage.',                                    'sponsors'=>[]],
-  ['id'=>'hosp',    'title'=>'Hospitality Partners', 'size'=>'md','slots'=>3,'cta'=>'Become a Hospitality Partner', 'tag'=>'Making every guest feel at home in the hills.',          'sponsors'=>[]],
+  ['id'=>'grand',   'title'=>'Grand Sponsors',       'size'=>'lg','slots'=>2,'cta'=>'Become a Grand Sponsor',        'tag'=>'Partners who make UDGAM 2K26 shine brighter.',           'sponsors'=>[
+    ['name'=>'Quarks', 'logo'=>'uploads/sponsors/quarks_logo.png', 'url'=>'https://www.qtsolv.com'],
+    ['name'=>'Dominos', 'logo'=>'uploads/sponsors/dominos_logo.png', 'url'=>'https://www.dominos.co.in']
+  ]],
+  ['id'=>'tech',    'title'=>'Technology Partner',   'size'=>'md','slots'=>1,'cta'=>'Become a Technology Partner',   'tag'=>'Powering the digital experience and innovation.',        'sponsors'=>[
+    ['name'=>'Quarks', 'logo'=>'uploads/sponsors/quarks_logo.png', 'url'=>'https://www.qtsolv.com']
+  ]],
+  ['id'=>'food',    'title'=>'Food Partner',         'size'=>'md','slots'=>1,'cta'=>'Become a Food Partner',         'tag'=>'Keeping the fest fed and fuelled.',                      'sponsors'=>[
+    ['name'=>'Dominos', 'logo'=>'uploads/sponsors/dominos_logo.png', 'url'=>'https://www.dominos.co.in']
+  ]],
 ];
-$past = ['Canara Bank','Union Bank of India','NBCC','CISB','Coca-Cola','KTM','Twin Spring','Rare Rabbit','Hotel Ravangla Star','Buddha Residency','The Alnus Ravangla'];
 
 function h(string $v): string { return htmlspecialchars($v, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); }
 function bloom(string $cls): string {
@@ -44,7 +47,7 @@ require __DIR__ . '/includes/header.php';
 <main id="main">
 <section class="hero" id="top">
   <div class="hero-bg" id="hbg"><div class="stage" aria-hidden="true">
-    <div class="base"></div><svg class="tag" viewBox="0 0 285 112" aria-hidden="true" role="presentation"><text x="6" y="74" font-size="84" textLength="150" lengthAdjust="spacingAndGlyphs" transform="rotate(-15 6 74)">Chase</text><text x="62" y="112" font-size="84" textLength="218" lengthAdjust="spacingAndGlyphs" transform="rotate(-11 62 112)">the Bloom</text></svg><canvas id="wfcv" aria-hidden="true"></canvas><div class="aura"></div><div class="rayw"><div class="rays"></div></div><canvas id="skyfx" aria-hidden="true"></canvas>
+    <div class="base"></div><canvas id="wfcv" aria-hidden="true"></canvas><div class="aura"></div><div class="rayw"><div class="rays"></div></div><canvas id="skyfx" aria-hidden="true"></canvas>
     <div class="plate"></div><div class="dmove">
       <div class="layer dbody"></div>
       <div class="dp t"><div class="layer dtail"></div></div>
@@ -52,8 +55,8 @@ require __DIR__ . '/includes/header.php';
       <div id="sparks"></div>
     </div><div class="nt nt1"></div><div class="nt nt2"></div><div class="nt nsun"></div><div class="moon"></div><div class="fm" aria-hidden="true"><i class="ring"></i><i class="d"></i><i class="wp" style="top:22%;--w:-6s"></i><i class="wp" style="top:56%;--w:-17s"></i></div><div class="dr" aria-hidden="true"><i style="--d:0s;left:0;top:0;width:.55cqw;height:.55cqw"></i><i style="--d:.8s;left:.9cqw;top:-1.5cqw;width:.9cqw;height:.9cqw"></i><i style="--d:1.6s;left:2cqw;top:-3.3cqw;width:1.3cqw;height:1.3cqw"></i><i style="--d:2.4s;left:3.4cqw;top:-8.4cqw;width:3.6cqw;height:3.6cqw"><b>&#10047;</b></i></div><canvas id="litfx" aria-hidden="true"></canvas><div class="zz" aria-hidden="true"><i style="--k:0">z</i><i style="--k:1">Z</i><i style="--k:2">z</i></div></div></div><div class="sunrise"></div>
   <div class="w hero-in">
-    <img class="logo up" src="assets/img/sponsors/hero-logo.webp" width="700" height="394" width="260" height="146" alt="UDGAM 2K26 — Chase the Bloom" style="--d:.1s">
-    <p class="kick up" style="--d:.3s;margin:6px 0 0">Chase the Bloom · Our Partners</p>
+    <img class="logo up" src="assets/img/sponsors/hero-logo.webp" width="700" height="394" width="260" height="146" alt="UDGAM 2K26" style="--d:.1s">
+    <p class="kick up" style="--d:.3s;margin:6px 0 0">Our Partners</p>
     <h1 class="h" id="h1" aria-label="Our Grand Sponsors">Our Grand Sponsors</h1>
     <p class="script up" style="--d:1s">With heartfelt gratitude, we celebrate the partners who help UDGAM 2K26 bloom.</p>
   </div>
@@ -63,21 +66,13 @@ require __DIR__ . '/includes/header.php';
 <div class="tier" id="t-<?= h($t['id']) ?>"><div class="th rv"><h2><?= h($t['title']) ?></h2><div class="div"><i></i><?= bloom('mini') ?><i></i></div><p><?= h($t['tag']) ?></p></div>
 <div class="sgrid <?= h($t['size']) ?>">
 <?php if($n): foreach($t['sponsors'] as $i=>$sp): ?>
-<div class="sc rv" style="--d:<?= $i*0.1 ?>s"><a class="pl" href="<?= h($sp['url'] ?? '#') ?>" target="_blank" rel="noopener" aria-label="<?= h($sp['name']) ?>"><?php if(!empty($sp['logo'])): ?><img src="<?= h($sp['logo']) ?>" alt="<?= h($sp['name']) ?>" loading="lazy"><?php else: ?><span class="nm"><?= h($sp['name']) ?></span><?php endif; ?><small><?= h($t['title']) ?></small></a></div>
+<div class="sc rv" style="--d:<?= $i*0.1 ?>s"><a class="pl" href="<?= h($sp['url'] ?? '#') ?>" target="_blank" rel="noopener" aria-label="<?= h($sp['name']) ?>"><?php if(!empty($sp['logo'])): ?><img src="<?= h($sp['logo']) ?>" alt="<?= h($sp['name']) ?>" loading="lazy"><?php else: ?><span class="nm"><?= h($sp['name']) ?></span><?php endif; ?></a></div>
 <?php endforeach; else: for($i=0;$i<$t['slots'];$i++): ?>
 <div class="sc rv" style="--d:<?= $i*0.1 ?>s"><a class="pl slot" href="contact.php" aria-label="Become our <?= h($t['title']) ?>"><?= bloom('bud') ?><b>Your brand here</b><small style="color:var(--mu)"><?= h($t['cta']) ?></small></a></div>
 <?php endfor; endif; ?>
 </div></div>
 <?php endforeach; ?>
 </div></section>
-<section class="past" aria-label="UDGAM 2025 partners"><div class="w rv" style="text-align:center"><p class="kick">Blooming together since UDGAM 2025</p><p class="script">Thank you to last year's partners</p></div>
-<div class="mq"><?php for($k=0;$k<2;$k++): ?><ul><?php foreach($past as $p): ?><li><?= h($p) ?></li><?php endforeach; ?></ul><?php endfor; ?></div>
-<div class="mq rev" aria-hidden="true"><?php for($k=0;$k<2;$k++): ?><ul><?php foreach(array_reverse($past) as $p): ?><li><?= h($p) ?></li><?php endforeach; ?></ul><?php endfor; ?></div></section>
-<section class="cta-sec" id="partner"><div class="w"><div class="join rv" id="join"><?= bloom('seed') ?>
-<p class="kick">Become a partner</p><h2>Plant a seed with UDGAM</h2>
-<p>Put your brand in front of a young, curious, festival-ready crowd at NIT Sikkim — high in the Himalayas. Tell us what you'd like to grow and we'll shape a partnership around it.</p>
-<div class="row"><a class="btn p" href="contact.php">Partner with us</a><a class="btn" href="contact.php">Contact team</a></div>
-</div></div></section>
 </main>
 <script>
 (function(){
@@ -272,7 +267,7 @@ function listen(on){EV.forEach(function(e){window[on?'addEventListener':'removeE
 function halt(){clearTimeout(timer);if(raf)cancelAnimationFrame(raf);raf=0;if(running){running=false;H.style.scrollBehavior=''}listen(false)}
 function ease(p){return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2} /* easeInOutCubic: gentle start, gentle landing */
 function go(){if(window.scrollY>40){halt();return}
-  var tg=document.getElementById('t-title'),nv=document.getElementById('siteHead');if(!tg){halt();return}
+  var tg=document.getElementById('t-grand')||document.querySelector('.tier'),nv=document.getElementById('siteHead');if(!tg){halt();return}
   var y0=window.scrollY,y1=tg.getBoundingClientRect().top+y0-(nv?nv.offsetHeight:70)-24,d=y1-y0;if(d<80){halt();return}
   var dur=Math.min(4600,Math.max(3000,d*2.6)),t0=performance.now();running=true;H.style.scrollBehavior='auto';
   (function step(now){var p=Math.min(1,(now-t0)/dur);window.scrollTo(0,y0+d*ease(p));if(p<1)raf=requestAnimationFrame(step);else halt()})(t0)}
