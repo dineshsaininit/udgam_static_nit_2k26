@@ -25,7 +25,7 @@ $SITE = [
 /* Main navigation (header + footer). */
 $NAV = [
   ['id' => 'home',     'label' => 'Home',     'href' => 'index.php'],
-  ['id' => 'about',    'label' => 'About',    'href' => 'index.php#about'],
+  ['id' => 'about',    'label' => 'About',    'href' => 'about.php'],
   ['id' => 'events',   'label' => 'Events',   'href' => 'events.php'],
   ['id' => 'gallery',  'label' => 'Gallery',  'href' => 'gallery.php'],
   ['id' => 'sponsors', 'label' => 'Sponsors', 'href' => 'sponsors.php'],
@@ -36,7 +36,7 @@ $NAV = [
 /* Ferris-wheel menu on the right edge: cabins that live on the current page scroll, others navigate. */
 $WHEEL = [
   ['id' => 'home',     'label' => 'Home',        'page' => 'index.php',    'sec' => 'home'],
-  ['id' => 'about',    'label' => 'About Udgam', 'page' => 'index.php',    'sec' => 'about'],
+  ['id' => 'about',    'label' => 'About Udgam', 'page' => 'about.php',    'sec' => 'about'],
   ['id' => 'leads',    'label' => 'Core Team',   'page' => 'team.php',     'sec' => 'core'],
   ['id' => 'journey',  'label' => 'Legacy',      'page' => 'index.php',    'sec' => 'journey'],
   ['id' => 'events',   'label' => 'Events',      'page' => 'events.php',   'sec' => 'events'],
