@@ -18,7 +18,7 @@ Then open <http://localhost:8000/>.
 ```
 Udgam/
 ├── index.php          Homepage: welcome gate, hero, about (3D island), journey, explore
-├── events.php         Event highlights, categories, upcoming schedule, past editions
+├── events.php         All 27 events as festival passes: headliners + filterable open floor
 ├── gallery.php        Memories + photo gallery with lightbox
 ├── sponsors.php       Sponsor tiers, why-sponsor, sponsorship contact
 ├── team.php           Core committee hierarchy + 15 committee cards (roster dialog, search)
@@ -31,7 +31,7 @@ Udgam/
 ├── data/              Editable content (JSON)
 │   ├── core.json        core committee tiers, President down to Joint Secretaries (team.php)
 │   ├── committees.json  every organising committee and its members (team.php, sponsors contact)
-│   ├── events.json      highlights, categories, upcoming schedule, past editions
+│   ├── events.json      events (fees, team sizes, rulebooks), categories, past editions
 │   ├── gallery.json     memories + photo tiles
 │   └── sponsors.json    sponsor tiers and slots
 ├── assets/
@@ -75,9 +75,10 @@ People without a photo get their initials. Deep-link a committee with `team.php#
 
 ### Events — `data/events.json`
 
-- `upcoming[]`: `name`, `category`, `date`, `time`, `venue`, `status` (`upcoming` | `live` | `done`), `desc`.
+- `events[]`: every event of UDGAM 2K26 (taken from udgamnits.live), in display order: `id`, `name`, `category` (one of `categories[].id`), `headliner` (shown as a big pass at the top), `fee` (0 = free entry) with `per` (`team` / `person`), `team` = `[min, max]` players, optional `tagline`, `desc`, `rounds[]` and `rules` (rulebook PDF or document link).
+- `categories[]`: `id`, `label` and `hue` (the two colours of that category's passes).
 - `past[]`: one entry per edition for the homepage Journey: `year`, `url` (its website), `x` (tree position on the artwork), `tagline`, `blurb`, `logo` and `photos[]` (16:10 WebP in `assets/img/legacy/`, ~1100px wide). An edition with no photos shows its logo instead.
-- `highlights[]` / `categories[]`: the illustrated stage; `x`/`y` are positions on the 1600-wide artwork.
+- Event icons are chosen in `events.php` (`$ICONS`): one per headliner, one per category for the rest.
 
 ### Gallery — `data/gallery.json`
 

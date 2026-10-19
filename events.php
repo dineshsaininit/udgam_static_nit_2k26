@@ -4,95 +4,122 @@ require __DIR__ . '/includes/config.php';
 $page = [
   'id'      => 'events',
   'title'   => 'Events — ' . SITE_NAME,
-  'desc'    => 'Event highlights, categories, the upcoming schedule and past editions of UDGAM, NIT Sikkim\'s cultural festival.',
+  'desc'    => 'Every event of UDGAM 2K26, NIT Sikkim\'s cultural festival: headliners, games, sport, performance, creative, food and e-sports, with entry fees, team sizes and rulebooks.',
   'scripts' => ['assets/js/events.js'],
 ];
 
-$events   = load_json('events');
-$upcoming = $events['upcoming'] ?? [];
-$past     = $events['past'] ?? [];
-$stageData = ['highlights' => $events['highlights'] ?? [], 'categories' => $events['categories'] ?? []];
+$data     = load_json('events');
+$events   = $data['events'] ?? [];
+$cats     = array_column($data['categories'] ?? [], null, 'id');
+$heads    = array_values(array_filter($events, fn($e) => !empty($e['headliner'])));
+$free     = count(array_filter($events, fn($e) => empty($e['fee'])));
 
-$statusLabel = ['upcoming' => 'Upcoming', 'live' => 'Happening now', 'done' => 'Completed'];
+/* gold line icons (24-unit grid): one per headliner, one per category for everything else */
+$ICONS = [
+  'dance-competition'   => '<path d="M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z"/><path d="M19 3v4M17 5h4"/>',
+  'food-fiesta'         => '<path d="M17 21a1 1 0 001-1v-5.35c0-.46.32-.84.73-1.04a4 4 0 00-2.14-7.59 5 5 0 00-9.18 0 4 4 0 00-2.14 7.59c.41.2.73.58.73 1.04V20a1 1 0 001 1z"/><path d="M6 17h12"/>',
+  'treasure-hunt'       => '<path d="M14.1 5.55a2 2 0 001.79 0l3.66-1.83A1 1 0 0121 4.62v12.76a1 1 0 01-.55.9l-4.56 2.27a2 2 0 01-1.78 0l-4.22-2.1a2 2 0 00-1.78 0l-3.66 1.83A1 1 0 013 19.38V6.62a1 1 0 01.55-.9l4.56-2.27a2 2 0 011.78 0z"/><path d="M15 5.76v15M9 3.24v15"/>',
+  'ipl-auction'         => '<path d="M14.5 12.5l-8 8a2.12 2.12 0 11-3-3l8-8M16 16l6-6M8 8l6-6M9 7l8 8M21 11l-8-8"/>',
+  'ramp-walk'           => '<path d="M11.56 3.27a.5.5 0 01.88 0l2.95 5.6a1 1 0 001.52.3l4.27-3.67a.5.5 0 01.8.52l-2.83 10.25a1 1 0 01-.96.73H5.81a1 1 0 01-.96-.73L2.02 6.02a.5.5 0 01.8-.52l4.27 3.67a1 1 0 001.52-.3z"/><path d="M5 21h14"/>',
+  'singing-competition' => '<path d="M12 2a3 3 0 00-3 3v7a3 3 0 006 0V5a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v3"/>',
+  'wall-painting'       => '<path d="M18.38 2.62a1 1 0 113 3l-4.02 4.02a.5.5 0 000 .71l.94.94a2.41 2.41 0 010 3.41l-.94.94a.5.5 0 01-.7 0L8.35 7.35a.5.5 0 010-.7l.94-.95a2.41 2.41 0 013.41 0l.94.95a.5.5 0 00.71 0z"/><path d="M9 8c-1.8 2.71-3.97 3.46-6.58 3.95a.5.5 0 00-.3.82l7.32 8.88a1 1 0 001.18.2C12.74 20.4 16 16.8 16 15"/>',
+  'housie'              => '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M3 14h18M9 5v14M15 5v14"/>',
+  'spoil-the-tshirt'    => '<path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"/>',
+  /* categories */
+  'games'       => '<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.2"/><circle cx="16" cy="8" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="8" cy="16" r="1.2"/><circle cx="16" cy="16" r="1.2"/>',
+  'sports'      => '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0z"/><path d="M17 5h3v2a3 3 0 01-3 3M7 5H4v2a3 3 0 003 3"/>',
+  'performance' => '<path d="M12 2a3 3 0 00-3 3v7a3 3 0 006 0V5a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v3"/>',
+  'creative'    => '<path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.13a1.64 1.64 0 011.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z"/><circle cx="13.5" cy="6.5" r="1"/><circle cx="17.5" cy="10.5" r="1"/><circle cx="8.5" cy="7.5" r="1"/><circle cx="6.5" cy="12.5" r="1"/>',
+  'food'        => '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2M7 2v20M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>',
+  'esports'     => '<path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.32 5H6.68a4 4 0 00-3.98 3.59C2.6 9.42 2 14.46 2 16a3 3 0 003 3c1 0 1.5-.5 2-1l1.41-1.41A2 2 0 019.83 16h4.34a2 2 0 011.41.59L17 18c.5.5 1 1 2 1a3 3 0 003-3c0-1.55-.6-6.58-.68-7.26A4 4 0 0017.32 5z"/>',
+];
+function ev_icon(string $key): string {
+  global $ICONS;
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . ($ICONS[$key] ?? '') . '</svg>';
+}
+function ev_fee(array $e): array {
+  return empty($e['fee']) ? ['Free', 'entry'] : ['₹' . (int)$e['fee'], 'per ' . ($e['per'] ?? 'team')];
+}
+function ev_team(array $e): string {
+  [$a, $b] = $e['team'] ?? [1, 1];
+  if ($a === 1 && $b === 1) return 'Solo';
+  if ($a === $b) return 'Team of ' . $a;
+  return $a . '–' . $b . ' members';
+}
+/** One festival pass. $big = headliner card with the emblem; otherwise the compact open-floor card. */
+function ev_pass(array $e, array $cat, int $n, bool $big): string {
+  [$fee, $per] = ev_fee($e);
+  $line  = $e['tagline'] ?? ($e['desc'] ?? '');
+  $icon  = ev_icon(isset($GLOBALS['ICONS'][$e['id']]) ? $e['id'] : $e['category']);
+  $rules = !empty($e['rules']) ? '<a class="ep-rules" href="' . e($e['rules']) . '" target="_blank" rel="noopener">Rulebook<span class="sr-only"> for ' . e($e['name']) . ' (opens in a new tab)</span></a>' : '';
+  $meta  = '<span class="ep-team"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.6c2.9.2 5.5 2 5.5 5"/></svg>' . e(ev_team($e)) . '</span>'
+         . (!empty($e['rounds']) ? '<span class="ep-team" title="' . e(implode(' · ', $e['rounds'])) . '">' . count($e['rounds']) . ' rounds</span>' : '');
+  return '<article class="ep' . ($big ? ' ep-big' : '') . ' nr" id="ev-' . e($e['id']) . '" data-cat="' . e($e['category']) . '" data-fee="' . (int)($e['fee'] ?? 0) . '" data-n="' . $n . '"'
+       . ' data-q="' . e(mb_strtolower($e['name'] . ' ' . ($e['tagline'] ?? '') . ' ' . ($e['desc'] ?? '') . ' ' . $cat['label'])) . '"'
+       . ' style="--c1:' . e($cat['hue'][0]) . ';--c2:' . e($cat['hue'][1]) . ';--d:' . sprintf('%.2f', ($n % 4) * .06) . 's">'
+       . '<div class="ep-face">'
+       .   '<div class="ep-top"><span class="ep-cat">' . ev_icon($e['category']) . e($cat['label']) . '</span><span class="ep-fee' . (empty($e['fee']) ? ' is-free' : '') . '"><b>' . e($fee) . '</b><small>' . e($per) . '</small></span></div>'
+       .   ($big ? '<span class="ep-no" aria-hidden="true">' . sprintf('%02d', $n) . '</span>' . flower_svg('rgba(255,236,214,.45)', 'ep-fl') . '<span class="ep-emblem">' . $icon . '</span>' : '')
+       .   '<h3 class="ep-name">' . (!$big ? '<span class="ep-ico">' . $icon . '</span>' : '') . e($e['name']) . '</h3>'
+       .   ($line !== '' ? '<p class="ep-line">' . e($line) . '</p>' : '')
+       .   ($big && !empty($e['desc']) && !empty($e['tagline']) ? '<p class="ep-desc">' . e($e['desc']) . '</p>' : '')
+       . '</div>'
+       . '<div class="ep-stub"><div class="ep-meta">' . $meta . '</div>' . ($rules ? '<div class="ep-acts">' . $rules . '</div>' : '')
+       . '</div></article>';
+}
 
 require __DIR__ . '/includes/header.php';
 ?>
 <main id="main">
-  <?= page_banner('Events', 'a celebration of art, culture and people', 'UDGAM 2K26 brings together a diverse range of events across art, culture, technology, literature, music and more. Each one is a vibrant expression of talent, creativity and community.', 'assets/img/events-bg.webp') ?>
+  <?= page_banner('Events', 'pick your stage',
+      count($events) . ' events across games, sport, performance, creative arts, food and e-sports. Find yours and read the rulebook.', 'assets/img/events-bg.webp', 'UDGAM 2K26 · EVENTS') ?>
 
-  <!-- ILLUSTRATED STAGE: highlights + categories -->
-  <section class="ev" id="events" aria-label="Event highlights" data-nav=".5">
-    <div class="ev-glow" aria-hidden="true"></div>
-    <div class="ev-stage" id="evStage">
-      <div class="mhero" aria-hidden="true"></div>
-      <div class="bgs" id="evBgs"><div class="band" style="--y:0;--h:380" data-p="6"></div><div class="band" style="--y:380;--h:260" data-p="12"></div><div class="band" style="--y:640;--h:260" data-p="20"></div></div>
-      <div class="sw" style="--x:0;--y:0;--w:880;--h:210;--o:0 0"></div>
-      <div class="sw" style="--x:0;--y:330;--w:230;--h:330;--o:0 50%;--t:7s"></div>
-      <div class="sw" style="--x:0;--y:640;--w:320;--h:260;--o:0 100%;--t:8s"></div>
-      <div class="sw" style="--x:1400;--y:320;--w:200;--h:580;--o:100% 50%;--t:5s"></div>
-      <div class="fx mist" style="left:2%;top:63%;width:36%;height:7%;--t:16s;--dx:60px"></div><div class="fx mist" style="left:44%;top:77%;width:30%;height:5%;--t:20s;--dx:-60px"></div><div class="fx mist" style="left:52%;top:5%;width:30%;height:6%;--t:18s;--dx:50px"></div>
-      <div class="fx glow" style="left:93%;top:21%"></div>
-      <div class="fx steam" style="left:90.4%;top:79.5%"><i></i><i></i><i></i></div>
-      <div class="fx wf" style="left:70.2%;top:79.8%;width:2.4%;height:9%"></div>
-      <div class="fx wheel" style="left:53.7%;top:85%;width:4%"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i></div>
-      <div class="fx cg" id="evCg"></div>
-      <div class="fx lights" id="evLights" style="inset:0"></div>
-      <div class="fx" style="left:44%;top:92.5%;width:24%;height:7%" id="evRv"></div>
-      <div class="bd" style="left:62%;top:9%;--s:0s"><svg viewBox="0 0 16 8"><path d="M0 5Q4 0 8 5Q12 0 16 5"/></svg></div><div class="bd" style="left:66%;top:11.5%;--s:-6s"><svg viewBox="0 0 16 8"><path d="M0 5Q4 0 8 5Q12 0 16 5"/></svg></div><div class="bd" style="left:72%;top:7%;--s:-12s"><svg viewBox="0 0 16 8"><path d="M0 5Q4 0 8 5Q12 0 16 5"/></svg></div>
-      <div class="a sc rv" style="--x:430;--y:36;--f:38;--r:-12deg">Moments<br>&nbsp;&nbsp;&nbsp;People<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Passion</div>
-      <nav class="a nav nav2 rv" aria-label="Event themes" id="evNav" style="--x:66;--y:150"><a href="#evTop" class="on">ART</a><a href="#evTop">CULTURE</a><a href="#evCats">PEOPLE</a><a href="#evCats">IDEAS</a><a href="#schedule">SCHEDULE</a></nav>
+  <!-- HEADLINERS -->
+  <section class="pg evx" id="events" aria-label="Headliner events" data-nav=".45">
+    <div class="pg-deco pg-branch pg-branch-r" aria-hidden="true"></div>
+    <ul class="ev-stats nr" aria-label="At a glance">
+      <li><b><?= count($events) ?></b><span>Events</span></li>
+      <li><b><?= count($heads) ?></b><span>Headliners</span></li>
+      <li><b><?= count($cats) ?></b><span>Categories</span></li>
+      <li><b><?= $free ?></b><span>Free entry</span></li>
+    </ul>
 
-      <div class="a legacy rv" id="evTop" style="--x:228;--y:168;--w:388"><svg width="28" height="28" viewBox="0 0 30 30"><g fill="#d63a73"><ellipse cx="15" cy="7" rx="5" ry="7"/><ellipse cx="15" cy="7" rx="5" ry="7" transform="rotate(72 15 15)"/><ellipse cx="15" cy="7" rx="5" ry="7" transform="rotate(144 15 15)"/><ellipse cx="15" cy="7" rx="5" ry="7" transform="rotate(216 15 15)"/><ellipse cx="15" cy="7" rx="5" ry="7" transform="rotate(288 15 15)"/></g><circle cx="15" cy="15" r="3" fill="#fff"/></svg><span>EVENT HIGHLIGHTS</span></div>
-      <h2 class="a h2 rv" style="--x:142;--y:208;--w:560;--f:45;--dl:.15s;white-space:nowrap;text-align:center">A CELEBRATION OF</h2>
-      <div class="a bl bl2 rv" style="--x:176;--y:258;--dl:.3s"><span style="display:inline-block;transform:skewX(-4deg)">Art, Culture and People</span></div>
-      <p class="a copy c rv" style="--x:228;--y:350;--w:416;--dl:.45s">UDGAM 2K26 brings together a diverse range of events across art, culture, technology, literature, music and more. Each event is a vibrant expression of talent, creativity and community, making UDGAM an experience to remember.</p>
-      <div class="a mk rv" style="--x:355;--y:442;--w:146">&#10047;</div>
-      <div class="pols" id="evPols"></div>
-      <div class="evdots" id="evDots"></div>
-      <div class="cps" id="evCps"></div>
-      <div class="mscene rv" aria-hidden="true"></div>
-      <div class="a sc sc2 rv" style="--x:52;--y:768;--f:34;--r:-13deg">Different<br>&nbsp;&nbsp;&nbsp;Stages<br>&nbsp;&nbsp;&nbsp;&nbsp;Same Spirit</div>
+    <?= section_head('HEADLINERS', 'The big<br>stage events', 'where legends are made', 'The nine flagship events of UDGAM 2K26. Some winners even earn a spot on the festival stage or a stall of their own.') ?>
+    <div class="eh-grid">
+      <?php foreach ($heads as $i => $e) echo ev_pass($e, $cats[$e['category']], $i + 1, true); ?>
     </div>
   </section>
-  <script type="application/json" id="ev-data"><?= json_encode($stageData, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) ?></script>
 
-  <!-- SCHEDULE: upcoming + past -->
-  <section class="pg evs" id="schedule" aria-label="Schedule" data-nav=".45">
+  <!-- OPEN FLOOR: every event, with filter / search / sort -->
+  <section class="pg evy" id="all" aria-label="All events" data-nav=".45">
     <div class="pg-deco pg-branch pg-branch-l" aria-hidden="true"></div>
-    <?= section_head('SCHEDULE', 'Upcoming<br>events', 'mark your calendar', 'The line-up for UDGAM 2K26. Dates, times and venues are confirmed here as soon as the committees lock them in.') ?>
+    <?= section_head('OPEN FLOOR', 'Every event,<br>one festival', 'find your game') ?>
 
-    <?php if ($upcoming): ?>
-    <div class="evs-list">
-      <?php foreach ($upcoming as $i => $ev):
-        $st = $ev['status'] ?? 'upcoming';
-        $when = trim(($ev['date'] ?? '') . (!empty($ev['time']) ? ' · ' . $ev['time'] : '')); ?>
-      <article class="evs-item nr" style="--d:<?= sprintf('%.2f', $i * .06) ?>s">
-        <div class="evs-date"><?= nl2br(e(str_replace(' to be announced', "\nTBA", $ev['date'] ?? 'TBA'))) ?></div>
-        <div>
-          <span class="evs-meta"><?= e($ev['category'] ?? '') ?><?= !empty($ev['venue']) ? ' &middot; ' . e($ev['venue']) : '' ?></span>
-          <h3><?= e($ev['name']) ?></h3>
-          <?php if (!empty($ev['desc'])): ?><p><?= e($ev['desc']) ?></p><?php endif; ?>
-          <?php if (!empty($ev['time'])): ?><p><?= e($when) ?></p><?php endif; ?>
-        </div>
-        <span class="evs-tag <?= $st === 'live' ? 'live' : '' ?>"><?= e($statusLabel[$st] ?? ucfirst($st)) ?></span>
-      </article>
+    <div class="ex-tools nr" id="exTools">
+      <label class="ex-search"><span class="sr-only">Search events</span><input type="search" id="exQ" placeholder="Search events" autocomplete="off"></label>
+      <label class="ex-sort"><span class="sr-only">Sort events</span>
+        <select id="exSort"><option value="n">Featured</option><option value="fa">Fee: low to high</option><option value="fd">Fee: high to low</option><option value="az">Name A–Z</option></select>
+      </label>
+    </div>
+    <div class="ex-chips nr" role="group" aria-label="Filter by category">
+      <button type="button" class="ex-chip on" data-f="all" aria-pressed="true">All <i><?= count($events) ?></i></button>
+      <?php foreach ($cats as $c): $n = count(array_filter($events, fn($e) => $e['category'] === $c['id'])); ?>
+      <button type="button" class="ex-chip" data-f="<?= e($c['id']) ?>" aria-pressed="false" style="--c1:<?= e($c['hue'][0]) ?>;--c2:<?= e($c['hue'][1]) ?>"><?= ev_icon($c['id']) ?><?= e($c['label']) ?> <i><?= $n ?></i></button>
       <?php endforeach; ?>
     </div>
-    <p class="evs-note nr">Follow <a href="<?= e($SITE['instagram']['url']) ?>" target="_blank" rel="noopener"><?= e($SITE['instagram']['handle']) ?></a> for schedule announcements, or <a href="contact.php">write to the team</a> if you would like to host or perform.</p>
-    <?php else: ?>
-    <p class="evs-note nr">The schedule will be published here soon.</p>
-    <?php endif; ?>
+    <p class="ex-count" id="exCount" role="status" aria-live="polite">Showing all <?= count($events) ?> events</p>
 
-    <?= section_head('PAST EDITIONS', 'Every year<br>leaves a story', 'revisit the editions that led us here') ?>
-    <div class="evs-past nr">
-      <?php foreach ($past as $y): ?>
-      <a class="evs-year" href="<?= e($y['url']) ?>" target="_blank" rel="noopener" title="Open the UDGAM <?= (int)$y['year'] ?> website"><b><?= (int)$y['year'] ?></b><small>Open site</small></a>
-      <?php endforeach; ?>
-      <a class="evs-year now" href="index.php#journey" aria-current="true"><b>2026</b><small>You are here</small></a>
+    <div class="ex-grid" id="exGrid">
+      <?php foreach ($events as $i => $e) echo ev_pass($e, $cats[$e['category']], $i + 1, false); ?>
+    </div>
+    <div class="ex-empty" id="exEmpty" hidden><p>No event matches that search.</p><button type="button" class="pg-btn" id="exClear">Show all events</button></div>
+
+    <div class="ex-note nr">
+      <p class="pg-script">Ready to play?</p>
+      <p>Rulebooks open as PDFs or documents. Follow <a href="<?= e($SITE['instagram']['url']) ?>" target="_blank" rel="noopener"><?= e($SITE['instagram']['handle']) ?></a> for dates and announcements.</p>
+      <a class="pg-btn" href="contact.php">Questions? Contact the team</a>
     </div>
   </section>
 </main>
-
-<div class="evlb" id="evLb"><div><i id="evLi"></i><h3 id="evLy"></h3><p id="evLc"></p></div></div>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>
