@@ -5,7 +5,7 @@ $page = [
   'id'      => 'home',
   'title'   => SITE_NAME . ' — NIT Sikkim',
   'desc'    => SITE_DESC,
-  'scripts' => ['assets/js/island-viewer.js', 'assets/js/island.js', 'assets/js/journey.js'],
+  'scripts' => ['assets/js/island.js', 'assets/js/journey.js'],
 ];
 
 /* Explore cards: festival colour pair + the matching line icon from the ferris-wheel menu */
@@ -48,7 +48,7 @@ require __DIR__ . '/includes/header.php';
       <img class="hero-bg" src="assets/img/hero-bg.webp" alt="" aria-hidden="true" width="1600" height="900" decoding="async" fetchpriority="high">
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-logo" role="img" aria-label="Udgam 2K26 — Chase The Bloom">
-        <img src="assets/img/hero-logo.webp" alt="Udgam 2K26 — Chase The Bloom" width="1753" height="897" decoding="async">
+        <img src="assets/img/hero-logo.webp" srcset="assets/img/hero-logo-800.webp 800w, assets/img/hero-logo.webp 1440w" sizes="(max-width: 700px) 86vw, min(44.5vw, 720px)" alt="Udgam 2K26 — Chase The Bloom" width="1440" height="737" decoding="async">
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@ require __DIR__ . '/includes/header.php';
         <img class="ab-plate" src="assets/img/about-plate.webp" alt="" width="1600" height="900" decoding="async" loading="lazy">
         <div class="ab-island" id="abIsland">
           <img class="ab-poster" id="abPoster" src="assets/img/island-poster.webp" alt="Floating island campus of NIT Sikkim with a waterfall" width="1100" height="756" decoding="async">
-          <canvas class="ab-canvas" id="abCanvas" role="img" aria-label="Rotating 3D model of the floating NIT Sikkim island. Drag sideways to spin it." data-model="assets/models/island.glb" data-texture="assets/models/island-texture.jpg"></canvas>
+          <canvas class="ab-canvas" id="abCanvas" role="img" aria-label="Rotating 3D model of the floating NIT Sikkim island. Drag sideways to spin it." data-viewer="<?= asset('assets/js/island-viewer.js') ?>" data-model="assets/models/island.glb" data-texture="assets/models/island-texture.jpg"></canvas>
         </div>
         <div class="ab-mist ab-mist1"></div><div class="ab-mist ab-mist2"></div>
       </div>

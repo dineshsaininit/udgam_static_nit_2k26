@@ -1,0 +1,53 @@
+# UDGAM 2K26: caching + compression for a small Apache/PHP host.
+# Every block is wrapped in <IfModule>, so a host without a module simply skips it.
+
+Options -Indexes
+AddDefaultCharset UTF-8
+
+<IfModule mod_mime.c>
+  AddType image/webp            .webp
+  AddType image/svg+xml         .svg
+  AddType font/woff2            .woff2
+  AddType model/gltf-binary     .glb
+  AddType application/json      .json
+</IfModule>
+
+# --- compression: text formats only (images are already compressed) ---
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain application/javascript text/javascript application/json image/svg+xml model/gltf-binary
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript text/javascript application/json image/svg+xml model/gltf-binary
+</IfModule>
+
+# --- browser caching ---
+# CSS/JS links carry ?v=<file time> (asset() in includes/config.php), so they can be cached for a year;
+# images, fonts and the 3D model change rarely: a month. Pages themselves are always re-checked.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                        "access plus 1 hour"
+  ExpiresByType text/html               "access plus 0 seconds"
+  ExpiresByType text/css                "access plus 1 year"
+  ExpiresByType application/javascript  "access plus 1 year"
+  ExpiresByType text/javascript         "access plus 1 year"
+  ExpiresByType image/webp              "access plus 1 month"
+  ExpiresByType image/jpeg              "access plus 1 month"
+  ExpiresByType image/png               "access plus 1 month"
+  ExpiresByType image/svg+xml           "access plus 1 month"
+  ExpiresByType font/woff2              "access plus 1 year"
+  ExpiresByType model/gltf-binary       "access plus 1 month"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(webp|jpe?g|png|svg|glb)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.woff2$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header unset ETag
+</IfModule>
+FileETag None

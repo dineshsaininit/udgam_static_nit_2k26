@@ -6,6 +6,12 @@
   var tiles = $$('.gl-tile', grid), chips = $$('.gl-chip'), lb = $('#glLb'), cur = 0, vis = tiles.slice();
   document.body.appendChild(lb);
 
+  // load each photo only when its tile comes near the screen (filters re-reveal hidden tiles)
+  if ('IntersectionObserver' in window) {
+    var lazy = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('gl-on'); lazy.unobserve(x.target); } }); }, { rootMargin: '400px 0px' });
+    tiles.forEach(function (t) { lazy.observe(t); });
+  } else tiles.forEach(function (t) { t.classList.add('gl-on'); });
+
   chips.forEach(function (c) {
     c.addEventListener('click', function () {
       chips.forEach(function (x) { x.classList.toggle('on', x === c); x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });

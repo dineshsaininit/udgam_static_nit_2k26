@@ -55,7 +55,7 @@ require __DIR__ . '/includes/header.php';
       <div id="sparks"></div>
     </div><div class="nt nt1"></div><div class="nt nt2"></div><div class="nt nsun"></div><div class="moon"></div><div class="fm" aria-hidden="true"><i class="ring"></i><i class="d"></i><i class="wp" style="top:22%;--w:-6s"></i><i class="wp" style="top:56%;--w:-17s"></i></div><div class="dr" aria-hidden="true"><i style="--d:0s;left:0;top:0;width:.55cqw;height:.55cqw"></i><i style="--d:.8s;left:.9cqw;top:-1.5cqw;width:.9cqw;height:.9cqw"></i><i style="--d:1.6s;left:2cqw;top:-3.3cqw;width:1.3cqw;height:1.3cqw"></i><i style="--d:2.4s;left:3.4cqw;top:-8.4cqw;width:3.6cqw;height:3.6cqw"><b>&#10047;</b></i></div><canvas id="litfx" aria-hidden="true"></canvas><div class="zz" aria-hidden="true"><i style="--k:0">z</i><i style="--k:1">Z</i><i style="--k:2">z</i></div></div></div><div class="sunrise"></div>
   <div class="w hero-in">
-    <img class="logo up" src="assets/img/sponsors/hero-logo.webp" width="700" height="394" width="260" height="146" alt="UDGAM 2K26" style="--d:.1s">
+    <img class="logo up" src="assets/img/sponsors/hero-logo.webp" width="260" height="146" alt="UDGAM 2K26" style="--d:.1s">
     <p class="kick up" style="--d:.3s;margin:6px 0 0">Our Partners</p>
     <h1 class="h" id="h1" aria-label="Our Grand Sponsors">Our Grand Sponsors</h1>
     <p class="script up" style="--d:1s">With heartfelt gratitude, we celebrate the partners who help UDGAM 2K26 bloom.</p>

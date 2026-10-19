@@ -97,3 +97,12 @@ Email, Instagram, YouTube, address and map live once in `includes/config.php` (`
 - The welcome gate shows once per browser session on the homepage; deep links such as `index.php#about` skip it.
 - The corner logo is fixed in the top-left of the header and links home; it only scales slightly on hover.
 - The Ferris-wheel menu on the right edge scrolls to sections on the current page and links to the other pages.
+
+## Hosting on a small server
+
+- `.htaccess` (Apache) turns on gzip/Brotli for text files and long browser caching: CSS/JS are linked with `?v=<file time>` by `asset()`, so they are cached for a year and still update after a deploy; images, fonts and the 3D model for a month; pages are always re-checked. `includes/` and `data/` have their own `.htaccess` that blocks direct access.
+- If the host does not compress, `includes/config.php` gzips each page itself (`ob_gzhandler`). On nginx, enable `gzip` for html/css/js/svg/json and add `expires` rules equivalent to `.htaccess`.
+- The 3D island (`assets/js/island-viewer.js` + `assets/models/`, about 1.8 MB) is fetched only when the About section comes near, and never on phones, Data Saver or low-memory devices: they keep the still poster picture.
+- Repeated icons are drawn once per page (`flower_symbol()` in `config.php`, output by `header.php`) and reused with `<use>`, which keeps pages like the Team page light.
+- Gallery tiles and Journey photos load as they come near the screen.
+- Images are WebP, sized to how large they are shown (`logo-sm.webp` for the header, `hero-logo-800.webp` for phones). Add new photos at about 1000px wide for landscape, 700px for portrait, quality 76–82.

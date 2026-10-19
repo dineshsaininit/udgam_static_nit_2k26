@@ -2,7 +2,8 @@
 /**
  * Shared <head> + fixed header (corner logo + main navigation).
  * Expects $page = ['id' => 'home', 'title' => '...', 'desc' => '...'] from the calling page.
- * Optional: $page['css'] = ['assets/css/page.css'] (after style.css), $page['head'] = raw extra <head> markup.
+ * Optional: $page['css'] (or 'stylesheets') = ['assets/css/page.css'] loaded after style.css,
+ *           $page['head'] = raw extra <head> markup.
  */
 if (!isset($page) || !is_array($page)) { $page = []; }
 $page += ['id' => 'home', 'title' => SITE_NAME . ' — NIT Sikkim', 'desc' => SITE_DESC];
@@ -20,11 +21,11 @@ $isHome = $page['id'] === 'home';
 <meta property="og:description" content="<?= e($page['desc']) ?>">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/logo.webp">
-<link rel="icon" type="image/webp" href="assets/img/logo.webp">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/playfair-display-600.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/cinzel-500.woff2">
 <link rel="stylesheet" href="<?= asset('assets/css/style.css') ?>">
-<?php foreach (($page['css'] ?? []) as $c): ?>
+<?php foreach (array_merge($page['css'] ?? [], $page['stylesheets'] ?? []) as $c): ?>
 <link rel="stylesheet" href="<?= asset($c) ?>">
 <?php endforeach; ?>
 <?= $page['head'] ?? '' ?>
@@ -33,10 +34,11 @@ $isHome = $page['id'] === 'home';
 </head>
 <body class="<?= $isHome ? 'locked home' : 'entered' ?> page-<?= e($page['id']) ?>">
 <a class="skip" href="#main">Skip to content</a>
+<?= flower_symbol() ?>
 
 <header class="site-head" id="siteHead">
   <a class="site-logo" href="index.php" aria-label="<?= e(SITE_NAME) ?> — home">
-    <img src="assets/img/logo.webp" alt="<?= e(SITE_NAME . ' — ' . SITE_TAGLINE) ?>" width="700" height="394" decoding="async">
+    <img src="assets/img/logo-sm.webp" alt="<?= e(SITE_NAME . ' — ' . SITE_TAGLINE) ?>" width="320" height="180" decoding="async">
   </a>
   <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav">
     <span></span><span></span><span></span><b class="sr-only">Menu</b>

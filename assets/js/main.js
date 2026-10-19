@@ -197,6 +197,7 @@
     var cv = d.getElementById('petalFall');
     if (!cv || !cv.getContext || reduce) { if (cv) cv.style.display = 'none'; return; }
     var ctx = cv.getContext('2d'), W = 0, H = 0, dpr = 1, petals = [], running = false, last = 0, lastY = window.pageYOffset || 0, t = 0;
+    var nv = navigator, weak = (nv.connection && nv.connection.saveData) || (nv.deviceMemory && nv.deviceMemory <= 2) || (nv.hardwareConcurrency && nv.hardwareConcurrency <= 2);  // fewer, cheaper petals on low-end devices
     function sprite(c1, c2) {
       var s = d.createElement('canvas'); s.width = 48; s.height = 64;
       var g = s.getContext('2d'); g.translate(24, 32);
@@ -217,11 +218,12 @@
       return p;
     }
     function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      dpr = weak ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
       W = window.innerWidth; H = window.innerHeight;
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       var n = W < 600 ? 18 : Math.max(22, Math.min(42, Math.round(W / 40)));
+      if (weak) n = Math.round(n / 2);
       while (petals.length < n) petals.push(make({}, true));
       petals.length = n;
     }

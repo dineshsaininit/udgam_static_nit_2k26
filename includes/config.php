@@ -5,6 +5,11 @@
  */
 declare(strict_types=1);
 
+/* Gzip the page when the web server does not (Apache's mod_deflate sets Content-Encoding first and this is skipped). */
+if (PHP_SAPI !== 'cli' && extension_loaded('zlib') && !ini_get('zlib.output_compression') && !headers_sent()) {
+  ob_start('ob_gzhandler');
+}
+
 define('SITE_NAME', 'UDGAM 2K26');
 define('SITE_TAGLINE', 'Chase the Bloom');
 define('SITE_DESC', "UDGAM 2K26 — NIT Sikkim's annual cultural festival. Chase the Bloom.");
@@ -132,7 +137,7 @@ function team_card(array $m, string $group, float $delay = 0): string {
   $in = '';
   if (!empty($m['li'])) {
     $in = '<a class="tc-in" href="' . e($m['li']) . '" target="_blank" rel="noopener" aria-label="' . e($m['n']) . ' on LinkedIn">'
-        . '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.44 13.4c0-3.1-1.66-4.54-3.87-4.54-1.79 0-2.59.98-3.04 1.67V8.5h-3.37c.04.95 0 11.5 0 11.5h3.37v-6.42c0-.34.03-.69.12-.93.27-.69.89-1.4 1.93-1.4 1.36 0 1.9 1.04 1.9 2.56V20h3.37v-6.6z"/></svg></a>';
+        . '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-in"/></svg></a>';
   }
   return '<article class="tc-card nr" data-q="' . e($q) . '" data-g="' . e($group) . '"' . ($delay ? ' style="--d:' . sprintf('%.2f', $delay) . 's"' : '') . '>'
        . '<span class="tc-medal">' . photo_box($m, 'tc-ph')
@@ -157,11 +162,16 @@ function contact_channels(): array {
 
 /** Small five-petal flower used in section labels. */
 function flower_svg(string $centre = '#fbeee9', string $cls = 'pg-fl'): string {
-  $p = '<path transform="rotate(%d)" d="M0-3C-6-8-7-16 0-18 7-16 6-8 0-3z"/>';
+  return '<span class="' . e($cls) . '"><svg viewBox="0 0 40 40" fill="currentColor" aria-hidden="true" style="--fc:' . e($centre) . '"><use href="#i-fl"/></svg></span>';
+}
+
+/** Icons drawn once per page (header.php): the blossom flower_svg() points at (centre colour from --fc) and the LinkedIn mark. */
+function flower_symbol(): string {
   $petals = '';
-  foreach ([0, 72, 144, 216, 288] as $r) $petals .= sprintf($p, $r);
-  return '<span class="' . e($cls) . '"><svg viewBox="0 0 40 40" fill="currentColor" aria-hidden="true"><g transform="translate(20 20)">'
-       . $petals . '<circle r="3" fill="' . e($centre) . '"/></g></svg></span>';
+  foreach ([0, 72, 144, 216, 288] as $r) $petals .= '<path transform="rotate(' . $r . ')" d="M0-3C-6-8-7-16 0-18 7-16 6-8 0-3z"/>';
+  return '<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-fl" viewBox="0 0 40 40"><g transform="translate(20 20)">'
+       . $petals . '<circle r="3" style="fill:var(--fc,#fbeee9)"/></g></symbol>'
+       . '<symbol id="i-in" viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.44 13.4c0-3.1-1.66-4.54-3.87-4.54-1.79 0-2.59.98-3.04 1.67V8.5h-3.37c.04.95 0 11.5 0 11.5h3.37v-6.42c0-.34.03-.69.12-.93.27-.69.89-1.4 1.93-1.4 1.36 0 1.9 1.04 1.9 2.56V20h3.37v-6.6z"/></symbol></svg>';
 }
 
 /** Section heading used by every content page. */
