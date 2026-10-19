@@ -18,7 +18,7 @@ $statusLabel = ['upcoming' => 'Upcoming', 'live' => 'Happening now', 'done' => '
 require __DIR__ . '/includes/header.php';
 ?>
 <main id="main">
-  <?= page_banner('Events', 'a celebration of art, culture and people', 'UDGAM 2K26 brings together a diverse range of events across art, culture, technology, literature, music and more. Each one is a vibrant expression of talent, creativity and community.', 'assets/img/events-bg.jpg') ?>
+  <?= page_banner('Events', 'a celebration of art, culture and people', 'UDGAM 2K26 brings together a diverse range of events across art, culture, technology, literature, music and more. Each one is a vibrant expression of talent, creativity and community.', 'assets/img/events-bg.webp') ?>
 
   <!-- ILLUSTRATED STAGE: highlights + categories -->
   <section class="ev" id="events" aria-label="Event highlights" data-nav=".5">

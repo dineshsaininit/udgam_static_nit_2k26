@@ -15,6 +15,14 @@
     });
   });
 
+  // "See the 2024 photos" in the Journey panel: pick that year's filter, then scroll down to the grid
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-gf]'); if (!a) return;
+    var chip = $('.gl-chip[data-f="' + a.getAttribute('data-gf') + '"]'); if (!chip) return;
+    e.preventDefault(); chip.click();
+    $('#gallery').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
+
   function show(i) {
     cur = (i + vis.length) % vis.length;
     var t = vis[cur], big = $('#glBig');

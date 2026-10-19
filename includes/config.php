@@ -37,7 +37,7 @@ $NAV = [
 $WHEEL = [
   ['id' => 'home',     'label' => 'Home',        'page' => 'index.php',    'sec' => 'home'],
   ['id' => 'about',    'label' => 'About Udgam', 'page' => 'index.php',    'sec' => 'about'],
-  ['id' => 'leads',    'label' => 'Our Leads',   'page' => 'index.php',    'sec' => 'leads'],
+  ['id' => 'leads',    'label' => 'Core Team',   'page' => 'team.php',     'sec' => 'core'],
   ['id' => 'journey',  'label' => 'Legacy',      'page' => 'index.php',    'sec' => 'journey'],
   ['id' => 'events',   'label' => 'Events',      'page' => 'events.php',   'sec' => 'events'],
   ['id' => 'memories', 'label' => 'Memories',    'page' => 'gallery.php',  'sec' => 'memories'],
@@ -123,23 +123,21 @@ function photo_box(array $m, string $cls = 'tm-ph'): string {
   return $h . '</div>';
 }
 
-/** Key persons for the homepage: office bearers (t=0) and every committee lead (t=1), de-duplicated. */
-function key_people(array $committees): array {
-  $core = []; $leads = []; $seen = [];
-  foreach ($committees as $c) {
-    foreach ($c['m'] as $m) {
-      $t = (int)($m['t'] ?? 3);
-      if ($t > 1) continue;
-      $k = mb_strtolower($m['n']);
-      if (isset($seen[$k])) { $seen[$k]['coms'][] = $c['name']; continue; }
-      $m['coms'] = [$c['name']];
-      $seen[$k] = $m;
-    }
+/**
+ * Team page portrait card: round photo in a blossom medallion, name, role, optional LinkedIn.
+ * $group is the committee (or core tier) shown when the card appears in search results.
+ */
+function team_card(array $m, string $group, float $delay = 0): string {
+  $q = implode(' ', array_merge([$m['n']], $m['a'] ?? []));
+  $in = '';
+  if (!empty($m['li'])) {
+    $in = '<a class="tc-in" href="' . e($m['li']) . '" target="_blank" rel="noopener" aria-label="' . e($m['n']) . ' on LinkedIn">'
+        . '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.44 13.4c0-3.1-1.66-4.54-3.87-4.54-1.79 0-2.59.98-3.04 1.67V8.5h-3.37c.04.95 0 11.5 0 11.5h3.37v-6.42c0-.34.03-.69.12-.93.27-.69.89-1.4 1.93-1.4 1.36 0 1.9 1.04 1.9 2.56V20h3.37v-6.6z"/></svg></a>';
   }
-  foreach ($seen as $m) { if ((int)$m['t'] === 0) $core[] = $m; else $leads[] = $m; }
-  // General Secretary first, then Joint Secretaries (stable for everyone else)
-  usort($core, fn($a, $b) => (stripos($a['r'], 'general') === false) <=> (stripos($b['r'], 'general') === false));
-  return ['core' => $core, 'leads' => $leads];
+  return '<article class="tc-card nr" data-q="' . e($q) . '" data-g="' . e($group) . '"' . ($delay ? ' style="--d:' . sprintf('%.2f', $delay) . 's"' : '') . '>'
+       . '<span class="tc-medal">' . photo_box($m, 'tc-ph')
+       . flower_svg('#fff4d6', 'tc-fl tc-fl1') . flower_svg('#fff4d6', 'tc-fl tc-fl2') . $in . '</span>'
+       . '<h4 class="tc-name">' . e($m['n']) . '</h4><span class="tc-role">' . e($m['r']) . '</span></article>';
 }
 
 /** The four public contact channels (used by the contact page and the footer poster). */

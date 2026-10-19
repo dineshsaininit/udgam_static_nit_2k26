@@ -1,0 +1,121 @@
+[
+  {
+    "title": "President",
+    "people": [
+      {
+        "n": "Sumit Kr. Prasad",
+        "r": "President",
+        "img": "uploads/team/sumit-prasad.webp",
+        "li": "https://www.linkedin.com/in/sumit-kumar-prasad-874700384"
+      }
+    ]
+  },
+  {
+    "title": "Vice Presidents",
+    "people": [
+      {
+        "n": "Ngawang Damchoe Sherpa",
+        "r": "Vice President",
+        "img": "uploads/team/ngawang-damchoe.webp",
+        "li": "https://www.linkedin.com/in/ngawang-damchoe-sherpa-18a681248"
+      },
+      {
+        "n": "Nim Deeki Sherpa",
+        "r": "Vice President",
+        "img": "uploads/team/nim-deeki.webp",
+        "li": "https://www.linkedin.com/in/nim-deeki-sherpa-b226b9329"
+      }
+    ]
+  },
+  {
+    "title": "Treasurer",
+    "people": [
+      {
+        "n": "Bhavya Singhal",
+        "r": "Treasurer",
+        "img": "uploads/team/bhavya-singhal.webp",
+        "li": "https://www.linkedin.com/in/bhavya-singhal-561570283"
+      }
+    ]
+  },
+  {
+    "title": "Conveners",
+    "people": [
+      {
+        "n": "Divyanshi Katiyar",
+        "r": "Convener",
+        "img": "uploads/team/divyanshi-katiyar.webp",
+        "li": "https://www.linkedin.com/in/divyanshi-katiyar-a3ab0b325"
+      },
+      {
+        "n": "Shivanshu Kumar",
+        "r": "Convener",
+        "img": "uploads/team/shivanshu-kumar.webp",
+        "li": "https://www.linkedin.com/in/kumar-shivanshu"
+      }
+    ]
+  },
+  {
+    "title": "General Secretaries",
+    "people": [
+      {
+        "n": "Dinesh Saini",
+        "r": "General Secretary",
+        "img": "uploads/team/dinesh-saini.webp",
+        "li": "https://www.linkedin.com/in/dinesh-saini-churu"
+      },
+      {
+        "n": "Abheek Kanth",
+        "r": "General Secretary",
+        "img": "uploads/team/abheek-kanth.webp",
+        "li": "https://www.linkedin.com/in/abheek-kanth-518aa1323"
+      },
+      {
+        "n": "Jer Ayong Lepcha",
+        "r": "General Secretary",
+        "img": "uploads/team/jer-ayong-lepcha.webp",
+        "li": "https://www.linkedin.com/in/jer-ayong-lepcha-5a806343b"
+      },
+      {
+        "n": "Ankit Raushan",
+        "r": "General Secretary",
+        "img": "uploads/team/ankit-raushan.webp",
+        "li": "https://www.linkedin.com/in/ankit-raushan-155b39357"
+      },
+      {
+        "n": "Suraksha Sharma",
+        "r": "General Secretary",
+        "img": "uploads/team/suraksha-sharma.webp",
+        "li": "https://www.linkedin.com/in/suraksha-sharma-46244a380"
+      },
+      {
+        "n": "Shobit",
+        "r": "General Secretary",
+        "img": "uploads/team/shobit.webp"
+      }
+    ]
+  },
+  {
+    "title": "Joint Secretaries",
+    "people": [
+      {
+        "n": "Anuska Mandal",
+        "r": "Joint Secretary",
+        "img": "uploads/team/jointsec-anuska-mandal.webp",
+        "li": "https://www.linkedin.com/in/anuska-mandal"
+      },
+      {
+        "n": "Sujal Prasad",
+        "r": "Joint Secretary",
+        "img": "uploads/team/jointsec-sujal-prasad.webp",
+        "li": "https://www.linkedin.com/in/sujal-prasad-50bbb637b"
+      },
+      {
+        "n": "Mudit Sharma",
+        "r": "Joint Secretary",
+        "img": "uploads/team/jointsec-mudit-sharma.webp",
+        "li": "https://www.linkedin.com/in/mudit-sharma-473a722a6"
+      }
+    ]
+  }
+]

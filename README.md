@@ -17,24 +17,25 @@ Then open <http://localhost:8000/>.
 
 ```
 Udgam/
-├── index.php          Homepage: welcome gate, hero, about (3D island), main leads, journey, explore
+├── index.php          Homepage: welcome gate, hero, about (3D island), journey, explore
 ├── events.php         Event highlights, categories, upcoming schedule, past editions
 ├── gallery.php        Memories + photo gallery with lightbox
 ├── sponsors.php       Sponsor tiers, why-sponsor, sponsorship contact
-├── team.php           Office bearers + full committee directory (search / filter)
+├── team.php           Core committee hierarchy + 15 committee cards (roster dialog, search)
 ├── contact.php        Contact channels, address, map
 ├── includes/
 │   ├── config.php     Site constants, contact details, navigation, helper functions
 │   ├── header.php     <head>, fixed header with corner logo + main navigation
 │   └── footer.php     "Get in Touch" poster footer (HTML version on phones), falling petals, Ferris-wheel menu, script tags
 ├── data/              Editable content (JSON)
-│   ├── committees.json  every committee and member (drives team.php and the homepage leads)
+│   ├── core.json        core committee tiers, President down to Joint Secretaries (team.php)
+│   ├── committees.json  every organising committee and its members (team.php, sponsors contact)
 │   ├── events.json      highlights, categories, upcoming schedule, past editions
 │   ├── gallery.json     memories + photo tiles
 │   └── sponsors.json    sponsor tiers and slots
 ├── assets/
 │   ├── css/style.css  single stylesheet for all pages
-│   ├── js/            main.js (shared), island.js, journey.js, events.js, gallery.js, directory.js, island-viewer.js (3D)
+│   ├── js/            main.js (shared), island.js, journey.js, events.js, gallery.js, team.js, island-viewer.js (3D)
 │   ├── img/           artwork (hero, gate, journey scene, event photos, logo…)
 │   ├── fonts/         self-hosted woff2 fonts
 │   └── models/        island.glb + island-texture.jpg for the rotating 3D campus
@@ -45,27 +46,36 @@ Udgam/
 
 Everything editable lives in `data/*.json`; the PHP pages render from it.
 
-### Team / committee directory — `data/committees.json`
+### Team — `data/core.json` and `data/committees.json`
+
+`core.json` is the hierarchy at the top of the Team page, one entry per tier in display order:
 
 ```json
-{ "n": "Full Name", "r": "Role shown on the card", "t": 1, "p": "GoogleDriveFileId", "a": ["nickname"] }
+{ "title": "Vice Presidents", "people": [ { "n": "Full Name", "r": "Vice President", "img": "uploads/team/name.webp", "li": "https://www.linkedin.com/in/..." } ] }
+```
+
+`committees.json` lists the organising committees; each has `id`, `name` and members `m` (the card icon is picked by `id` in team.php):
+
+```json
+{ "n": "Full Name", "r": "Lead", "t": 1, "img": "uploads/team/name.webp", "li": "https://www.linkedin.com/in/...", "a": ["nickname"] }
 ```
 
 | key | meaning |
 |-----|---------|
 | `n` | name |
 | `r` | role / designation |
-| `t` | tier: `0` office bearer (shown on the homepage as core), `1` lead (shown on the homepage strip), `2` associate lead, `3` member |
-| `p` | Google Drive file id of the portrait (shared "anyone with the link") |
-| `img` | alternatively a local photo, e.g. `uploads/team/name.jpg` (takes priority over `p`) |
-| `a` | optional aliases so search finds nicknames |
+| `t` | committee members only: `1` lead, `2` associate lead, `3` member (groups the roster) |
+| `img` | local portrait, e.g. `uploads/team/name.webp` (square, 600px works well) |
+| `p` | alternatively a Google Drive file id of the portrait (shared "anyone with the link") |
+| `li` | optional LinkedIn profile URL |
+| `a` | optional aliases so search finds nicknames or old spellings |
 
-The homepage's "main leads" section is derived automatically: everyone with `t` 0 or 1, de-duplicated across committees.
+People without a photo get their initials. Deep-link a committee with `team.php#c-<id>` (or `team.php?c=<id>`).
 
 ### Events — `data/events.json`
 
 - `upcoming[]`: `name`, `category`, `date`, `time`, `venue`, `status` (`upcoming` | `live` | `done`), `desc`.
-- `past[]`: year + link to that edition's website (also drives the Journey on the homepage).
+- `past[]`: one entry per edition for the homepage Journey: `year`, `url` (its website), `x` (tree position on the artwork), `tagline`, `blurb`, `logo` and `photos[]` (16:10 WebP in `assets/img/legacy/`, ~1100px wide). An edition with no photos shows its logo instead.
 - `highlights[]` / `categories[]`: the illustrated stage; `x`/`y` are positions on the 1600-wide artwork.
 
 ### Gallery — `data/gallery.json`

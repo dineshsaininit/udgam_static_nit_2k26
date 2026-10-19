@@ -1,31 +1,42 @@
 {
-  "_note": "img can be a path inside this project (assets/img/..., uploads/gallery/...) or a full https:// URL. shape: w = landscape, t = portrait, s = square. fit/pos are optional background-size / background-position.",
+  "_note": "img can be a path inside this project (assets/img/..., uploads/gallery/...) or a full https:// URL. cat is the edition year and must match a filter id. shape: w = landscape, t = portrait, s = square. fit/pos are optional background-size / background-position. Keep photos compressed WebP (about 1000px wide for landscape, 700px for portrait).",
   "memories": [
-    { "label": "STAGE",   "caption": "Lights, music, together",   "img": "assets/img/event-1.jpg", "rotate": "-3deg" },
-    { "label": "CULTURE", "caption": "Colours of every culture",  "img": "assets/img/event-3.jpg", "rotate": "2.5deg" },
-    { "label": "ART",     "caption": "Art that made us pause",    "img": "assets/img/event-2.jpg", "rotate": "-2deg" },
-    { "label": "WORDS",   "caption": "Stories shared aloud",      "img": "assets/img/event-4.jpg", "rotate": "3deg" },
-    { "label": "SPIRIT",  "caption": "Cheers across the field",   "img": "assets/img/event-6.jpg", "rotate": "-2.5deg" }
+    { "label": "STAGE",    "caption": "Lights, music, together",   "img": "assets/img/gallery/mem-stage.webp", "rotate": "-3deg" },
+    { "label": "CROWD",    "caption": "A full house every night",  "img": "assets/img/gallery/mem-crowd.webp", "rotate": "2.5deg" },
+    { "label": "ART",      "caption": "Colour on every wall",      "img": "assets/img/gallery/mem-art.webp",   "rotate": "-2deg" },
+    { "label": "SPIRIT",   "caption": "Dancing through the rain",  "img": "assets/img/gallery/mem-rain.webp",  "rotate": "3deg" },
+    { "label": "TOGETHER", "caption": "One crew, one festival",    "img": "assets/img/gallery/mem-crew.webp",  "rotate": "-2.5deg" }
   ],
   "filters": [
-    { "id": "all",     "label": "All" },
-    { "id": "stage",   "label": "Stage" },
-    { "id": "art",     "label": "Art" },
-    { "id": "culture", "label": "Culture" },
-    { "id": "campus",  "label": "Campus" }
+    { "id": "all",  "label": "All years" },
+    { "id": "2025", "label": "2025" },
+    { "id": "2024", "label": "2024" },
+    { "id": "2023", "label": "2023" },
+    { "id": "2019", "label": "2019" }
   ],
   "photos": [
-    { "title": "Live Performances",        "sub": "Music that unites",          "cat": "stage",   "img": "assets/img/event-1.jpg",        "shape": "w" },
-    { "title": "Festival Nights",          "sub": "Lights by the lake",         "cat": "campus",  "img": "assets/img/events-bg.jpg",      "shape": "w", "fit": "330%",    "pos": "56% 100%" },
-    { "title": "Creative Exhibitions",     "sub": "Ideas that inspire",         "cat": "art",     "img": "assets/img/event-2.jpg",        "shape": "w" },
-    { "title": "Sunset over the Hills",    "sub": "Where UDGAM begins",         "cat": "campus",  "img": "assets/img/hero-bg.jpg",        "shape": "s", "fit": "230%",    "pos": "86% 58%" },
-    { "title": "Cultural Evenings",        "sub": "Traditions in new lights",   "cat": "culture", "img": "assets/img/event-3.jpg",        "shape": "w" },
-    { "title": "Lantern Lanes",            "sub": "Every year, a new story",    "cat": "culture", "img": "assets/img/journey-bg.webp",    "shape": "t", "fit": "290%",    "pos": "60% 38%" },
-    { "title": "Literary & Creative Arts", "sub": "Stories that resonate",      "cat": "art",     "img": "assets/img/event-4.jpg",        "shape": "w" },
-    { "title": "Morning Peaks",            "sub": "Same mountains, new stories","cat": "campus",  "img": "assets/img/contact-hero.webp",  "shape": "w" },
-    { "title": "Gaming & Esports",         "sub": "Passion meets challenge",    "cat": "stage",   "img": "assets/img/event-5.jpg",        "shape": "s" },
-    { "title": "The Fair by the Lake",     "sub": "Rides, lights and laughter", "cat": "culture", "img": "assets/img/contact-foot.webp",  "shape": "w" },
-    { "title": "Sports & Recreation",      "sub": "Energy beyond boundaries",   "cat": "campus",  "img": "assets/img/event-6.jpg",        "shape": "w" },
-    { "title": "Our Floating Campus",      "sub": "NIT Sikkim, reimagined",     "cat": "campus",  "img": "assets/img/island-poster.webp", "shape": "s", "fit": "contain", "pos": "center", "pad": true }
+    { "title": "Flash mob in the rain",        "sub": "UDGAM 2025", "cat": "2025", "img": "assets/img/legacy/2025-1.webp",     "shape": "w" },
+    { "title": "A band under the lights",      "sub": "UDGAM 2024", "cat": "2024", "img": "assets/img/legacy/2024-1.webp",     "shape": "w" },
+    { "title": "Painting the wall",            "sub": "UDGAM 2019", "cat": "2019", "img": "assets/img/gallery/2019-paint.webp", "shape": "t" },
+    { "title": "Acrobatics on the main stage", "sub": "UDGAM 2023", "cat": "2023", "img": "assets/img/legacy/2023-1.webp",     "shape": "w" },
+    { "title": "The fashion walk",             "sub": "UDGAM 2024", "cat": "2024", "img": "assets/img/gallery/2024-walk.webp",  "shape": "t" },
+    { "title": "Every step in sync",           "sub": "UDGAM 2025", "cat": "2025", "img": "assets/img/gallery/2025-steps.webp", "shape": "s" },
+    { "title": "Acoustic night",               "sub": "UDGAM 2019", "cat": "2019", "img": "assets/img/legacy/2019-1.webp",     "shape": "w" },
+    { "title": "Games on the field",           "sub": "UDGAM 2024", "cat": "2024", "img": "assets/img/gallery/2024-games.webp", "shape": "w" },
+    { "title": "The whole crew",               "sub": "UDGAM 2025", "cat": "2025", "img": "assets/img/legacy/2025-2.webp",     "shape": "w" },
+    { "title": "Solo on the big stage",        "sub": "UDGAM 2019", "cat": "2019", "img": "assets/img/gallery/2019-solo.webp",  "shape": "t" },
+    { "title": "Folk dance under the lights",  "sub": "UDGAM 2024", "cat": "2024", "img": "assets/img/legacy/2024-2.webp",     "shape": "w" },
+    { "title": "Honouring our guests",         "sub": "UDGAM 2023", "cat": "2023", "img": "assets/img/legacy/2023-2.webp",     "shape": "w" },
+    { "title": "Tug of war below the hills",   "sub": "UDGAM 2019", "cat": "2019", "img": "assets/img/gallery/2019-tug.webp",   "shape": "w" },
+    { "title": "A voice for the hills",        "sub": "UDGAM 2024", "cat": "2024", "img": "assets/img/gallery/2024-voice.webp", "shape": "t" },
+    { "title": "Dupattas in the air",          "sub": "UDGAM 2025", "cat": "2025", "img": "assets/img/legacy/2025-3.webp",     "shape": "w" },
+    { "title": "Dancers in green light",       "sub": "UDGAM 2019", "cat": "2019", "img": "assets/img/gallery/2019-green.webp", "shape": "w" },
+    { "title": "Cook-off at the food stalls",  "sub": "UDGAM 2024", "cat": "2024", "img": "assets/img/gallery/2024-food.webp",  "shape": "s" },
+    { "title": "Folk dance on stage",          "sub": "UDGAM 2019", "cat": "2019", "img": "assets/img/gallery/2019-folk.webp",  "shape": "s" },
+    { "title": "Dancing through the city",     "sub": "UDGAM 2025", "cat": "2025", "img": "assets/img/gallery/2025-city.webp",  "shape": "w" },
+    { "title": "Rock night",                   "sub": "UDGAM 2024", "cat": "2024", "img": "assets/img/legacy/2024-3.webp",     "shape": "w" },
+    { "title": "UDGAM '19 welcomes you",       "sub": "UDGAM 2019", "cat": "2019", "img": "assets/img/legacy/2019-2.webp",     "shape": "w" },
+    { "title": "A full house",                 "sub": "UDGAM 2024", "cat": "2024", "img": "assets/img/gallery/2024-crowd.webp", "shape": "w" },
+    { "title": "Three dancers, one rhythm",     "sub": "UDGAM 2019", "cat": "2019", "img": "assets/img/legacy/2019-3.webp",     "shape": "w" }
   ]
 }

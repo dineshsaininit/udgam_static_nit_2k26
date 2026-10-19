@@ -30,11 +30,29 @@
   ],
 
   "past": [
-    { "year": 2018, "url": "https://udgam.nitsikkim.ac.in/udgam18/HIGH%20VOLTAGE/H_V.php#contact", "x": "4.74%" },
-    { "year": 2019, "url": "https://udgam.nitsikkim.ac.in/udgam19/",                              "x": "17.61%" },
-    { "year": 2020, "url": "https://nitsikkim.ac.in/udgam/udgam20/",                               "x": "31.00%" },
-    { "year": 2023, "url": "https://nitsikkim.ac.in/udgam/udgam23/home.php",                       "x": "44.91%" },
-    { "year": 2024, "url": "https://udgam.nitsikkim.ac.in/udgam24/",                               "x": "57.87%" },
-    { "year": 2025, "url": "https://udgam.nitsikkim.ac.in/udgam25/",                               "x": "71.03%" }
+    { "year": 2018, "url": "https://udgam.nitsikkim.ac.in/udgam18/HIGH%20VOLTAGE/H_V.php", "x": "4.74%",
+      "tagline": "High Voltage", "logo": "assets/img/legacy/logo-2018.webp",
+      "blurb": "The year UDGAM launched High Voltage, an open rock contest for live music and local bands.",
+      "photos": ["assets/img/legacy/2018-1.webp"] },
+    { "year": 2019, "url": "https://udgam.nitsikkim.ac.in/udgam19/", "x": "17.61%",
+      "tagline": "28 – 30 April", "logo": "assets/img/legacy/logo-2019.webp",
+      "blurb": "Three days of bands, dance, dramatics and fine arts, with Lamhe, the DJ night, to close each evening.",
+      "photos": ["assets/img/legacy/2019-1.webp", "assets/img/legacy/2019-2.webp", "assets/img/legacy/2019-3.webp"] },
+    { "year": 2020, "url": "https://nitsikkim.ac.in/udgam/udgam20/", "x": "31.00%",
+      "tagline": "Lumos Maxima", "logo": "assets/img/legacy/logo-2020.webp",
+      "blurb": "The Lumos Maxima edition, with its splash of colour around the UDGAM emblem.",
+      "photos": [] },
+    { "year": 2023, "url": "https://nitsikkim.ac.in/udgam/udgam23/home.php", "x": "44.91%",
+      "tagline": "A Cultural Fusion", "logo": "assets/img/legacy/logo-2023.webp",
+      "blurb": "Vistas Euphoria: 30+ events, acrobatics on the main stage and students from across India.",
+      "photos": ["assets/img/legacy/2023-1.webp", "assets/img/legacy/2023-2.webp"] },
+    { "year": 2024, "url": "https://udgam.nitsikkim.ac.in/udgam24/", "x": "57.87%",
+      "tagline": "Rise Through Culture", "logo": "assets/img/legacy/logo-2024.webp",
+      "blurb": "Bands, solo singers and fashion walks lit up the main stage night after night.",
+      "photos": ["assets/img/legacy/2024-1.webp", "assets/img/legacy/2024-2.webp", "assets/img/legacy/2024-3.webp"] },
+    { "year": 2025, "url": "https://udgam.nitsikkim.ac.in/udgam25/", "x": "71.03%",
+      "tagline": "Ascending to New Horizons", "logo": "assets/img/legacy/logo-2025.webp",
+      "blurb": "Three days of art, language, food and tradition, opened by a flash mob dancing through the rain.",
+      "photos": ["assets/img/legacy/2025-1.webp", "assets/img/legacy/2025-2.webp", "assets/img/legacy/2025-3.webp"] }
   ]
 }

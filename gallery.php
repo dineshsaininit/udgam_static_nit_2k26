@@ -5,7 +5,7 @@ $page = [
   'id'      => 'gallery',
   'title'   => 'Gallery — ' . SITE_NAME,
   'desc'    => 'Memories and photo glimpses from UDGAM, the cultural festival of NIT Sikkim.',
-  'scripts' => ['assets/js/gallery.js'],
+  'scripts' => ['assets/js/journey.js', 'assets/js/gallery.js'],
 ];
 
 $g        = load_json('gallery');
@@ -13,10 +13,13 @@ $memories = $g['memories'] ?? [];
 $filters  = $g['filters'] ?? [['id' => 'all', 'label' => 'All']];
 $photos   = $g['photos'] ?? [];
 
+/* years that have photos below get a "See the photos" button in the Journey panel */
+$journeyPhotoYears = array_values(array_unique(array_map(fn($p) => (int)$p['cat'], $photos)));
+
 require __DIR__ . '/includes/header.php';
 ?>
 <main id="main">
-  <?= page_banner('Gallery', 'a frame for every feeling', 'A little preview of the colour, music and joy that fill UDGAM. Tap any picture to see it up close.', 'assets/img/event-3.jpg') ?>
+  <?= page_banner('Gallery', 'a frame for every feeling', 'Real moments from past editions of UDGAM: the colour, music and joy of the festival. Tap any picture to see it up close.', 'assets/img/gallery/banner.webp') ?>
 
   <!-- MEMORIES -->
   <section class="pg mem" id="memories" aria-label="Memories" data-nav=".45">
@@ -42,10 +45,12 @@ require __DIR__ . '/includes/header.php';
     </div>
   </section>
 
+<?php require __DIR__ . '/includes/journey.php'; ?>
+
   <!-- GALLERY -->
   <section class="pg gal" id="gallery" aria-label="Photo gallery" data-nav=".45">
     <div class="pg-deco pg-branch pg-branch-r" aria-hidden="true"></div>
-    <?= section_head('GALLERY', 'Glimpses of<br>the celebration', 'a frame for every feeling', 'Filter by theme, then tap any picture to open it. Use the arrow keys to move between photos.') ?>
+    <?= section_head('GALLERY', 'Glimpses of<br>the celebration', 'a frame for every feeling', 'Pick a year, then tap any picture to open it. Use the arrow keys to move between photos.') ?>
     <div class="gl-filters nr" role="group" aria-label="Filter photos">
       <?php foreach ($filters as $i => $f): ?><button class="gl-chip<?= $i === 0 ? ' on' : '' ?>" data-f="<?= e($f['id']) ?>" type="button" aria-pressed="<?= $i === 0 ? 'true' : 'false' ?>"><?= e($f['label']) ?></button><?php endforeach; ?>
     </div>
