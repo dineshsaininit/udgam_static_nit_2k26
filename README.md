@@ -26,6 +26,7 @@ Udgam/
 ├── includes/
 │   ├── config.php     Site constants, contact details, navigation, helper functions
 │   ├── header.php     <head>, fixed header with corner logo + main navigation
+│   ├── journey.php    "A Journey Through Time" road + edition panel (homepage and gallery)
 │   └── footer.php     "Get in Touch" poster footer (HTML version on phones), falling petals, Ferris-wheel menu, script tags
 ├── data/              Editable content (JSON)
 │   ├── core.json        core committee tiers, President down to Joint Secretaries (team.php)
@@ -34,7 +35,7 @@ Udgam/
 │   ├── gallery.json     memories + photo tiles
 │   └── sponsors.json    sponsor tiers and slots
 ├── assets/
-│   ├── css/style.css  single stylesheet for all pages
+│   ├── css/           style.css (all pages) + sponsors.css (the Sponsors page's own look, loaded via $page['css'])
 │   ├── js/            main.js (shared), island.js, journey.js, events.js, gallery.js, team.js, island-viewer.js (3D)
 │   ├── img/           artwork (hero, gate, journey scene, event photos, logo…)
 │   ├── fonts/         self-hosted woff2 fonts

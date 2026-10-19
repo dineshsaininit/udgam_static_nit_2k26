@@ -8,12 +8,13 @@ $page = [
   'scripts' => ['assets/js/island-viewer.js', 'assets/js/island.js', 'assets/js/journey.js'],
 ];
 
+/* Explore cards: festival colour pair + the matching line icon from the ferris-wheel menu */
 $explore = [
-  ['href' => 'events.php',   'title' => 'Events',   'text' => 'Highlights, categories and the full schedule of UDGAM 2K26.',  'img' => 'assets/img/explore/events.webp',   'pos' => 'center'],
-  ['href' => 'gallery.php',  'title' => 'Gallery',  'text' => 'Memories and glimpses from the celebration, up close.',        'img' => 'assets/img/explore/gallery.webp',  'pos' => 'center'],
-  ['href' => 'sponsors.php', 'title' => 'Sponsors', 'text' => 'The partners who help the festival bloom, and how to join.',   'img' => 'assets/img/explore/sponsors.webp', 'pos' => 'center'],
-  ['href' => 'team.php',     'title' => 'Team',     'text' => 'The core committee and all fifteen organising committees.', 'img' => 'assets/img/explore/team.webp',     'pos' => 'center'],
-  ['href' => 'contact.php',  'title' => 'Contact',  'text' => 'Reach the team by email, Instagram, YouTube or in person.',    'img' => 'assets/img/explore/contact.webp',  'pos' => 'center'],
+  ['href' => 'events.php',   'title' => 'Events',   'icon' => 'events',   'hue' => ['#7d1238', '#c8576b'], 'text' => 'Highlights, categories and the full schedule of UDGAM 2K26.'],
+  ['href' => 'gallery.php',  'title' => 'Gallery',  'icon' => 'gallery',  'hue' => ['#4a3d5f', '#9a6f9e'], 'text' => 'Real moments from past editions, year by year.'],
+  ['href' => 'sponsors.php', 'title' => 'Sponsors', 'icon' => 'sponsors', 'hue' => ['#8a2a2f', '#d08a5c'], 'text' => 'The partners who help the festival bloom, and how to join.'],
+  ['href' => 'team.php',     'title' => 'Team',     'icon' => 'team',     'hue' => ['#17283a', '#3f6b8f'], 'text' => 'The core committee and all fifteen organising committees.'],
+  ['href' => 'contact.php',  'title' => 'Contact',  'icon' => 'contact',  'hue' => ['#5c2346', '#b8577f'], 'text' => 'Reach the team by email, Instagram, YouTube or in person.'],
 ];
 
 require __DIR__ . '/includes/header.php';
@@ -64,9 +65,6 @@ require __DIR__ . '/includes/header.php';
         <div class="ab-mist ab-mist1"></div><div class="ab-mist ab-mist2"></div>
       </div>
 
-      <div class="ab-vline"></div>
-      <ul class="ab-vlist"><li>Art</li><li>Culture</li><li>People</li><li>Ideas</li><li>Memories</li></ul>
-
       <div class="ab-copy">
         <div class="ab-label"><i></i><?= flower_svg('#f6dfe0', 'ab-flower') ?><b>ABOUT</b><i></i></div>
         <h2 class="ab-title">More than<br>just a fest</h2>
@@ -96,10 +94,13 @@ require __DIR__ . '/includes/header.php';
     <?= section_head('EXPLORE', 'Everything UDGAM,<br>one page at a time', 'where would you like to go next?') ?>
     <div class="xp-grid">
       <?php foreach ($explore as $i => $x): ?>
-      <a class="xp-card nr" href="<?= e($x['href']) ?>" style="--img:<?= css_url($x['img']) ?>;--pos:<?= e($x['pos']) ?>;--d:<?= sprintf('%.2f', $i * .07) ?>s">
+      <a class="xp-card nr" href="<?= e($x['href']) ?>" style="--c1:<?= $x['hue'][0] ?>;--c2:<?= $x['hue'][1] ?>;--d:<?= sprintf('%.2f', $i * .07) ?>s">
+        <span class="xp-no" aria-hidden="true"><?= sprintf('%02d', $i + 1) ?></span>
+        <?= flower_svg('rgba(255,236,214,.45)', 'xp-fl') ?>
+        <span class="xp-ico" aria-hidden="true"><?= $WHEEL_ICONS[$x['icon']] ?></span>
         <b><?= e($x['title']) ?></b>
-        <span><?= e($x['text']) ?></span>
-        <em>Open <?= e($x['title']) ?> &rsaquo;</em>
+        <span class="xp-txt"><?= e($x['text']) ?></span>
+        <em>Open <?= e($x['title']) ?> <i aria-hidden="true">&rarr;</i></em>
       </a>
       <?php endforeach; ?>
     </div>

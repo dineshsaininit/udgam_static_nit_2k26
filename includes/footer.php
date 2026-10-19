@@ -45,10 +45,6 @@ $ftIntro  = 'Have a question, collaboration idea, sponsorship enquiry or just wa
 
   <div class="sf-bar">
     <div class="sf-bar-in">
-      <a class="sf-logo" href="index.php" aria-label="<?= e(SITE_NAME) ?> home"><img src="assets/img/logo.webp" alt="" width="700" height="394" loading="lazy" decoding="async"></a>
-      <nav class="sf-nav" aria-label="Footer">
-        <?php foreach ($NAV as $n): ?><a href="<?= e($n['href']) ?>"><?= e($n['label']) ?></a><?php endforeach; ?>
-      </nav>
       <p class="sf-copy">&copy; <?= date('Y') ?> <?= e(SITE_NAME) ?> &middot; <a href="<?= e($SITE['institute']) ?>" target="_blank" rel="noopener">National Institute of Technology Sikkim</a>. All rights reserved.</p>
     </div>
   </div>

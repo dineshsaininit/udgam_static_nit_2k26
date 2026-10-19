@@ -2,6 +2,7 @@
 /**
  * Shared <head> + fixed header (corner logo + main navigation).
  * Expects $page = ['id' => 'home', 'title' => '...', 'desc' => '...'] from the calling page.
+ * Optional: $page['css'] = ['assets/css/page.css'] (after style.css), $page['head'] = raw extra <head> markup.
  */
 if (!isset($page) || !is_array($page)) { $page = []; }
 $page += ['id' => 'home', 'title' => SITE_NAME . ' — NIT Sikkim', 'desc' => SITE_DESC];
@@ -23,6 +24,10 @@ $isHome = $page['id'] === 'home';
 <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/playfair-display-600.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/cinzel-500.woff2">
 <link rel="stylesheet" href="<?= asset('assets/css/style.css') ?>">
+<?php foreach (($page['css'] ?? []) as $c): ?>
+<link rel="stylesheet" href="<?= asset($c) ?>">
+<?php endforeach; ?>
+<?= $page['head'] ?? '' ?>
 <script>document.documentElement.classList.add('js')</script>
 <noscript><style>.gate,.progress,.fw,#petalFall{display:none!important}#main{visibility:visible!important}body.locked{overflow:auto!important;height:auto!important}.site-head{opacity:1!important;pointer-events:auto!important}.reveal,.nr,.ev .rv{opacity:1!important;transform:none!important}</style></noscript>
 </head>
