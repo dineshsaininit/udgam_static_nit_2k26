@@ -334,19 +334,6 @@
    "rules": "https://udgamnits.live/rulebooks/rangoli.pdf"
   },
   {
-   "id": "tug-of-war",
-   "name": "Tug of War",
-   "category": "sports",
-   "headliner": false,
-   "fee": 0,
-   "team": [
-    5,
-    5
-   ],
-   "desc": "Pull the rope and cross the winning line.",
-   "tagline": "It's not personal… until you lose."
-  },
-  {
    "id": "photography",
    "name": "Photography",
    "category": "creative",
