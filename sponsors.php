@@ -15,7 +15,9 @@ $page = [
   'css'   => ['assets/css/sponsors.css'],
   /* page fonts + the saved day/night mode, applied before first paint */
   'head'  => '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Mrs+Saint+Delafield&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Mrs+Saint+Delafield&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Mrs+Saint+Delafield&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Mrs+Saint+Delafield&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet"></noscript>
 <script>document.documentElement.classList.add(\'js\');try{if(localStorage.getItem(\'udgam-mode\')===\'night\'){document.documentElement.setAttribute(\'data-mode\',\'night\');document.documentElement.style.setProperty(\'--nt\',1)}}catch(e){}</script>',
 ];
 
@@ -120,7 +122,7 @@ require __DIR__ . '/includes/header.php';
 <div class="tier" id="t-<?= h($t['id']) ?>"><div class="th rv"><h2><?= h($t['title']) ?></h2><div class="div"><i></i><?= bloom('mini') ?><i></i></div><p><?= h($t['tag']) ?></p></div>
 <div class="sgrid <?= h($t['size']) ?>">
 <?php if($n): foreach($t['sponsors'] as $i=>$sp): ?>
-<div class="sc rv" style="--d:<?= $i*0.1 ?>s"><?php if(!empty($sp['url'])): ?><a class="pl" href="<?= h($sp['url']) ?>" target="_blank" rel="noopener" aria-label="<?= h($sp['name']) ?>"><?php else: ?><div class="pl" aria-label="<?= h($sp['name']) ?>"><?php endif; ?><?php if(!empty($sp['logo'])): ?><img src="<?= h($sp['logo']) ?>" alt="<?= h($sp['name']) ?>" loading="lazy"><?php else: ?><span class="nm"><?= h($sp['name']) ?></span><?php endif; ?><?= !empty($sp['url']) ? '</a>' : '</div>' ?></div>
+<div class="sc rv" style="--d:<?= $i*0.1 ?>s"><?php if(!empty($sp['url'])): ?><a class="pl" href="<?= h($sp['url']) ?>" target="_blank" rel="noopener" aria-label="<?= h($sp['name']) ?>"><?php else: ?><div class="pl" aria-label="<?= h($sp['name']) ?>"><?php endif; ?><?php if(!empty($sp['logo'])): ?><img src="<?= h($sp['logo']) ?>" alt="<?= h($sp['name']) ?>" loading="lazy" decoding="async"><?php else: ?><span class="nm"><?= h($sp['name']) ?></span><?php endif; ?><?= !empty($sp['url']) ? '</a>' : '</div>' ?></div>
 <?php endforeach; else: for($i=0;$i<$t['slots'];$i++): ?>
 <div class="sc rv" style="--d:<?= $i*0.1 ?>s"><a class="pl slot" href="contact.php" aria-label="Become our <?= h($t['title']) ?>"><?= bloom('bud') ?><b>Your brand here</b><small style="color:var(--mu)"><?= h($t['cta']) ?></small></a></div>
 <?php endfor; endif; ?>
@@ -266,8 +268,11 @@ function mk(init){var r=Math.random(),d=r<.4?0:r<.85?1:2; /* far / mid / near: s
 for(var k=0;k<N;k++)P.push(mk(true));
 addEventListener('pointermove',function(e){if(e.movementX)mw+=e.movementX*.012});
 document.addEventListener('visibilitychange',function(){vis=!document.hidden});
-var pOn=false,bk=$('#bokeh'),b1=$('#brl'),b2=$('#brr');var lt=performance.now();(function loop(now){requestAnimationFrame(loop);var dt=Math.min(3,(now-lt)/16.7||1);lt=now;if(!vis)return;
-  var hb=hero.getBoundingClientRect().bottom,on=hb<H*.92;if(on!==pOn){pOn=on;bk.classList.toggle('on',on);b1.classList.toggle('on',on);b2.classList.toggle('on',on)}if(hb>=H-2){x.clearRect(0,0,W,H);return} /* hero fills the screen → no petals */
+var pOn=false,bk=$('#bokeh'),b1=$('#brl'),b2=$('#brr'),hb=hero.getBoundingClientRect().bottom;
+function updateHb(){hb=hero.getBoundingClientRect().bottom}
+addEventListener('scroll',updateHb,{passive:true});addEventListener('resize',updateHb);
+var lt=performance.now();(function loop(now){requestAnimationFrame(loop);var dt=Math.min(3,(now-lt)/16.7||1);lt=now;if(!vis)return;
+  var on=hb<H*.92;if(on!==pOn){pOn=on;bk.classList.toggle('on',on);b1.classList.toggle('on',on);b2.classList.toggle('on',on)}if(hb>=H-2){x.clearRect(0,0,W,H);return} /* hero fills the screen → no petals */
   x.clearRect(0,0,W,H);wind*=Math.pow(.96,dt);mw*=Math.pow(.95,dt);var wd=wind+mw,top=Math.max(0,hb);
   P.forEach(function(p,i){p.ph+=p.sp*dt;p.f+=.05*dt;p.r+=(p.vr+wd*.004)*dt;p.x+=(Math.sin(p.ph)*.7+.25+wd)*dt;p.y+=(p.vy+Math.max(0,wind)*.6)*dt;
     if(p.y>H+30||p.x>W+40||p.x<-60){P[i]=mk(false);if(Math.random()<.4)P[i].x=-20;return}

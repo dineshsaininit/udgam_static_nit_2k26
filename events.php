@@ -54,7 +54,7 @@ function ev_pass(array $e, array $cat, int $n, bool $big): string {
   $rules = !empty($e['rules']) ? '<a class="ep-rules" href="' . e($e['rules']) . '" target="_blank" rel="noopener">Rulebook<span class="sr-only"> for ' . e($e['name']) . ' (opens in a new tab)</span></a>' : '';
   $meta  = '<span class="ep-team"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.6c2.9.2 5.5 2 5.5 5"/></svg>' . e(ev_team($e)) . '</span>'
          . (!empty($e['rounds']) ? '<span class="ep-team" title="' . e(implode(' · ', $e['rounds'])) . '">' . count($e['rounds']) . ' rounds</span>' : '');
-  return '<article class="ep' . ($big ? ' ep-big' : '') . ' nr" id="ev-' . e($e['id']) . '" data-cat="' . e($e['category']) . '" data-fee="' . (int)($e['fee'] ?? 0) . '" data-n="' . $n . '"'
+  return '<article class="ep' . ($big ? ' ep-big' : '') . ' nr" id="ev-' . ($big ? 'head-' : '') . e($e['id']) . '" data-cat="' . e($e['category']) . '" data-fee="' . (int)($e['fee'] ?? 0) . '" data-n="' . $n . '"'
        . ' data-q="' . e(mb_strtolower($e['name'] . ' ' . ($e['tagline'] ?? '') . ' ' . ($e['desc'] ?? '') . ' ' . $cat['label'])) . '"'
        . ' style="--c1:' . e($cat['hue'][0]) . ';--c2:' . e($cat['hue'][1]) . ';--d:' . sprintf('%.2f', ($n % 4) * .06) . 's">'
        . '<div class="ep-face">'

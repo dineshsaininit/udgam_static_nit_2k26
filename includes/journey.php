@@ -19,7 +19,7 @@ $openYear   = $pastYears ? (int)end($pastYears)['year'] : 2026;
   <div class="jy reveal" id="journey">
     <div class="jy-scroller" id="jyScroller">
       <div class="jy-scene" id="jyScene">
-        <img class="jy-bg" src="assets/img/journey-bg.webp" alt="" draggable="false" loading="lazy" decoding="async">
+        <img class="jy-bg" src="assets/img/journey-bg.webp" alt="" width="2121" height="741" draggable="false" loading="lazy" decoding="async">
         <header class="jy-title">
           <div class="jy-small">THE UDGAM JOURNEY</div>
           <h2>A Journey Through Time</h2>
@@ -31,16 +31,16 @@ $openYear   = $pastYears ? (int)end($pastYears)['year'] : 2026;
 
         <?php foreach ($pastYears as $y): ?>
         <a class="jy-year" href="<?= e($y['url']) ?>" data-year="<?= (int)$y['year'] ?>" target="_blank" rel="noopener" style="--x:<?= e($y['x']) ?>" aria-label="UDGAM <?= (int)$y['year'] ?> website (opens in a new tab)">
-          <img class="jy-tree" src="assets/img/journey-tree.webp" alt="Cherry blossom tree for <?= (int)$y['year'] ?>" draggable="false" loading="lazy">
-          <span class="jy-plaque"><img src="assets/img/journey-plaque.webp" alt="" draggable="false" loading="lazy"><b><?= (int)$y['year'] ?></b></span>
+          <img class="jy-tree" src="assets/img/journey-tree.webp" alt="Cherry blossom tree for <?= (int)$y['year'] ?>" width="663" height="561" draggable="false" loading="lazy" decoding="async">
+          <span class="jy-plaque"><img src="assets/img/journey-plaque.webp" alt="" width="564" height="204" draggable="false" loading="lazy" decoding="async"><b><?= (int)$y['year'] ?></b></span>
         </a>
         <?php endforeach; ?>
         <a class="jy-year jy-current" href="#journey" data-year="2026" style="--x:84.42%" title="You are here — UDGAM 2026" aria-current="true">
-          <img class="jy-sign" src="assets/img/journey-sign.webp" alt="You are here" draggable="false" loading="lazy">
-          <img class="jy-tree" src="assets/img/journey-tree.webp" alt="Cherry blossom tree for 2026" draggable="false" loading="lazy">
-          <span class="jy-plaque"><img src="assets/img/journey-plaque-2026.webp" alt="" draggable="false" loading="lazy"><b>2026</b></span>
+          <img class="jy-sign" src="assets/img/journey-sign.webp" alt="You are here" width="687" height="207" draggable="false" loading="lazy" decoding="async">
+          <img class="jy-tree" src="assets/img/journey-tree.webp" alt="Cherry blossom tree for 2026" width="663" height="561" draggable="false" loading="lazy" decoding="async">
+          <span class="jy-plaque"><img src="assets/img/journey-plaque-2026.webp" alt="" width="564" height="204" draggable="false" loading="lazy" decoding="async"><b>2026</b></span>
         </a>
-        <img class="jy-car" id="jyCar" src="assets/img/journey-car.webp" alt="Little pink car" draggable="false">
+        <img class="jy-car" id="jyCar" src="assets/img/journey-car.webp" alt="Little pink car" width="399" height="243" draggable="false" decoding="async">
       </div>
     </div>
 

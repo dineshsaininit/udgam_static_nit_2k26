@@ -16,7 +16,7 @@ require __DIR__ . '/includes/header.php';
   <div class="about-page-wrap">
     <!-- Scenic Himalayas Blossom Background (Theme Coexists with Home Page) -->
     <div class="about-bg-stage" aria-hidden="true">
-      <img class="about-bg-img" src="assets/img/about_blossom_bg.webp" alt="UDGAM 2K26 — Scenic Himalayan Blossom Panorama" loading="eager" decoding="async">
+      <img class="about-bg-img" src="assets/img/about_blossom_bg.webp" alt="UDGAM 2K26 — Scenic Himalayan Blossom Panorama" width="1376" height="768" loading="eager" decoding="async">
       <div class="about-bg-overlay"></div>
     </div>
 
@@ -81,7 +81,7 @@ require __DIR__ . '/includes/header.php';
                   <div class="campus-inner-viewport">
                     <!-- Pane 1: Campus Sketch -->
                     <div class="campus-view-pane active" id="paneSketch">
-                      <img class="campus-sketch-img" src="assets/img/campus_original_sketch.webp" alt="NIT Sikkim Campus Anime Sketch Illustration" loading="lazy" decoding="async">
+                      <img class="campus-sketch-img" src="assets/img/campus_original_sketch.webp" alt="NIT Sikkim Campus Anime Sketch Illustration" width="1024" height="702" loading="lazy" decoding="async">
                       <div class="campus-badge-float">
                         <span style="color:#f43f5e">✿</span>
                         <span>NIT Sikkim &middot; 7,000 ft</span>
@@ -90,7 +90,7 @@ require __DIR__ . '/includes/header.php';
 
                     <!-- Pane 2: Real Campus View Photo -->
                     <div class="campus-view-pane" id="panePhoto">
-                      <img class="campus-photo-img" src="assets/img/campus_real_photo.webp" alt="NIT Sikkim Campus Ravangla Real View" loading="lazy" decoding="async">
+                      <img class="campus-photo-img" src="assets/img/campus_real_photo.webp" alt="NIT Sikkim Campus Ravangla Real View" width="503" height="610" loading="lazy" decoding="async">
                       <div class="campus-badge-float campus-badge-float-photo">
                         <span>📍 Ravangla, South Sikkim</span>
                       </div>

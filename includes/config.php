@@ -83,27 +83,38 @@ function css_url(string $path): string {
   return 'url(' . e(BASE_PATH . '/' . ltrim($path, '/')) . ')';
 }
 
-/** Appends the file's mtime so browsers pick up new CSS/JS after a deploy. */
+/** Appends the file's mtime so browsers pick up new CSS/JS after a deploy (memoized). */
 function asset(string $path): string {
-  $f = SITE_ROOT . '/' . $path;
-  return e($path) . (is_file($f) ? '?v=' . filemtime($f) : '');
+  static $mtimes = [];
+  if (!isset($mtimes[$path])) {
+    $f = SITE_ROOT . '/' . $path;
+    $mtimes[$path] = is_file($f) ? '?v=' . filemtime($f) : '';
+  }
+  return e($path) . $mtimes[$path];
 }
 
-/** Reads data/<name>.json; returns [] when the file is missing or invalid. */
+/** Reads data/<name>.json with request-level memoization; returns [] when missing or invalid. */
 function load_json(string $name): array {
+  static $cache = [];
+  if (isset($cache[$name])) {
+    return $cache[$name];
+  }
   $f = SITE_ROOT . '/data/' . $name . '.json';
-  if (!is_file($f)) return [];
+  if (!is_file($f)) return $cache[$name] = [];
   $d = json_decode((string)file_get_contents($f), true);
-  return is_array($d) ? $d : [];
+  return $cache[$name] = (is_array($d) ? $d : []);
 }
 
+/** Extracts uppercase initials from a name (memoized). */
 function initials(string $name): string {
+  static $memo = [];
+  if (isset($memo[$name])) return $memo[$name];
   $words = preg_split('/\s+/', trim(preg_replace('/[^\p{L} ]/u', '', $name)) ?: '') ?: [];
   $words = array_values(array_filter($words));
-  if (!$words) return '?';
+  if (!$words) return $memo[$name] = '?';
   $i = mb_substr($words[0], 0, 1);
   if (count($words) > 1) $i .= mb_substr($words[count($words) - 1], 0, 1);
-  return mb_strtoupper($i);
+  return $memo[$name] = mb_strtoupper($i);
 }
 
 /** Portrait sources for a member: `img` (local path) wins, else Google Drive id `p`. */

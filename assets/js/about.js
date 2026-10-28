@@ -41,8 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
       bounds = box.getBoundingClientRect();
     }
 
-    window.addEventListener('resize', updateBounds);
-    window.addEventListener('scroll', updateBounds, { passive: true });
+    const invalidateBounds = () => { bounds = null; };
+    window.addEventListener('resize', invalidateBounds, { passive: true });
+    window.addEventListener('scroll', invalidateBounds, { passive: true });
 
     function lerp(start, end, amt) {
       return (1 - amt) * start + amt * end;

@@ -421,11 +421,15 @@
       cur += dd * (1 - Math.exp(-dt * 9)); render(); rafId = requestAnimationFrame(tick);
     }
     function kick() { if (!rafId) rafId = requestAnimationFrame(tick); }
-    var lastY = window.pageYOffset;
-    function onScrollFw() {
+    var lastY = window.pageYOffset, fwTicking = false;
+    function updateFw() {
+      fwTicking = false;
       var y = window.pageYOffset;
       if (Math.abs(y - lastY) > 2) { manual = 0; lastY = y; }  // real page scrolling hands control back to the page
       calc(); setTarget(); kick();
+    }
+    function onScrollFw() {
+      if (!fwTicking) { fwTicking = true; raf(updateFw); }
     }
 
     // (clicking a cabin for a section on this page is handled by the same-page anchor handler above)
