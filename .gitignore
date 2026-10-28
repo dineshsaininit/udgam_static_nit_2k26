@@ -3,9 +3,3 @@ Thumbs.db
 .DS_Store
 desktop.ini
 *.log
-
-# Keep the uploads folders but not their contents
-uploads/**
-!uploads/README.md
-!uploads/*/
-!uploads/*/.gitkeep

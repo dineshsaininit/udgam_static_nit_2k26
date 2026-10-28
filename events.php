@@ -4,7 +4,7 @@ require __DIR__ . '/includes/config.php';
 $page = [
   'id'      => 'events',
   'title'   => 'Events — ' . SITE_NAME,
-  'desc'    => 'Every event of UDGAM 2K26, NIT Sikkim\'s cultural festival: headliners, games, sport, performance, creative, food and e-sports, with entry fees, team sizes and rulebooks.',
+  'desc'    => 'Every event of UDGAM 2K26, NIT Sikkim\'s cultural festival: headliners, games, sport, performance, creative, food and e-sports, with entry fees and team sizes.',
   'scripts' => ['assets/js/events.js'],
 ];
 
@@ -72,7 +72,7 @@ require __DIR__ . '/includes/header.php';
 ?>
 <main id="main">
   <?= page_banner('Events', 'pick your stage',
-      count($events) . ' events across games, sport, performance, creative arts, food and e-sports. Find yours and read the rulebook.', 'assets/img/events-bg.webp', 'UDGAM 2K26 · EVENTS') ?>
+      count($events) . ' events across games, sport, performance, creative arts, food and e-sports. Find yours and take the stage.', 'assets/img/events-bg.webp', 'UDGAM 2K26 · EVENTS') ?>
 
   <!-- HEADLINERS -->
   <section class="pg evx" id="events" aria-label="Headliner events" data-nav=".45">
@@ -116,7 +116,7 @@ require __DIR__ . '/includes/header.php';
 
     <div class="ex-note nr">
       <p class="pg-script">Ready to play?</p>
-      <p>Rulebooks open as PDFs or documents. Follow <a href="<?= e($SITE['instagram']['url']) ?>" target="_blank" rel="noopener"><?= e($SITE['instagram']['handle']) ?></a> for dates and announcements.</p>
+      <p>Follow <a href="<?= e($SITE['instagram']['url']) ?>" target="_blank" rel="noopener"><?= e($SITE['instagram']['handle']) ?></a> for dates and announcements.</p>
       <a class="pg-btn" href="contact.php">Questions? Contact the team</a>
     </div>
   </section>

@@ -1,38 +1,125 @@
 {
-  "_note": "Add a sponsor by filling `name`, `logo` (e.g. uploads/sponsors/acme.png) and optionally `url`. Slots with an empty name render as 'Your Logo Here' placeholders.",
+  "_note": "Sponsors of UDGAM 2K26, National Institute of Technology Sikkim.",
   "tiers": [
     {
-      "id": "title", "label": "TITLE SPONSOR", "layout": "title",
+      "id": "corporate",
+      "label": "CORPORATE & CASH SPONSORS",
+      "layout": "row4",
       "slots": [
-        { "name": "", "logo": "", "url": "" }
+        {
+          "name": "Quarks Technosoft",
+          "logo": "uploads/sponsors/quarks_logo.png",
+          "url": "https://www.qtsolv.com/"
+        },
+        {
+          "name": "NBCC (India) Limited",
+          "logo": "uploads/sponsors/nbcc_logo.png",
+          "url": "https://www.nbccindia.in/"
+        },
+        {
+          "name": "CISB Services Ltd.",
+          "logo": "uploads/sponsors/cisb_logo.png",
+          "url": "https://cisb.co.in/"
+        },
+        {
+          "name": "Sistema Smart Tech",
+          "logo": "uploads/sponsors/sistema_smart_tech_logo.png",
+          "url": "https://sistema.com"
+        },
+        {
+          "name": "The Kollektor",
+          "logo": "uploads/sponsors/kollektor_logo.png",
+          "url": "https://thekollektor.com/"
+        }
       ]
     },
     {
-      "id": "associate", "label": "ASSOCIATE SPONSORS", "layout": "row3",
+      "id": "banking",
+      "label": "BANKING & CASH PARTNERS",
+      "layout": "row2",
       "slots": [
-        { "name": "", "logo": "", "url": "" },
-        { "name": "", "logo": "", "url": "" },
-        { "name": "", "logo": "", "url": "" }
+        {
+          "name": "Union Bank of India",
+          "logo": "uploads/sponsors/union_bank_logo.png",
+          "url": "https://www.unionbankofindia.bank.in/en/home"
+        },
+        {
+          "name": "Canara Bank",
+          "logo": "uploads/sponsors/canara_bank_logo.png",
+          "url": "https://www.canarabank.bank.in/"
+        }
       ]
     },
     {
-      "id": "partners", "label": "PARTNERS", "layout": "row4",
+      "id": "gaming",
+      "label": "GAMING & ESPORTS PARTNERS",
+      "layout": "row2",
       "slots": [
-        { "name": "", "logo": "", "url": "" },
-        { "name": "", "logo": "", "url": "" },
-        { "name": "", "logo": "", "url": "" },
-        { "name": "", "logo": "", "url": "" },
-        { "name": "", "logo": "", "url": "" },
-        { "name": "", "logo": "", "url": "" },
-        { "name": "", "logo": "", "url": "" },
-        { "name": "", "logo": "", "url": "" }
+        {
+          "name": "Krafton India Esports",
+          "logo": "uploads/sponsors/krafton_india_esports_logo.png",
+          "url": "https://kraftonindiaesports.com/"
+        },
+        {
+          "name": "Unstop",
+          "logo": "uploads/sponsors/unstop_logo.png",
+          "url": "https://unstop.com/"
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "label": "FOOD & BEVERAGE PARTNERS",
+      "layout": "row2",
+      "slots": [
+        {
+          "name": "Domino's Pizza",
+          "logo": "uploads/sponsors/dominos_logo.png",
+          "url": "https://www.dominos.co.in/"
+        },
+        {
+          "name": "The Waffle Stop",
+          "logo": "uploads/sponsors/waffle_stop_logo.png",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "media_hospitality",
+      "label": "MEDIA & HOSPITALITY PARTNERS",
+      "layout": "row3",
+      "slots": [
+        {
+          "name": "Sikkim Express",
+          "logo": "uploads/sponsors/sikkim_express_logo.png",
+          "url": "https://www.sikkimexpress.com/"
+        },
+        {
+          "name": "Ravongla Star",
+          "logo": "uploads/sponsors/ravongla_star_logo.png",
+          "url": "https://www.facebook.com/ravongla/"
+        },
+        {
+          "name": "The Alnus Ravangla",
+          "logo": "uploads/sponsors/alnus_ravangla_logo.png",
+          "url": "https://www.facebook.com/thealnus.ravangla/"
+        }
       ]
     }
   ],
   "why": [
-    { "title": "Reach",      "text": "Meet students, creators and audiences from across the North East." },
-    { "title": "Visibility", "text": "Be seen on stage, on campus and across our digital channels." },
-    { "title": "Impact",     "text": "Support art, culture and community in the hills of Sikkim." }
+    {
+      "title": "Reach",
+      "text": "Meet students, creators and audiences from across the North East."
+    },
+    {
+      "title": "Visibility",
+      "text": "Be seen on stage, on campus and across our digital channels."
+    },
+    {
+      "title": "Impact",
+      "text": "Support art, culture and community in the hills of Sikkim."
+    }
   ],
   "contact_committee": "sponsorship"
-}
+}

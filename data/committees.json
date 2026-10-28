@@ -40,7 +40,8 @@
         "n": "Vishal Prasad",
         "r": "Associate Lead",
         "t": 2,
-        "li": "https://www.linkedin.com/in/vishal-prasad-85b183380"
+        "li": "https://www.linkedin.com/in/vishal-prasad-85b183380",
+        "img": "uploads/team/vishal-prasad.webp"
       },
       {
         "n": "Pravesh Sharma",
@@ -48,7 +49,8 @@
         "t": 2,
         "a": [
           "Pravesh"
-        ]
+        ],
+        "img": "uploads/team/pravesh-sharma.webp"
       }
     ]
   },
@@ -90,7 +92,8 @@
         "li": "https://www.linkedin.com/in/lavanya-srivastav-930216371",
         "a": [
           "Lavanya"
-        ]
+        ],
+        "img": "uploads/team/lavanya-srivastav.webp"
       }
     ]
   },
@@ -133,7 +136,8 @@
       {
         "n": "Vatan Nagar",
         "r": "Associate Lead",
-        "t": 2
+        "t": 2,
+        "img": "uploads/team/vatan-nagar.webp"
       },
       {
         "n": "Sandeep Kumar",
@@ -159,7 +163,8 @@
         "n": "Neeradi Kruthagna",
         "r": "Associate Lead",
         "t": 2,
-        "li": "https://www.linkedin.com/in/neeradi-neeradi-kruthagna-683478395"
+        "li": "https://www.linkedin.com/in/neeradi-neeradi-kruthagna-683478395",
+        "img": "uploads/team/neeradi-kruthagna.webp"
       }
     ]
   },
@@ -188,7 +193,8 @@
         "n": "Abinash Chettri",
         "r": "Associate Lead",
         "t": 2,
-        "li": "https://www.linkedin.com/in/abinash-chettri-077130381"
+        "li": "https://www.linkedin.com/in/abinash-chettri-077130381",
+        "img": "uploads/team/abhinash.webp"
       },
       {
         "n": "Kishore Shanker Kami",
@@ -196,7 +202,8 @@
         "t": 2,
         "a": [
           "Kishore Shanker"
-        ]
+        ],
+        "img": "uploads/team/kishore-shanker.webp"
       }
     ]
   },
@@ -214,7 +221,8 @@
       {
         "n": "Ankit Rawat",
         "r": "Lead",
-        "t": 1
+        "t": 1,
+        "img": "uploads/team/ankit-rawat.webp"
       },
       {
         "n": "Sonu Yadav",
@@ -614,4 +622,4 @@
       }
     ]
   }
-]
+]

@@ -1,493 +1,471 @@
 {
- "_note": "Events of UDGAM 2K26 (from udgamnits.live). fee 0 = free entry; per = 'team' or 'person'; team = [min, max] players. headliner events are shown first, large.",
- "categories": [
-  {
-   "id": "games",
-   "label": "Games",
-   "hue": [
-    "#7d1238",
-    "#c8576b"
-   ]
-  },
-  {
-   "id": "sports",
-   "label": "Sports",
-   "hue": [
-    "#8a2a2f",
-    "#d08a5c"
-   ]
-  },
-  {
-   "id": "performance",
-   "label": "Performance",
-   "hue": [
-    "#5c2346",
-    "#b8577f"
-   ]
-  },
-  {
-   "id": "creative",
-   "label": "Creative",
-   "hue": [
-    "#4a3d5f",
-    "#9a6f9e"
-   ]
-  },
-  {
-   "id": "food",
-   "label": "Food",
-   "hue": [
-    "#6e3a12",
-    "#c9913e"
-   ]
-  },
-  {
-   "id": "esports",
-   "label": "E-Sports",
-   "hue": [
-    "#17283a",
-    "#3f6b8f"
-   ]
-  }
- ],
- "events": [
-  {
-   "id": "dance-competition",
-   "name": "Dance Competition",
-   "category": "performance",
-   "headliner": true,
-   "fee": 0,
-   "team": [
-    1,
-    7
-   ],
-   "desc": "The winner of the dance competition gets to perform on the Udgam stage.",
-   "tagline": "Steal the floor, own the stage!",
-   "rules": "https://udgamnits.live/rulebooks/dance-competition.pdf"
-  },
-  {
-   "id": "food-fiesta",
-   "name": "Food Fiesta",
-   "category": "food",
-   "headliner": true,
-   "fee": 0,
-   "team": [
-    3,
-    5
-   ],
-   "desc": "Cook-off for food makers. The winner gets to run a stall during Udgam.",
-   "tagline": "One fest. Endless flavors.",
-   "rules": "https://udgamnits.live/rulebooks/food-fiesta.pdf"
-  },
-  {
-   "id": "treasure-hunt",
-   "name": "Treasure Hunt",
-   "category": "games",
-   "headliner": true,
-   "fee": 100,
-   "per": "team",
-   "team": [
-    3,
-    3
-   ],
-   "tagline": "Follow the clues. Find the glory.",
-   "rules": "https://udgamnits.live/rulebooks/treasure-hunt.pdf"
-  },
-  {
-   "id": "ipl-auction",
-   "name": "IPL Auction",
-   "category": "games",
-   "headliner": true,
-   "fee": 200,
-   "per": "team",
-   "team": [
-    4,
-    6
-   ],
-   "desc": "Auction for IPL teams.",
-   "tagline": "Every bid counts. Every player matters.",
-   "rules": "https://udgamnits.live/rulebooks/ipl-auction.pdf"
-  },
-  {
-   "id": "ramp-walk",
-   "name": "Ramp Walk",
-   "category": "performance",
-   "headliner": true,
-   "fee": 0,
-   "team": [
-    1,
-    1
-   ],
-   "desc": "Ramp walk with different traditions.",
-   "tagline": "Threads of tradition, steps of grace!"
-  },
-  {
-   "id": "singing-competition",
-   "name": "Singing Competition",
-   "category": "performance",
-   "headliner": true,
-   "fee": 0,
-   "team": [
-    1,
-    7
-   ],
-   "tagline": "Sing your heart out. Touch the soul.",
-   "rules": "https://udgamnits.live/rulebooks/singing-competition.pdf"
-  },
-  {
-   "id": "wall-painting",
-   "name": "Wall Painting",
-   "category": "creative",
-   "headliner": true,
-   "fee": 200,
-   "per": "team",
-   "team": [
-    1,
-    5
-   ],
-   "tagline": "Walls that speak, art that screams.",
-   "rules": "https://udgamnits.live/rulebooks/wall-painting.pdf"
-  },
-  {
-   "id": "housie",
-   "name": "Housie (Bingo)",
-   "category": "games",
-   "headliner": true,
-   "fee": 0,
-   "team": [
-    1,
-    1
-   ],
-   "tagline": "Mark, match, shout — it's Housie time!",
-   "rules": "https://udgamnits.live/rulebooks/housie.pdf"
-  },
-  {
-   "id": "spoil-the-tshirt",
-   "name": "Spoil the T-shirt",
-   "category": "games",
-   "headliner": true,
-   "fee": 150,
-   "per": "team",
-   "team": [
-    3,
-    3
-   ],
-   "rules": "https://udgamnits.live/rulebooks/spoil-the-tshirt.pdf",
-   "desc": "Full format in the event document."
-  },
-  {
-   "id": "dumb-charades",
-   "name": "Dumb Charades",
-   "category": "games",
-   "headliner": false,
-   "fee": 0,
-   "team": [
-    4,
-    4
-   ],
-   "desc": "Guess the movie name — one player acts while the other guesses. Includes a guess-the-personality round.",
-   "tagline": "Your expression. Their imagination. Let the madness begin.",
-   "rules": "https://udgamnits.live/rulebooks/dumb-charades.pdf"
-  },
-  {
-   "id": "antakshari",
-   "name": "Antakshari",
-   "category": "performance",
-   "headliner": false,
-   "fee": 0,
-   "team": [
-    5,
-    5
-   ],
-   "tagline": "कुछ सुर, कुछ नग़मे, और एक महफ़िल यादगार।",
-   "rules": "https://udgamnits.live/rulebooks/antakshari.pdf"
-  },
-  {
-   "id": "balloon-burst",
-   "name": "Balloon Burst",
-   "category": "games",
-   "headliner": false,
-   "fee": 30,
-   "per": "team",
-   "team": [
-    2,
-    2
-   ],
-   "tagline": "A little pressure, a lot of chaos.",
-   "rules": "https://udgamnits.live/rulebooks/balloon-burst.pdf"
-  },
-  {
-   "id": "squid-games",
-   "name": "Squid Games",
-   "category": "games",
-   "headliner": false,
-   "fee": 30,
-   "per": "person",
-   "team": [
-    1,
-    1
-   ],
-   "rounds": [
-    "Red Light, Green Light",
-    "Odd or Even",
-    "Ddakji",
-    "Team of 3: Flip the Bottle & Ball in the Bucket"
-   ],
-   "desc": "Four rounds of survival games.",
-   "tagline": "Step in. Play smart. Walk out a winner.",
-   "rules": "https://udgamnits.live/rulebooks/squid-games.pdf"
-  },
-  {
-   "id": "free-fire",
-   "name": "Free Fire",
-   "category": "esports",
-   "headliner": false,
-   "fee": 200,
-   "per": "team",
-   "team": [
-    4,
-    4
-   ],
-   "tagline": "Drop, loot, survive — Booyah or bust!",
-   "rules": "https://udgamnits.live/rulebooks/free-fire.pdf"
-  },
-  {
-   "id": "mlbb",
-   "name": "MLBB",
-   "category": "esports",
-   "headliner": false,
-   "fee": 200,
-   "per": "team",
-   "team": [
-    5,
-    6
-   ],
-   "tagline": "Legends aren't born — they're made in the arena!",
-   "rules": "https://udgamnits.live/rulebooks/mlbb.pdf"
-  },
-  {
-   "id": "efootball",
-   "name": "eFootball",
-   "category": "esports",
-   "headliner": false,
-   "fee": 50,
-   "per": "person",
-   "team": [
-    1,
-    1
-   ],
-   "tagline": "One ball, one dream — kick your way to glory!"
-  },
-  {
-   "id": "guess-the-juice",
-   "name": "Guess the Juice",
-   "category": "food",
-   "headliner": false,
-   "fee": 50,
-   "per": "team",
-   "team": [
-    1,
-    1
-   ],
-   "tagline": "Bet you can't guess this in one sip."
-  },
-  {
-   "id": "three-leg-tie",
-   "name": "Three-Leg Tie",
-   "category": "sports",
-   "headliner": false,
-   "fee": 30,
-   "per": "team",
-   "team": [
-    2,
-    2
-   ],
-   "tagline": "Three feet, one goal.",
-   "rules": "https://udgamnits.live/rulebooks/three-leg-tie.pdf"
-  },
-  {
-   "id": "musical-chair",
-   "name": "Musical Chair",
-   "category": "games",
-   "headliner": false,
-   "fee": 0,
-   "team": [
-    1,
-    1
-   ],
-   "desc": "Grab a chair when the music stops.",
-   "tagline": "Music on, game on."
-  },
-  {
-   "id": "rangoli",
-   "name": "Rangoli",
-   "category": "creative",
-   "headliner": false,
-   "fee": 80,
-   "per": "team",
-   "team": [
-    4,
-    4
-   ],
-   "desc": "Team up and make a rangoli.",
-   "tagline": "Create together, shine together.",
-   "rules": "https://udgamnits.live/rulebooks/rangoli.pdf"
-  },
-  {
-   "id": "photography",
-   "name": "Photography",
-   "category": "creative",
-   "headliner": false,
-   "fee": 0,
-   "team": [
-    1,
-    1
-   ],
-   "desc": "Submit raw pictures taken on your phone, with no post-processing.",
-   "tagline": "Freeze the vibe, frame the moment.",
-   "rules": "https://udgamnits.live/rulebooks/photography.pdf"
-  },
-  {
-   "id": "food-eating-challenge",
-   "name": "Food Eating Challenge",
-   "category": "food",
-   "headliner": false,
-   "fee": 50,
-   "per": "person",
-   "team": [
-    1,
-    1
-   ],
-   "desc": "Whoever eats the most within the time limit wins.",
-   "tagline": "Are you hungry enough to make history?",
-   "rules": "https://udgamnits.live/rulebooks/food-eating-challenge.pdf"
-  },
-  {
-   "id": "cup-pong",
-   "name": "Cup Pong",
-   "category": "games",
-   "headliner": false,
-   "fee": 0,
-   "team": [
-    1,
-    1
-   ],
-   "tagline": "Aim. Bounce. Conquer.",
-   "rules": "https://udgamnits.live/rulebooks/cup-pong.pdf"
-  },
-  {
-   "id": "short-movie",
-   "name": "Short Movie Competition",
-   "category": "creative",
-   "headliner": false,
-   "fee": 0,
-   "team": [
-    1,
-    3
-   ],
-   "tagline": "Small screen. Big stories.",
-   "rules": "https://udgamnits.live/rulebooks/short-movie.pdf"
-  },
-  {
-   "id": "string-maze",
-   "name": "String Maze",
-   "category": "sports",
-   "headliner": false,
-   "fee": 30,
-   "per": "person",
-   "team": [
-    1,
-    1
-   ],
-   "desc": "Step into a maze of tangled strings and make your way to the other side without touching them. Duck, crawl, twist and squeeze through the gaps while finding the fastest route. One wrong move can cost you valuable seconds — reach the finish line in the shortest time to win.",
-   "tagline": "Untangle the strings, conquer the maze.",
-   "rules": "https://udgamnits.live/rulebooks/string-maze.pdf"
-  },
-  {
-   "id": "balloon-pair-race",
-   "name": "Balloon Between Two Race",
-   "category": "sports",
-   "headliner": false,
-   "fee": 0,
-   "team": [
-    2,
-    2
-   ],
-   "tagline": "Two to hold one.",
-   "rules": "https://udgamnits.live/rulebooks/balloon-pair-race.pdf"
-  }
- ],
- "past": [
-  {
-   "year": 2018,
-   "url": "https://udgam.nitsikkim.ac.in/udgam18/HIGH%20VOLTAGE/H_V.php",
-   "x": "4.74%",
-   "tagline": "High Voltage",
-   "logo": "assets/img/legacy/logo-2018.webp",
-   "blurb": "The year UDGAM launched High Voltage, an open rock contest for live music and local bands.",
-   "photos": [
-    "assets/img/legacy/2018-1.webp"
-   ]
-  },
-  {
-   "year": 2019,
-   "url": "https://udgam.nitsikkim.ac.in/udgam19/",
-   "x": "17.61%",
-   "tagline": "28 – 30 April",
-   "logo": "assets/img/legacy/logo-2019.webp",
-   "blurb": "Three days of bands, dance, dramatics and fine arts, with Lamhe, the DJ night, to close each evening.",
-   "photos": [
-    "assets/img/legacy/2019-1.webp",
-    "assets/img/legacy/2019-2.webp",
-    "assets/img/legacy/2019-3.webp"
-   ]
-  },
-  {
-   "year": 2020,
-   "url": "https://nitsikkim.ac.in/udgam/udgam20/",
-   "x": "31.00%",
-   "tagline": "Lumos Maxima",
-   "logo": "assets/img/legacy/logo-2020.webp",
-   "blurb": "The Lumos Maxima edition, with its splash of colour around the UDGAM emblem.",
-   "photos": []
-  },
-  {
-   "year": 2023,
-   "url": "https://nitsikkim.ac.in/udgam/udgam23/home.php",
-   "x": "44.91%",
-   "tagline": "A Cultural Fusion",
-   "logo": "assets/img/legacy/logo-2023.webp",
-   "blurb": "Vistas Euphoria: 30+ events, acrobatics on the main stage and students from across India.",
-   "photos": [
-    "assets/img/legacy/2023-1.webp",
-    "assets/img/legacy/2023-2.webp"
-   ]
-  },
-  {
-   "year": 2024,
-   "url": "https://udgam.nitsikkim.ac.in/udgam24/",
-   "x": "57.87%",
-   "tagline": "Rise Through Culture",
-   "logo": "assets/img/legacy/logo-2024.webp",
-   "blurb": "Bands, solo singers and fashion walks lit up the main stage night after night.",
-   "photos": [
-    "assets/img/legacy/2024-1.webp",
-    "assets/img/legacy/2024-2.webp",
-    "assets/img/legacy/2024-3.webp"
-   ]
-  },
-  {
-   "year": 2025,
-   "url": "https://udgam.nitsikkim.ac.in/udgam25/",
-   "x": "71.03%",
-   "tagline": "Ascending to New Horizons",
-   "logo": "assets/img/legacy/logo-2025.webp",
-   "blurb": "Three days of art, language, food and tradition, opened by a flash mob dancing through the rain.",
-   "photos": [
-    "assets/img/legacy/2025-1.webp",
-    "assets/img/legacy/2025-2.webp",
-    "assets/img/legacy/2025-3.webp"
-   ]
-  }
- ]
-}
+  "_note": "Events of UDGAM 2K26 (from udgamnits.live). fee 0 = free entry; per = 'team' or 'person'; team = [min, max] players. headliner events are shown first, large.",
+  "categories": [
+    {
+      "id": "games",
+      "label": "Games",
+      "hue": [
+        "#7d1238",
+        "#c8576b"
+      ]
+    },
+    {
+      "id": "sports",
+      "label": "Sports",
+      "hue": [
+        "#8a2a2f",
+        "#d08a5c"
+      ]
+    },
+    {
+      "id": "performance",
+      "label": "Performance",
+      "hue": [
+        "#5c2346",
+        "#b8577f"
+      ]
+    },
+    {
+      "id": "creative",
+      "label": "Creative",
+      "hue": [
+        "#4a3d5f",
+        "#9a6f9e"
+      ]
+    },
+    {
+      "id": "food",
+      "label": "Food",
+      "hue": [
+        "#6e3a12",
+        "#c9913e"
+      ]
+    },
+    {
+      "id": "esports",
+      "label": "E-Sports",
+      "hue": [
+        "#17283a",
+        "#3f6b8f"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "dance-competition",
+      "name": "Dance Competition",
+      "category": "performance",
+      "headliner": true,
+      "fee": 0,
+      "team": [
+        1,
+        7
+      ],
+      "desc": "The winner of the dance competition gets to perform on the Udgam stage.",
+      "tagline": "Steal the floor, own the stage!"
+    },
+    {
+      "id": "food-fiesta",
+      "name": "Food Fiesta",
+      "category": "food",
+      "headliner": true,
+      "fee": 0,
+      "team": [
+        3,
+        5
+      ],
+      "desc": "Cook-off for food makers. The winner gets to run a stall during Udgam.",
+      "tagline": "One fest. Endless flavors."
+    },
+    {
+      "id": "treasure-hunt",
+      "name": "Treasure Hunt",
+      "category": "games",
+      "headliner": true,
+      "fee": 100,
+      "per": "team",
+      "team": [
+        3,
+        3
+      ],
+      "tagline": "Follow the clues. Find the glory."
+    },
+    {
+      "id": "ipl-auction",
+      "name": "IPL Auction",
+      "category": "games",
+      "headliner": true,
+      "fee": 200,
+      "per": "team",
+      "team": [
+        4,
+        6
+      ],
+      "desc": "Auction for IPL teams.",
+      "tagline": "Every bid counts. Every player matters."
+    },
+    {
+      "id": "ramp-walk",
+      "name": "Ramp Walk",
+      "category": "performance",
+      "headliner": true,
+      "fee": 0,
+      "team": [
+        1,
+        1
+      ],
+      "desc": "Ramp walk with different traditions.",
+      "tagline": "Threads of tradition, steps of grace!"
+    },
+    {
+      "id": "singing-competition",
+      "name": "Singing Competition",
+      "category": "performance",
+      "headliner": true,
+      "fee": 0,
+      "team": [
+        1,
+        7
+      ],
+      "tagline": "Sing your heart out. Touch the soul."
+    },
+    {
+      "id": "wall-painting",
+      "name": "Wall Painting",
+      "category": "creative",
+      "headliner": true,
+      "fee": 200,
+      "per": "team",
+      "team": [
+        1,
+        5
+      ],
+      "tagline": "Walls that speak, art that screams."
+    },
+    {
+      "id": "housie",
+      "name": "Housie (Bingo)",
+      "category": "games",
+      "headliner": true,
+      "fee": 0,
+      "team": [
+        1,
+        1
+      ],
+      "tagline": "Mark, match, shout — it's Housie time!"
+    },
+    {
+      "id": "spoil-the-tshirt",
+      "name": "Spoil the T-shirt",
+      "category": "games",
+      "headliner": true,
+      "fee": 150,
+      "per": "team",
+      "team": [
+        3,
+        3
+      ],
+      "desc": "Full format in the event document."
+    },
+    {
+      "id": "dumb-charades",
+      "name": "Dumb Charades",
+      "category": "games",
+      "headliner": false,
+      "fee": 0,
+      "team": [
+        4,
+        4
+      ],
+      "desc": "Guess the movie name — one player acts while the other guesses. Includes a guess-the-personality round.",
+      "tagline": "Your expression. Their imagination. Let the madness begin."
+    },
+    {
+      "id": "antakshari",
+      "name": "Antakshari",
+      "category": "performance",
+      "headliner": false,
+      "fee": 0,
+      "team": [
+        5,
+        5
+      ],
+      "tagline": "कुछ सुर, कुछ नग़मे, और एक महफ़िल यादगार।"
+    },
+    {
+      "id": "balloon-burst",
+      "name": "Balloon Burst",
+      "category": "games",
+      "headliner": false,
+      "fee": 30,
+      "per": "team",
+      "team": [
+        2,
+        2
+      ],
+      "tagline": "A little pressure, a lot of chaos."
+    },
+    {
+      "id": "squid-games",
+      "name": "Squid Games",
+      "category": "games",
+      "headliner": false,
+      "fee": 30,
+      "per": "person",
+      "team": [
+        1,
+        1
+      ],
+      "rounds": [
+        "Red Light, Green Light",
+        "Odd or Even",
+        "Ddakji",
+        "Team of 3: Flip the Bottle & Ball in the Bucket"
+      ],
+      "desc": "Four rounds of survival games.",
+      "tagline": "Step in. Play smart. Walk out a winner."
+    },
+    {
+      "id": "free-fire",
+      "name": "Free Fire",
+      "category": "esports",
+      "headliner": false,
+      "fee": 200,
+      "per": "team",
+      "team": [
+        4,
+        4
+      ],
+      "tagline": "Drop, loot, survive — Booyah or bust!"
+    },
+    {
+      "id": "mlbb",
+      "name": "MLBB",
+      "category": "esports",
+      "headliner": false,
+      "fee": 200,
+      "per": "team",
+      "team": [
+        5,
+        6
+      ],
+      "tagline": "Legends aren't born — they're made in the arena!"
+    },
+    {
+      "id": "efootball",
+      "name": "eFootball",
+      "category": "esports",
+      "headliner": false,
+      "fee": 50,
+      "per": "person",
+      "team": [
+        1,
+        1
+      ],
+      "tagline": "One ball, one dream — kick your way to glory!"
+    },
+    {
+      "id": "guess-the-juice",
+      "name": "Guess the Juice",
+      "category": "food",
+      "headliner": false,
+      "fee": 50,
+      "per": "team",
+      "team": [
+        1,
+        1
+      ],
+      "tagline": "Bet you can't guess this in one sip."
+    },
+    {
+      "id": "three-leg-tie",
+      "name": "Three-Leg Tie",
+      "category": "sports",
+      "headliner": false,
+      "fee": 30,
+      "per": "team",
+      "team": [
+        2,
+        2
+      ],
+      "tagline": "Three feet, one goal."
+    },
+    {
+      "id": "musical-chair",
+      "name": "Musical Chair",
+      "category": "games",
+      "headliner": false,
+      "fee": 0,
+      "team": [
+        1,
+        1
+      ],
+      "desc": "Grab a chair when the music stops.",
+      "tagline": "Music on, game on."
+    },
+    {
+      "id": "rangoli",
+      "name": "Rangoli",
+      "category": "creative",
+      "headliner": false,
+      "fee": 80,
+      "per": "team",
+      "team": [
+        4,
+        4
+      ],
+      "desc": "Team up and make a rangoli.",
+      "tagline": "Create together, shine together."
+    },
+    {
+      "id": "photography",
+      "name": "Photography",
+      "category": "creative",
+      "headliner": false,
+      "fee": 0,
+      "team": [
+        1,
+        1
+      ],
+      "desc": "Submit raw pictures taken on your phone, with no post-processing.",
+      "tagline": "Freeze the vibe, frame the moment."
+    },
+    {
+      "id": "food-eating-challenge",
+      "name": "Food Eating Challenge",
+      "category": "food",
+      "headliner": false,
+      "fee": 50,
+      "per": "person",
+      "team": [
+        1,
+        1
+      ],
+      "desc": "Whoever eats the most within the time limit wins.",
+      "tagline": "Are you hungry enough to make history?"
+    },
+    {
+      "id": "cup-pong",
+      "name": "Cup Pong",
+      "category": "games",
+      "headliner": false,
+      "fee": 0,
+      "team": [
+        1,
+        1
+      ],
+      "tagline": "Aim. Bounce. Conquer."
+    },
+    {
+      "id": "short-movie",
+      "name": "Short Movie Competition",
+      "category": "creative",
+      "headliner": false,
+      "fee": 0,
+      "team": [
+        1,
+        3
+      ],
+      "tagline": "Small screen. Big stories."
+    },
+    {
+      "id": "string-maze",
+      "name": "String Maze",
+      "category": "sports",
+      "headliner": false,
+      "fee": 30,
+      "per": "person",
+      "team": [
+        1,
+        1
+      ],
+      "desc": "Step into a maze of tangled strings and make your way to the other side without touching them. Duck, crawl, twist and squeeze through the gaps while finding the fastest route. One wrong move can cost you valuable seconds — reach the finish line in the shortest time to win.",
+      "tagline": "Untangle the strings, conquer the maze."
+    },
+    {
+      "id": "balloon-pair-race",
+      "name": "Balloon Between Two Race",
+      "category": "sports",
+      "headliner": false,
+      "fee": 0,
+      "team": [
+        2,
+        2
+      ],
+      "tagline": "Two to hold one."
+    }
+  ],
+  "past": [
+    {
+      "year": 2018,
+      "url": "https://udgam.nitsikkim.ac.in/udgam18/HIGH%20VOLTAGE/H_V.php",
+      "x": "4.74%",
+      "tagline": "High Voltage",
+      "logo": "assets/img/legacy/logo-2018.webp",
+      "blurb": "The year UDGAM launched High Voltage, an open rock contest for live music and local bands.",
+      "photos": [
+        "assets/img/legacy/2018-1.webp"
+      ]
+    },
+    {
+      "year": 2019,
+      "url": "https://udgam.nitsikkim.ac.in/udgam19/",
+      "x": "17.61%",
+      "tagline": "28 – 30 April",
+      "logo": "assets/img/legacy/logo-2019.webp",
+      "blurb": "Three days of bands, dance, dramatics and fine arts, with Lamhe, the DJ night, to close each evening.",
+      "photos": [
+        "assets/img/legacy/2019-1.webp",
+        "assets/img/legacy/2019-2.webp",
+        "assets/img/legacy/2019-3.webp"
+      ]
+    },
+    {
+      "year": 2020,
+      "url": "https://nitsikkim.ac.in/udgam/udgam20/",
+      "x": "31.00%",
+      "tagline": "Lumos Maxima",
+      "logo": "assets/img/legacy/logo-2020.webp",
+      "blurb": "The Lumos Maxima edition, with its splash of colour around the UDGAM emblem.",
+      "photos": []
+    },
+    {
+      "year": 2023,
+      "url": "https://nitsikkim.ac.in/udgam/udgam23/home.php",
+      "x": "44.91%",
+      "tagline": "A Cultural Fusion",
+      "logo": "assets/img/legacy/logo-2023.webp",
+      "blurb": "Vistas Euphoria: 30+ events, acrobatics on the main stage and students from across India.",
+      "photos": [
+        "assets/img/legacy/2023-1.webp",
+        "assets/img/legacy/2023-2.webp"
+      ]
+    },
+    {
+      "year": 2024,
+      "url": "https://udgam.nitsikkim.ac.in/udgam24/",
+      "x": "57.87%",
+      "tagline": "Rise Through Culture",
+      "logo": "assets/img/legacy/logo-2024.webp",
+      "blurb": "Bands, solo singers and fashion walks lit up the main stage night after night.",
+      "photos": [
+        "assets/img/legacy/2024-1.webp",
+        "assets/img/legacy/2024-2.webp",
+        "assets/img/legacy/2024-3.webp"
+      ]
+    },
+    {
+      "year": 2025,
+      "url": "https://udgam.nitsikkim.ac.in/udgam25/",
+      "x": "71.03%",
+      "tagline": "Ascending to New Horizons",
+      "logo": "assets/img/legacy/logo-2025.webp",
+      "blurb": "Three days of art, language, food and tradition, opened by a flash mob dancing through the rain.",
+      "photos": [
+        "assets/img/legacy/2025-1.webp",
+        "assets/img/legacy/2025-2.webp",
+        "assets/img/legacy/2025-3.webp"
+      ]
+    }
+  ]
+}

@@ -7,8 +7,9 @@
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
 *,*::before,*::after{box-sizing:inherit}
-html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
-html,body{margin:0;padding:0;background:#f6dfe0;color:#3a1f2b;font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar,::-webkit-scrollbar{display:none;width:0;height:0}
+html,body{margin:0;padding:0;background:#f6dfe0;color:#3a1f2b;font-family:Georgia,'Times New Roman',serif;overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none}
 body.locked{overflow:hidden;height:100%}
 img{display:block;height:auto;max-width:100%}
 

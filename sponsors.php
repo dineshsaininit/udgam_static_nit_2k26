@@ -20,16 +20,70 @@ $page = [
 ];
 
 $tiers = [
-  ['id'=>'grand',   'title'=>'Grand Sponsors',       'size'=>'lg','slots'=>2,'cta'=>'Become a Grand Sponsor',        'tag'=>'Partners who make UDGAM 2K26 shine brighter.',           'sponsors'=>[
-    ['name'=>'Quarks', 'logo'=>'uploads/sponsors/quarks_logo.png', 'url'=>'https://www.qtsolv.com'],
-    ['name'=>'Dominos', 'logo'=>'uploads/sponsors/dominos_logo.png', 'url'=>'https://www.dominos.co.in']
-  ]],
-  ['id'=>'tech',    'title'=>'Technology Partner',   'size'=>'md','slots'=>1,'cta'=>'Become a Technology Partner',   'tag'=>'Powering the digital experience and innovation.',        'sponsors'=>[
-    ['name'=>'Quarks', 'logo'=>'uploads/sponsors/quarks_logo.png', 'url'=>'https://www.qtsolv.com']
-  ]],
-  ['id'=>'food',    'title'=>'Food Partner',         'size'=>'md','slots'=>1,'cta'=>'Become a Food Partner',         'tag'=>'Keeping the fest fed and fuelled.',                      'sponsors'=>[
-    ['name'=>'Dominos', 'logo'=>'uploads/sponsors/dominos_logo.png', 'url'=>'https://www.dominos.co.in']
-  ]],
+  [
+    'id'       => 'corporate',
+    'title'    => 'Corporate & Cash Sponsors',
+    'size'     => 'lg',
+    'slots'    => 0,
+    'cta'      => 'Become a Corporate Sponsor',
+    'tag'      => 'Valued corporate and infrastructure partners supporting seamless festival operations.',
+    'sponsors' => [
+      ['name'=>'Quarks Technosoft', 'logo'=>'uploads/sponsors/quarks_logo.png', 'url'=>'https://www.qtsolv.com/'],
+      ['name'=>'NBCC (India) Limited', 'logo'=>'uploads/sponsors/nbcc_logo.png', 'url'=>'https://www.nbccindia.in/'],
+      ['name'=>'CISB Services Ltd.', 'logo'=>'uploads/sponsors/cisb_logo.png', 'url'=>'https://cisb.co.in/'],
+      ['name'=>'Sistema Smart Tech', 'logo'=>'uploads/sponsors/sistema_smart_tech_logo.png', 'url'=>'https://sistema.com'],
+      ['name'=>'The Kollektor', 'logo'=>'uploads/sponsors/kollektor_logo.png', 'url'=>'https://thekollektor.com/']
+    ]
+  ],
+  [
+    'id'       => 'banking',
+    'title'    => 'Banking & Cash Partners',
+    'size'     => 'md',
+    'slots'    => 0,
+    'cta'      => 'Become a Banking Partner',
+    'tag'      => 'Empowering youth vitality, student excellence, and financial enablement.',
+    'sponsors' => [
+      ['name'=>'Union Bank of India', 'logo'=>'uploads/sponsors/union_bank_logo.png', 'url'=>'https://www.unionbankofindia.bank.in/en/home'],
+      ['name'=>'Canara Bank', 'logo'=>'uploads/sponsors/canara_bank_logo.png', 'url'=>'https://www.canarabank.bank.in/']
+    ]
+  ],
+  [
+    'id'       => 'gaming',
+    'title'    => 'Gaming & Esports Partners',
+    'size'     => 'md',
+    'slots'    => 0,
+    'cta'      => 'Become an Esports Partner',
+    'tag'      => 'Powering BGMI, Real Cricket, Free Fire, and eFootball tournaments at UDGAM 2K26.',
+    'sponsors' => [
+      ['name'=>'Krafton India Esports', 'logo'=>'uploads/sponsors/krafton_india_esports_logo.png', 'url'=>'https://kraftonindiaesports.com/'],
+      ['name'=>'Unstop', 'logo'=>'uploads/sponsors/unstop_logo.png', 'url'=>'https://unstop.com/']
+    ]
+  ],
+  [
+    'id'       => 'food',
+    'title'    => 'Food & Beverage Partners',
+    'size'     => 'md',
+    'slots'    => 0,
+    'cta'      => 'Become a Food Partner',
+    'tag'      => 'Keeping festival delegates and attendees energized throughout UDGAM.',
+    'sponsors' => [
+      ['name'=>"Domino's Pizza", 'logo'=>'uploads/sponsors/dominos_logo.png', 'url'=>'https://www.dominos.co.in/'],
+      ['name'=>'The Waffle Stop', 'logo'=>'uploads/sponsors/waffle_stop_logo.png', 'url'=>'']
+    ]
+  ],
+  [
+    'id'       => 'media_hospitality',
+    'title'    => 'Media & Hospitality Partners',
+    'size'     => 'md',
+    'slots'    => 0,
+    'cta'      => 'Become a Partner',
+    'tag'      => 'Broadcasting festival stories and welcoming our guests in the hills of Sikkim.',
+    'sponsors' => [
+      ['name'=>'Sikkim Express', 'logo'=>'uploads/sponsors/sikkim_express_logo.png', 'url'=>'https://www.sikkimexpress.com/'],
+      ['name'=>'Ravongla Star', 'logo'=>'uploads/sponsors/ravongla_star_logo.png', 'url'=>'https://www.facebook.com/ravongla/'],
+      ['name'=>'The Alnus Ravangla', 'logo'=>'uploads/sponsors/alnus_ravangla_logo.png', 'url'=>'https://www.facebook.com/thealnus.ravangla/']
+    ]
+  ]
 ];
 
 function h(string $v): string { return htmlspecialchars($v, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); }
@@ -66,7 +120,7 @@ require __DIR__ . '/includes/header.php';
 <div class="tier" id="t-<?= h($t['id']) ?>"><div class="th rv"><h2><?= h($t['title']) ?></h2><div class="div"><i></i><?= bloom('mini') ?><i></i></div><p><?= h($t['tag']) ?></p></div>
 <div class="sgrid <?= h($t['size']) ?>">
 <?php if($n): foreach($t['sponsors'] as $i=>$sp): ?>
-<div class="sc rv" style="--d:<?= $i*0.1 ?>s"><a class="pl" href="<?= h($sp['url'] ?? '#') ?>" target="_blank" rel="noopener" aria-label="<?= h($sp['name']) ?>"><?php if(!empty($sp['logo'])): ?><img src="<?= h($sp['logo']) ?>" alt="<?= h($sp['name']) ?>" loading="lazy"><?php else: ?><span class="nm"><?= h($sp['name']) ?></span><?php endif; ?></a></div>
+<div class="sc rv" style="--d:<?= $i*0.1 ?>s"><?php if(!empty($sp['url'])): ?><a class="pl" href="<?= h($sp['url']) ?>" target="_blank" rel="noopener" aria-label="<?= h($sp['name']) ?>"><?php else: ?><div class="pl" aria-label="<?= h($sp['name']) ?>"><?php endif; ?><?php if(!empty($sp['logo'])): ?><img src="<?= h($sp['logo']) ?>" alt="<?= h($sp['name']) ?>" loading="lazy"><?php else: ?><span class="nm"><?= h($sp['name']) ?></span><?php endif; ?><?= !empty($sp['url']) ? '</a>' : '</div>' ?></div>
 <?php endforeach; else: for($i=0;$i<$t['slots'];$i++): ?>
 <div class="sc rv" style="--d:<?= $i*0.1 ?>s"><a class="pl slot" href="contact.php" aria-label="Become our <?= h($t['title']) ?>"><?= bloom('bud') ?><b>Your brand here</b><small style="color:var(--mu)"><?= h($t['cta']) ?></small></a></div>
 <?php endfor; endif; ?>

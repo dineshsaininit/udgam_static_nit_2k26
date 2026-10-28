@@ -113,7 +113,7 @@ h1.h .ch{display:inline-block;background:linear-gradient(100deg,#fff6e0 5%,var(-
 .pl::after{content:'';position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-18deg)}
 .pl:hover{box-shadow:0 24px 60px rgba(255,95,158,.35),0 0 0 1px rgba(255,158,196,.7)}
 .pl:hover::before{opacity:1}.pl:hover::after{left:130%;transition:left .9s ease}
-.pl img{max-height:calc(var(--h) - 70px);max-width:82%;width:auto;object-fit:contain;position:relative;transition:transform .5s cubic-bezier(.2,1.3,.4,1)}
+.pl img{max-height:calc(var(--h) - 46px);max-width:82%;width:auto;object-fit:contain;position:relative;transition:transform .5s cubic-bezier(.2,1.3,.4,1)}
 .pl:hover img{transform:scale(1.08) translateZ(30px)}
 .pl .nm{position:relative;font:700 clamp(1rem,2vw,1.3rem)/1.25 var(--fd);letter-spacing:.09em}
 .pl small{position:relative;font:600 10px/1 var(--fb);letter-spacing:.2em;text-transform:uppercase;color:#9a5a75;opacity:.75}
